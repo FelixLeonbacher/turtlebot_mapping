@@ -8,6 +8,7 @@ namespace core {
 struct Point2D {
     float x{0.0f};
     float y{0.0f};
+    bool isWall{false};  // true, wenn der Punkt eine Wand darstellt
 };
 
 // Robot or LiDAR pose in 2D (position + orientation)
@@ -52,7 +53,6 @@ inline Point2D pointInLidarFrame(const Pose2D& lidarPose, const Point2D& pointIn
     };
 }
 
-// Convert full LaserScan data (ranges + angles) to world-frame points
 inline void laserScanToWorldPoints(const std::vector<float>& ranges,
                                    float angle_min, float angle_increment,
                                    float range_min, float range_max,
@@ -60,15 +60,44 @@ inline void laserScanToWorldPoints(const std::vector<float>& ranges,
                                    std::vector<Point2D>& outPoints)
 {
     outPoints.reserve(outPoints.size() + ranges.size());
+    std::vector<Point2D> tempPoints;
+    tempPoints.reserve(ranges.size());
+
+    // --- 1. Schritt: lokale Punkte + erste isWall-Bewertung ---
     for (size_t i = 0; i < ranges.size(); ++i) {
         float r = ranges[i];
-        if (!(r > range_min && r < range_max)) continue;
+        if (!(r > range_min && r < range_max)) {
+            tempPoints.push_back({0.0f, 0.0f, false}); // vllt auch als frontier kenzeichen?
+            continue;
+        }
 
         float angle = angle_min + static_cast<float>(i) * angle_increment;
         Point2D local = polarToCartesian(r, angle);
-        Point2D world = pointInWorldFrame(lidarPose, local);
-        outPoints.push_back(world);
+        local.isWall = true; // erstmal alle gültigen Punkte = Wand
+        tempPoints.push_back(local);
+    }
+
+    // --- 2. Schritt: Sprungprüfung zwischen aufeinanderfolgenden Punkten ---
+    const float jumpThreshold = 5.0f;  // z.B. 5 Meter Sprung = Frontier
+
+    for (size_t i = 1; i < tempPoints.size(); ++i) {
+        float prevRange = std::sqrt(tempPoints[i-1].x * tempPoints[i-1].x +
+                                    tempPoints[i-1].y * tempPoints[i-1].y);
+        float currRange = std::sqrt(tempPoints[i].x * tempPoints[i].x +
+                                    tempPoints[i].y * tempPoints[i].y);
+
+        if (std::fabs(currRange - prevRange) > jumpThreshold) {
+            // Großer Sprung → beide Punkte keine Wand
+            tempPoints[i-1].isWall = false;
+            tempPoints[i].isWall   = false;
+        }
+    }
+
+    // --- 3. Schritt: Transformation in Weltkoordinaten ---
+    for (const auto& local : tempPoints) {
+        if (!(local.x == 0.0f && local.y == 0.0f)) {
+            Point2D world = pointInWorldFrame(lidarPose, local);
+            outPoints.push_back(world);
+        }
     }
 }
-
-} // namespace core
