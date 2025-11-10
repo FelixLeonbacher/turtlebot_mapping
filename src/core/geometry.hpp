@@ -87,8 +87,6 @@ inline Point2D to_world_rounded(const Pose2D& pose, float r, float a, float res 
     return round_point(pw, res);
 }
 
-
-
 // ==========================================================
 //                  HASH / EQUAL FOR POINTS
 // ==========================================================

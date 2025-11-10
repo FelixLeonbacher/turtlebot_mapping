@@ -21,7 +21,7 @@ int main() {
     // === 2) First scan (creates frontiers) ================
     // =======================================================
     Pose2D pose1{0.0f, 0.0f, 0.0f};
-    std::vector<float> ranges1 = {2.0f, 2.82f, 2.0f, 2.82f, 5.0f, 2.82f, 2.0f, 2.82f};
+    std::vector<float> ranges1 = {1, 1.41, 1, 1.41, 3, 1.41, 1, 1.41};//{2.0f, 2.82f, 2.0f, 2.82f, 5.0f, 2.82f, 2.0f, 2.82f};
     float angle_min1 = 0.0f;              // 0°
     float angle_inc1 = 0.785398f;         // 45°
     float range_min1 = 0.10f, range_max1 = 30.0f;
@@ -30,20 +30,113 @@ int main() {
     ScanData data1;
     std::vector<Frontier> frontiers1;
 
-    //scan_to_data(scan1, data1, frontiers1, jump_thresh, inset_toward_robot);
+    scan_to_data(scan1, data1, frontiers1, jump_thresh, inset_toward_robot);
 
     // Insert rounded points from first scan
+
+    std::cout << "\n First scan:\n";
+    for (const auto& f : frontiers1) {
+        std::cout << "  A(" << f.a.x << ", " << f.a.y << ")"
+                  << "  B(" << f.b.x << ", " << f.b.y << ")"
+                  << "  M(" << f.m.x << ", " << f.m.y << ")"
+                  << "  width=" << f.width << "\n";
+    }
+
+    // data print
     for (const auto& p : data1.scan_ordered)
-        if (p.x != 0.0f || p.y != 0.0f)
-            insert_rounded_unique(p, world_map, map_res);
+    {
+        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
+    }
+
+    std::cout << "\nWorld points with walls before insert 1 scan:\n";
+    for (const auto& p : world_map) {
+        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
+    }
+
+    for (const auto& p : data1.scan_ordered)
+    {
+        if (p.x == 0.0f && p.y == 0.0f)
+            continue;
+
+        // 1) Punkt in Weltkarte einfügen (wenn neu)
+        world_map.insert(p);
+
+        // 2) Prüfen, ob er zu einem Frontier-Endpunkt gehört
+        for (auto it = all_frontiers.begin(); it != all_frontiers.end(); /* kein ++ hier */)
+        {
+            bool is_endpoint = 
+                (p.x == it->a.x && p.y == it->a.y) ||
+                (p.x == it->b.x && p.y == it->b.y);
+
+            if (is_endpoint)
+            {
+                // ---- (a) Den Punkt in world_map auf is_wall = true setzen ----
+                // zuerst alten rausnehmen
+                auto existing = world_map.find(p);
+                if (existing != world_map.end())
+                    world_map.erase(existing);
+
+                // dann als Wand neu einfügen
+                Point2D wall_point = p;
+                wall_point.is_wall = true;
+                world_map.insert(wall_point);
+
+                // ---- (b) Frontier löschen ----
+                it = all_frontiers.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+    }
+
+
+    for (auto it = frontiers1.begin(); it != frontiers1.end(); )
+    {
+        bool remove_frontier = false;
+
+        for (const auto& wp : world_map)
+        {
+            if (wp.is_wall)
+            {
+                // Vergleiche positionsgerastert (nicht nur float-gleich!)
+                auto same_cell = [&](const core::Point2D& p1, const core::Point2D& p2) {
+                    long long ix1 = llround(p1.x / map_res);
+                    long long iy1 = llround(p1.y / map_res);
+                    long long ix2 = llround(p2.x / map_res);
+                    long long iy2 = llround(p2.y / map_res);
+                    return ix1 == ix2 && iy1 == iy2;
+                };
+
+                if (same_cell(it->a, wp) || same_cell(it->b, wp))
+                {
+                    remove_frontier = true;
+                    break;
+                }
+            }
+        }
+
+        if (remove_frontier)
+            it = frontiers1.erase(it);  // Frontier löschen
+        else
+            ++it;
+    }
+
+
 
     all_frontiers.insert(all_frontiers.end(), frontiers1.begin(), frontiers1.end());
+
+    std::cout << "\nWorld points with walls after insert 1 scan:\n";
+    for (const auto& p : world_map) {
+        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
+    }
 
     // =======================================================
     // === 3) Second scan (new data, new possible frontiers) =
     // =======================================================
-    Pose2D pose2{1.0f, 0.0f, 0.0f};
-    std::vector<float> ranges2 = {1.0f, 1.41f, 1.0f, 1.41f, 3.0f, 3*1.41, 5.0f, 2.82f };//{1.0f, 1.41f, 2.0f, 2.82f, 6.0f, 2.82f, 2.0f, 1.41f};
+    Pose2D pose2{-2.0f, 0.0f, 0.0f};
+    std::vector<float> ranges2 = {3.0f, 1.41f, 2.0f, 1.41f, 1.0f, 1.41f, 3.0f, 1.41f};
     float angle_min2 = 0.0f;            // 0°
     float angle_inc2 = 0.785398f;         // 45°
     float range_min2 = 0.10f, range_max2 = 30.0f;
@@ -54,36 +147,112 @@ int main() {
 
     scan_to_data(scan2, data2, frontiers2, jump_thresh, inset_toward_robot);
 
-    // Insert rounded points from second scan
-    for (const auto& p : data2.scan_ordered)
-        if (p.x != 0.0f || p.y != 0.0f)
-            insert_rounded_unique(p, world_map, map_res);
 
-    all_frontiers.insert(all_frontiers.end(), frontiers2.begin(), frontiers2.end());
-
-
-
-    // =======================================================
-    // === 5) Print summary ==================================
-    // =======================================================
-    std::cout << "\n========= SCAN SUMMARY =========\n";
-    std::cout << "World map (unique rounded points): " << world_map.size() << "\n";
-    std::cout << "Frontiers total: " << all_frontiers.size() << "\n";
-
-    std::cout << "\nFrontiers:\n";
-    int idx = 0;
-    for (const auto& f : all_frontiers) {
-        std::cout << "  #" << idx++
-                  << "  A(" << f.a.x << ", " << f.a.y << ")"
+    std::cout << "\n Second scan:\n";
+    for (const auto& f : frontiers2) {
+        std::cout << "  A(" << f.a.x << ", " << f.a.y << ")"
                   << "  B(" << f.b.x << ", " << f.b.y << ")"
                   << "  M(" << f.m.x << ", " << f.m.y << ")"
                   << "  width=" << f.width << "\n";
     }
 
-    std::cout << "\nWorld points with walls:\n";
+    // data print
+    for (const auto& p : data2.scan_ordered)
+    {
+        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
+    }
+
+    std::cout << "\nWorld points 2 scan with walls:\n";
     for (const auto& p : world_map) {
         std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
     }
+
+
+    for (const auto& p : data2.scan_ordered)
+    {
+        if (p.x == 0.0f && p.y == 0.0f)
+            continue;
+
+        // 1) Punkt in Weltkarte einfügen
+        world_map.insert(p);
+
+        // 2) Prüfen, ob er zu einem Frontier-Endpunkt gehört
+        for (auto it = all_frontiers.begin(); it != all_frontiers.end(); /* kein ++ hier */)
+        {
+            bool is_endpoint = 
+                (p.x == it->a.x && p.y == it->a.y) ||
+                (p.x == it->b.x && p.y == it->b.y);
+
+            if (is_endpoint)
+            {
+                // ---- (a) Den Punkt in world_map auf is_wall = true setzen ----
+                // zuerst alten rausnehmen
+                auto existing = world_map.find(p);
+                if (existing != world_map.end())
+                    world_map.erase(existing);
+
+                // dann als Wand neu einfügen
+                Point2D wall_point = p;
+                wall_point.is_wall = true;
+                world_map.insert(wall_point);
+                // ---- (b) Frontier löschen ----
+                it = all_frontiers.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+    }
+
+
+    for (auto it = frontiers2.begin(); it != frontiers2.end(); )
+    {
+        bool remove_frontier = false;
+
+        for (const auto& wp : world_map)
+        {
+            if (wp.is_wall)
+            {
+                // Vergleiche positionsgerastert (nicht nur float-gleich!)
+                auto same_cell = [&](const core::Point2D& p1, const core::Point2D& p2) {
+                    long long ix1 = llround(p1.x / map_res);
+                    long long iy1 = llround(p1.y / map_res);
+                    long long ix2 = llround(p2.x / map_res);
+                    long long iy2 = llround(p2.y / map_res);
+                    return ix1 == ix2 && iy1 == iy2;
+                };
+
+                if (same_cell(it->a, wp) || same_cell(it->b, wp))
+                {
+                    remove_frontier = true;
+                    break;
+                }
+            }
+        }
+
+        if (remove_frontier)
+            it = frontiers2.erase(it);  // Frontier löschen
+        else
+            ++it;
+    }
+
+
+    all_frontiers.insert(all_frontiers.end(), frontiers2.begin(), frontiers2.end());
+
+    std::cout << "\nFinal frontiers scans:\n";
+    for (const auto& f : all_frontiers) {
+        std::cout << "  A(" << f.a.x << ", " << f.a.y << ")"
+                  << "  B(" << f.b.x << ", " << f.b.y << ")"
+                  << "  M(" << f.m.x << ", " << f.m.y << ")"
+                  << "  width=" << f.width << "\n";
+    }
+
+    std::cout << "\nFinal World points with walls:\n";
+    for (const auto& p : world_map) {
+        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
+    }
+
 
     return 0;
 }
