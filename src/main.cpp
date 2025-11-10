@@ -1,56 +1,89 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
-#include <unordered_set>
 #include "core/geometry.hpp"
 
+using namespace core;
+
 int main() {
-    // --- 1. Weltkarte vorbereiten ---
-    float resolution = 0.05f; // 5 cm Raster
-    std::unordered_set<core::Point2D, core::Point2DHash, core::Point2DEq> worldMap(
-        0, core::Point2DHash(resolution), core::Point2DEq(resolution));
+    std::cout << std::fixed << std::setprecision(3);
 
-    // --- 2. Beispielhafte Pose + Scan ---
-    core::Pose2D pose{0.0f, 0.0f, 0.0f};
-    std::vector<float> ranges = {1.0f, 1.41f, 1.5f, 1.41f, 2.0f, 1.41f, 7.0f, 1.41f};
-    float angle_min = -1.57f;
-    float angle_inc = 0.785398f;
-    float range_min = 0.1f, range_max = 30.0f;
+    // --- Global parameters ---
+    const float jump_thresh = 1.0f;
+    const float inset_toward_robot = 0.10f;
+    const float map_res = CORE_ROUND_RES;
 
-    // --- 3. Scan verarbeiten ---
-    std::vector<core::Point2D> worldPoints;
-    core::laserScanToWorldPoints(ranges, angle_min, angle_inc,
-                                 range_min, range_max, pose,
-                                 worldPoints, 5.0f); // 5 m Frontier-Sprung
+    // --- 1) Global world containers ---
+    MapSet world_map(0, Point2DHash(map_res), Point2DEq(map_res));
+    std::vector<Frontier> all_frontiers;
 
-    // --- 4. Punkte runden + in Weltkarte einfügen ---
-    for (const auto& p : worldPoints) {
-        core::Point2D rounded = core::roundPoint(p, resolution);
-        worldMap.insert(rounded);
+    // =======================================================
+    // === 2) First scan (creates frontiers) ================
+    // =======================================================
+    Pose2D pose1{0.0f, 0.0f, 0.0f};
+    std::vector<float> ranges1 = {2.0f, 2.82f, 2.0f, 2.82f, 5.0f, 2.82f, 2.0f, 2.82f};
+    float angle_min1 = 0.0f;              // 0°
+    float angle_inc1 = 0.785398f;         // 45°
+    float range_min1 = 0.10f, range_max1 = 30.0f;
+
+    LidarScan scan1{ranges1, angle_min1, angle_inc1, range_min1, range_max1, pose1};
+    ScanData data1;
+    std::vector<Frontier> frontiers1;
+
+    //scan_to_data(scan1, data1, frontiers1, jump_thresh, inset_toward_robot);
+
+    // Insert rounded points from first scan
+    for (const auto& p : data1.scan_ordered)
+        if (p.x != 0.0f || p.y != 0.0f)
+            insert_rounded_unique(p, world_map, map_res);
+
+    all_frontiers.insert(all_frontiers.end(), frontiers1.begin(), frontiers1.end());
+
+    // =======================================================
+    // === 3) Second scan (new data, new possible frontiers) =
+    // =======================================================
+    Pose2D pose2{1.0f, 0.0f, 0.0f};
+    std::vector<float> ranges2 = {1.0f, 1.41f, 1.0f, 1.41f, 3.0f, 3*1.41, 5.0f, 2.82f };//{1.0f, 1.41f, 2.0f, 2.82f, 6.0f, 2.82f, 2.0f, 1.41f};
+    float angle_min2 = 0.0f;            // 0°
+    float angle_inc2 = 0.785398f;         // 45°
+    float range_min2 = 0.10f, range_max2 = 30.0f;
+
+    LidarScan scan2{ranges2, angle_min2, angle_inc2, range_min2, range_max2, pose2};
+    ScanData data2;
+    std::vector<Frontier> frontiers2;
+
+    scan_to_data(scan2, data2, frontiers2, jump_thresh, inset_toward_robot);
+
+    // Insert rounded points from second scan
+    for (const auto& p : data2.scan_ordered)
+        if (p.x != 0.0f || p.y != 0.0f)
+            insert_rounded_unique(p, world_map, map_res);
+
+    all_frontiers.insert(all_frontiers.end(), frontiers2.begin(), frontiers2.end());
+
+
+
+    // =======================================================
+    // === 5) Print summary ==================================
+    // =======================================================
+    std::cout << "\n========= SCAN SUMMARY =========\n";
+    std::cout << "World map (unique rounded points): " << world_map.size() << "\n";
+    std::cout << "Frontiers total: " << all_frontiers.size() << "\n";
+
+    std::cout << "\nFrontiers:\n";
+    int idx = 0;
+    for (const auto& f : all_frontiers) {
+        std::cout << "  #" << idx++
+                  << "  A(" << f.a.x << ", " << f.a.y << ")"
+                  << "  B(" << f.b.x << ", " << f.b.y << ")"
+                  << "  M(" << f.m.x << ", " << f.m.y << ")"
+                  << "  width=" << f.width << "\n";
     }
 
-        // --- 5.  zweiter Beispielhafte Pose + Scan ---
-    core::Pose2D pose2{1.0f, 0.0f, 0.0f};
-    std::vector<float> ranges2 =  {1.0f, 0.70f, 0.5f, 0.70f, 1.0f, 1.41f, 8.0f, 1.41f};
-    float angle_min2 = -1.57f;
-    float angle_inc2 = 0.785398f;
-    float range_min2 = 0.1f, range_max2 = 30.0f;
-
-    // --- 6. Scan verarbeiten ---
-    std::vector<core::Point2D> worldPoints2;
-    core::laserScanToWorldPoints(ranges2, angle_min2, angle_inc2,
-                                 range_min2, range_max2, pose2,
-                                 worldPoints2, 5.0f); // 5 m Frontier-Sprung
-
-    // --- 7. Punkte runden + in Weltkarte einfügen ---
-    for (const auto& p : worldPoints2) {
-        core::Point2D rounded = core::roundPoint(p, resolution);
-        worldMap.insert(rounded);
+    std::cout << "\nWorld points with walls:\n";
+    for (const auto& p : world_map) {
+        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
     }
 
-    // --- 8. Ausgabe ---
-    std::cout << "Weltkarte enthält " << worldMap.size() << " Punkte:\n";
-    for (const auto& p : worldMap) {
-        std::cout << "(" << p.x << ", " << p.y 
-                  << ") isWall=" << p.isWall << "\n";
-    }
+    return 0;
 }
