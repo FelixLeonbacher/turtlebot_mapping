@@ -3,12 +3,17 @@
 
 #include <cmath>
 
-// Ist-/ Zielpose
-struct Pose {
-    double x;
-    double y;
-    double theta;
-};
+
+#include "core/geometry.hpp"
+using Pose = core::Pose2D;
+
+// old code
+// // Ist-/ Zielpose
+// struct Pose {
+//     double x;
+//     double y;
+//     double theta;
+// };
 
 // Control output
 struct ControlOutput {
