@@ -32,7 +32,7 @@ struct Pose2D {
 struct Frontier {
     core::Point2D a;  // left endpoint (world)
     core::Point2D b;  // right endpoint (world)
-    core::Point2D m;  // midpoint (target, slightly shifted into free space)
+    core::Point2D m;  // midpoint (world)
     float width;      // |a - b|
 };
 
@@ -120,8 +120,7 @@ struct Point2DEq {
 inline void scan_to_data(const LidarScan& scan,
                          ScanData& out_scan,
                          std::vector<core::Frontier>& out_frontiers,
-                         float jump_thresh = 1.0f,
-                         float inset_toward_robot = 0.10f)
+                         float jump_thresh = 1.0f)
 {
     const size_t n = scan.ranges.size();
     out_scan.scan_ordered.assign(n, core::Point2D{0.0f, 0.0f, true});  // <-- alle standardmäßig Wand
@@ -187,11 +186,7 @@ inline void scan_to_data(const LidarScan& scan,
                     0.5f * (A.y + B.y),
                     false
                 };
-                float vx = scan.pose.x - M.x;
-                float vy = scan.pose.y - M.y;
-                float vn = std::sqrt(vx * vx + vy * vy) + 1e-6f;
-                M.x += inset_toward_robot * (vx / vn);
-                M.y += inset_toward_robot * (vy / vn);
+                
                 M = core::round_point(M, CORE_ROUND_RES);
 
                 // width

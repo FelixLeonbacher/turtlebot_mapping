@@ -9,9 +9,8 @@ int main() {
     std::cout << std::fixed << std::setprecision(3);
 
     // --- Global parameters ---
-    const float jump_thresh = 1.0f;
-    const float inset_toward_robot = 0.10f;
-    const float map_res = CORE_ROUND_RES;
+    const float jump_thresh = 1.0f; // frontier erkennungsschwelle
+    const float map_res = CORE_ROUND_RES;  // rundungswert für die Punkte 
 
     // --- 1) Global world containers ---
     MapSet world_map(0, Point2DHash(map_res), Point2DEq(map_res));
@@ -30,7 +29,7 @@ int main() {
     ScanData data1;
     std::vector<Frontier> frontiers1;
 
-    scan_to_data(scan1, data1, frontiers1, jump_thresh, inset_toward_robot);
+    scan_to_data(scan1, data1, frontiers1, jump_thresh);
 
     // Insert rounded points from first scan
 
@@ -145,7 +144,7 @@ int main() {
     ScanData data2;
     std::vector<Frontier> frontiers2;
 
-    scan_to_data(scan2, data2, frontiers2, jump_thresh, inset_toward_robot);
+    scan_to_data(scan2, data2, frontiers2, jump_thresh);
 
 
     std::cout << "\n Second scan:\n";
