@@ -212,8 +212,10 @@ inline void scan_to_data(const LidarScan& scan,
 
 
 // ==========================================================
-//                  SCAN → WORLD POINTS (RAW)
+//                  SCAN → WORLD POINTS (OLD)
 // ==========================================================
+
+// old dont use anymore
 inline void laser_scan_to_world_points(const std::vector<float>& ranges,
                                        float angle_min, float angle_inc,
                                        float range_min, float range_max,
@@ -234,7 +236,7 @@ inline void laser_scan_to_world_points(const std::vector<float>& ranges,
 
 
 // ==========================================================
-//                 MAP OPERATIONS (WALLS / UNIQUE)
+//                 MAP OPERATIONS 
 // ==========================================================
 
 // Map type: unordered set of rounded points
@@ -247,6 +249,7 @@ inline void insert_rounded_unique(const Point2D& p_world,
     map_set.insert(round_point(p_world, resolution));
 }
 
+// old dont use anymore
 inline std::vector<Point2D> compute_walls_from_set(const MapSet& map_set,
                                                    float res,
                                                    int min_neighbors = 2)
@@ -254,7 +257,7 @@ inline std::vector<Point2D> compute_walls_from_set(const MapSet& map_set,
     std::vector<Point2D> out;
     out.reserve(map_set.size());
 
-    auto cell = [res](float x, float y) {
+    auto cell = [res](float x, float y) {//
         return std::pair<long long, long long>{
             llround(x / res), llround(y / res)
         };
