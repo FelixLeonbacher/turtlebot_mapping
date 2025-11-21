@@ -1,5 +1,6 @@
 #pragma once
 #include "../core/geometry.hpp"
+#include "mapping.cpp"
 #include <vector>
 
 namespace mapping {

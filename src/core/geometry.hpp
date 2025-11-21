@@ -186,7 +186,7 @@ inline void scan_to_data(const LidarScan& scan,
                     0.5f * (A.y + B.y),
                     false
                 };
-                
+
                 M = core::round_point(M, CORE_ROUND_RES);
 
                 // width
@@ -236,6 +236,8 @@ inline void laser_scan_to_world_points(const std::vector<float>& ranges,
 // ==========================================================
 //                 MAP OPERATIONS (WALLS / UNIQUE)
 // ==========================================================
+
+// Map type: unordered set of rounded points
 using MapSet = std::unordered_set<Point2D, Point2DHash, Point2DEq>;
 
 inline void insert_rounded_unique(const Point2D& p_world,

@@ -4,7 +4,6 @@
 
 #include "core/geometry.hpp"
 #include "mapping/mapping.hpp" 
-#include "mapping/mapping.cpp"  
 
 using namespace core;
 
