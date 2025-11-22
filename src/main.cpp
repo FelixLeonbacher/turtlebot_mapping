@@ -4,6 +4,7 @@
 
 #include "core/geometry.hpp"
 #include "mapping/mapping.hpp" 
+#include "export/export.hpp"
 
 using namespace core;
 
@@ -67,6 +68,10 @@ int main() {
                   << "  width=" << f.width << "\n";
     }
 
+    export_utils::export_world_map_csv(world_map, "../export/world_map_after_scan1.csv");
+    export_utils::export_frontiers_csv(all_frontiers, "../export/frontiers_after_scan1.csv");
+
+
     // =======================================================
     // === 3) Zweiter Scan ===================================
     // =======================================================
@@ -102,6 +107,12 @@ int main() {
 
     // --- Scan-2-Daten in Welt integrieren ---
     mapping::data_to_world(data2, frontiers2, world_map, all_frontiers, map_res);
+
+    
+
+    export_utils::export_world_map_csv(world_map, "../export/world_map_after_scan2.csv");
+    export_utils::export_frontiers_csv(all_frontiers, "../export/frontiers_after_scan2.csv");
+
 
     std::cout << "\nWorld points with walls AFTER inserting 2nd scan:\n";
     for (const auto& p : world_map) {
