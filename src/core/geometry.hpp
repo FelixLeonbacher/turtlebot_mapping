@@ -23,6 +23,8 @@ struct Point2D {
     bool is_wall{false};
 };
 
+
+
 struct Pose2D {
     float x{0.0f};
     float y{0.0f};
@@ -37,7 +39,7 @@ struct Frontier {
 };
 
 struct LidarScan {
-    const std::vector<float>& ranges;  // distances per beam
+    std::vector<float> ranges;  // distances per beam
     float angle_min;                   // [rad]
     float angle_inc;                   // [rad/beam]
     float range_min;                   // [m]

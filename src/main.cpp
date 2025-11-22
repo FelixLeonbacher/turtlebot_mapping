@@ -6,6 +6,9 @@
 #include "mapping/mapping.hpp" 
 #include "export/export.hpp"
 
+
+#include "core/parser.hpp"
+
 using namespace core;
 
 int main() {
