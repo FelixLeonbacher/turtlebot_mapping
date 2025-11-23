@@ -7,7 +7,7 @@
 
 
 
-core::LidarScan parseLidarScanFromDump(const std::string& dump)
+core::LidarScan parseLidarScanFromMsg(const std::string& dump)
 {
     // ---START--- und ___END___ rausfiltern
     const std::string startTag = "---START---";
@@ -17,7 +17,7 @@ core::LidarScan parseLidarScanFromDump(const std::string& dump)
     const size_t endPos   = dump.find(endTag);
 
     if (startPos == std::string::npos || endPos == std::string::npos || endPos <= startPos) {
-        throw std::runtime_error("parseLidarScanFromDump: START/END not found");
+        throw std::runtime_error("parseLidarScanFromMsg: START/END not found");
     }
 
     const size_t jsonStart = startPos + startTag.size();

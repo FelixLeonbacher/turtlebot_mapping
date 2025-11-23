@@ -1,139 +1,104 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <stdexcept>
 
-#include "core/geometry.hpp"
-#include "mapping/mapping.hpp" 
-#include "export/export.hpp"
-
-
-#include "core/parser.hpp"
+#include "connection/connection.hpp"    // TCP reader (readTaggedMessage)
+#include "core/geometry.hpp"            // MapSet, Pose2D, LidarScan, Frontier
+#include "core/parser.hpp"              // parseLidarScanFromMsg(), scan_to_data()
+#include "mapping/mapping.hpp"          // mapping::data_to_world()
+#include "export/export.hpp"            // export_world_map_csv()
 
 using namespace core;
 
-int main() {
+int main()
+{
     std::cout << std::fixed << std::setprecision(3);
 
-    // --- Global parameters ---
-    const float jump_thresh = 1.0f;      // frontier-Erkennungsschwelle
-    const float map_res     = CORE_ROUND_RES;  // Rundung in m (z.B. 1.0f oder 0.05f) derzeit aus geometry.hpp
+    // ============================
+    // GLOBAL PARAMETERS
+    // ============================
+    const float jump_thresh = 0.1f;      // frontier detection threshold
+    const float map_res     = CORE_ROUND_RES;  // grid resolution from geometry.hpp
 
-    // --- 1) Globale Welt & Frontier-Liste ---
+    const std::string ip = "192.168.100.54";
+    const int port_lidar  = 9997;
+    const int max_scans   = 10;  // read 50 scans, or set to -1 for infinite
+
+    // ============================
+    // INITIALIZE NETWORK
+    // ============================
+    try {
+        connection::init();
+        std::cout << "[INFO] Winsock initialized\n";
+    }
+    catch (const std::exception& e) {
+        std::cerr << "[ERROR] Winsock init failed: " << e.what() << "\n";
+        return 1;
+    }
+
+    // ============================
+    // CREATE WORLD & FRONTIER SET
+    // ============================
     MapSet world_map(0, Point2DHash(map_res), Point2DEq(map_res));
     std::vector<Frontier> all_frontiers;
 
-    // =======================================================
-    // === 2) Erster Scan ====================================
-    // =======================================================
-    Pose2D pose1{0.0f, 0.0f, 0.0f};
-    std::vector<float> ranges1 = {1.0f, 1.41f, 1.0f, 1.41f, 3.0f, 1.41f, 1.0f, 1.41f};
-    float angle_min1 = 0.0f;         // 0°
-    float angle_inc1 = 0.785398f;    // 45°
-    float range_min1 = 0.10f, range_max1 = 30.0f;
+    // ============================
+    // MAIN STREAM LOOP
+    // ============================
+    for (int i = 0; i < max_scans || max_scans < 0; i++) {
 
-    LidarScan scan1{ranges1, angle_min1, angle_inc1, range_min1, range_max1, pose1};
-    ScanData data1;
-    std::vector<Frontier> frontiers1;
+        std::cout << "\n===============================================\n";
+        std::cout << "Reading LiDAR scan " << (i+1) << "...\n";
 
-    scan_to_data(scan1, data1, frontiers1, jump_thresh);
+        // 1) Receive tagged message
+        std::string msg;
+        try {
+            msg = connection::readTaggedMessage(ip, port_lidar);
+        }
+        catch (const std::exception& e) {
+            std::cerr << "[ERROR] Failed reading from LiDAR: " << e.what() << "\n";
+            break;
+        }
 
-    std::cout << "\n=== First scan: frontiers ===\n";
-    for (const auto& f : frontiers1) {
-        std::cout << "  A(" << f.a.x << ", " << f.a.y << ")"
-                  << "  B(" << f.b.x << ", " << f.b.y << ")"
-                  << "  M(" << f.m.x << ", " << f.m.y << ")"
-                  << "  width=" << f.width << "\n";
+        // 2) Parse JSON → LidarScan
+        LidarScan scan;
+        try {
+            scan = parseLidarScanFromMsg(msg);
+        }
+        catch (const std::exception& e) {
+            std::cerr << "[ERROR] Failed to parse LiDAR scan: " << e.what() << "\n";
+            continue;    // skip faulty scan
+        }
+
+        std::cout << "[INFO] Scan has " << scan.ranges.size() << " ranges\n";
+
+        // 3) Convert scan → ScanData + frontiers
+        ScanData scan_data;
+        std::vector<Frontier> scan_frontiers;
+
+        scan_to_data(scan, scan_data, scan_frontiers, jump_thresh);
+
+        std::cout << "[INFO] Extracted " << scan_frontiers.size() 
+                  << " frontiers from scan\n";
+
+        // 4) Insert scan data into world map
+        mapping::data_to_world(scan_data, scan_frontiers, world_map, all_frontiers, map_res);
+
+        std::cout << "[INFO] World has now " << world_map.size() << " cells\n";
+
+        // 5) Export after each scan (optional)
+        export_utils::export_world_map_csv(world_map, "../export/world_map_live.csv");
+        export_utils::export_frontiers_csv(all_frontiers, "../export/frontiers_live.csv");
+
+        std::cout << "[INFO] Exported updated world + frontiers\n";
     }
 
-    std::cout << "\nFirst scan: points (scan_ordered)\n";
-    for (const auto& p : data1.scan_ordered) {
-        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
-    }
-
-    std::cout << "\nWorld points with walls BEFORE inserting 1st scan:\n";
-    for (const auto& p : world_map) {
-        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
-    }
-
-    // --- Scan-1-Daten in Welt integrieren ---
-    mapping::data_to_world(data1, frontiers1, world_map, all_frontiers, map_res);
-
-    std::cout << "\nWorld points with walls AFTER inserting 1st scan:\n";
-    for (const auto& p : world_map) {
-        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
-    }
-
-    std::cout << "\nFrontiers after 1st scan (global):\n";
-    for (const auto& f : all_frontiers) {
-        std::cout << "  A(" << f.a.x << ", " << f.a.y << ")"
-                  << "  B(" << f.b.x << ", " << f.b.y << ")"
-                  << "  M(" << f.m.x << ", " << f.m.y << ")"
-                  << "  width=" << f.width << "\n";
-    }
-
-    export_utils::export_world_map_csv(world_map, "../export/world_map_after_scan1.csv");
-    export_utils::export_frontiers_csv(all_frontiers, "../export/frontiers_after_scan1.csv");
-
-
-    // =======================================================
-    // === 3) Zweiter Scan ===================================
-    // =======================================================
-    Pose2D pose2{-2.0f, 0.0f, 0.0f};
-    std::vector<float> ranges2 = {3.0f, 1.41f, 2.0f, 1.41f, 1.0f, 1.41f, 3.0f, 1.41f};
-    float angle_min2 = 0.0f;         // 0°
-    float angle_inc2 = 0.785398f;    // 45°
-    float range_min2 = 0.10f, range_max2 = 30.0f;
-
-    LidarScan scan2{ranges2, angle_min2, angle_inc2, range_min2, range_max2, pose2};
-    ScanData data2;
-    std::vector<Frontier> frontiers2;
-
-    scan_to_data(scan2, data2, frontiers2, jump_thresh);
-
-    std::cout << "\n=== Second scan: frontiers ===\n";
-    for (const auto& f : frontiers2) {
-        std::cout << "  A(" << f.a.x << ", " << f.a.y << ")"
-                  << "  B(" << f.b.x << ", " << f.b.y << ")"
-                  << "  M(" << f.m.x << ", " << f.m.y << ")"
-                  << "  width=" << f.width << "\n";
-    }
-
-    std::cout << "\nSecond scan: points (scan_ordered)\n";
-    for (const auto& p : data2.scan_ordered) {
-        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
-    }
-
-    std::cout << "\nWorld points with walls BEFORE inserting 2nd scan:\n";
-    for (const auto& p : world_map) {
-        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
-    }
-
-    // --- Scan-2-Daten in Welt integrieren ---
-    mapping::data_to_world(data2, frontiers2, world_map, all_frontiers, map_res);
-
-    
-
-    export_utils::export_world_map_csv(world_map, "../export/world_map_after_scan2.csv");
-    export_utils::export_frontiers_csv(all_frontiers, "../export/frontiers_after_scan2.csv");
-
-
-    std::cout << "\nWorld points with walls AFTER inserting 2nd scan:\n";
-    for (const auto& p : world_map) {
-        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
-    }
-
-    std::cout << "\nFinal frontiers (global):\n";
-    for (const auto& f : all_frontiers) {
-        std::cout << "  A(" << f.a.x << ", " << f.a.y << ")"
-                  << "  B(" << f.b.x << ", " << f.b.y << ")"
-                  << "  M(" << f.m.x << ", " << f.m.y << ")"
-                  << "  width=" << f.width << "\n";
-    }
-
-    std::cout << "\n========= FINAL WORLD =========\n";
-    for (const auto& p : world_map) {
-        std::cout << "  (" << p.x << ", " << p.y << ")  wall=" << (p.is_wall ? 1 : 0) << "\n";
-    }
+    // ============================
+    // SHUTDOWN
+    // ============================
+    connection::shutdown();
+    std::cout << "[INFO] Winsock cleaned up, program done.\n";
 
     return 0;
 }

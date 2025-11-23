@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include "../core/geometry.hpp"
-#include "export.cpp"
 
 #define EXPORT_PATH "../export/"
 

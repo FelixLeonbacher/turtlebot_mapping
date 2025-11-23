@@ -1,0 +1,15 @@
+# soon to be impemlemented
+
+mapping:
+  jump_threshold: 1.0
+  map_resolution: 0.05
+
+connection:
+  ip: "192.168.100.54"
+  port_scan: 9997
+  port_odom: 9998
+  port_cmd: 9999
+
+export:
+  export_path_world: "../export/world_map.csv"
+  export_path_frontiers: "../export/frontiers_map.csv"

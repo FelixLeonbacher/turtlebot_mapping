@@ -10,7 +10,7 @@ namespace core {
 //                      CONFIGURATION
 // ==========================================================
 #ifndef CORE_ROUND_RES
-#define CORE_ROUND_RES 0.05f  // default rounding resolution (5 cm)
+#define CORE_ROUND_RES 0.01f  // default rounding resolution (5 cm)
 #endif
 
 

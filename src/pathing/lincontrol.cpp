@@ -1,4 +1,7 @@
-#include "lincontrol.h"
+#include "lincontrol.hpp"
+
+// build problems cause compiler does not recognize M_PI from <cmath>
+#define M_PI 3.14159265358979323846
 
 // Initialize static constants
 const double LinearController::v_max = 0.3;
