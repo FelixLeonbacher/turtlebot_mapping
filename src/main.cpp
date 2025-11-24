@@ -24,7 +24,7 @@ int main()
     const std::string ip = "192.168.100.54";
     const int port_lidar  = 9997;
     const int port_odom   = 9998;
-    const int max_scans   = 100;  // read 50 scans, or set to -1 for infinite
+    const int max_scans   = -1;  // read xx scans, or set to -1 for infinite
 
     // ============================
     // INITIALIZE NETWORK
@@ -41,7 +41,7 @@ int main()
     // ============================
     // CREATE WORLD & FRONTIER SET & CURRENT POSE
     // ============================
-    MapSet world_map(0, Point2DHash(map_res), Point2DEq(map_res));
+    mapping::MapSet world_map(0, mapping::Point2DHash(map_res), mapping::Point2DEq(map_res));
     std::vector<Frontier> all_frontiers;
     core::Pose2D current_pose{0.0f, 0.0f, 0.0f};
 
@@ -91,8 +91,7 @@ int main()
         }
 
         scan.pose = current_pose;
-
-        scan_to_data(scan, scan_data, scan_frontiers, jump_thresh);
+        mapping::scan_to_data(scan, scan_data, scan_frontiers, jump_thresh);
 
         std::cout << "[INFO] Extracted " << scan_frontiers.size() 
                   << " frontiers from scan\n";

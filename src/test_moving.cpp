@@ -28,8 +28,8 @@ int main()
     const int max_steps = 2000; // safety
 
     // Goal pose
-    const double goal_x = 1.0;
-    const double goal_y = 0.5;
+    const double goal_x = 0.20;
+    const double goal_y = 0.00;
     const double goal_theta = 0.0; // M_PI / 2.0;
 
     try {

@@ -4,10 +4,9 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
+
 #include <stdexcept>
-
 #include <sstream>
-
 
 // Link Winsock automatically when using MSVC
 #pragma comment(lib, "Ws2_32.lib")
