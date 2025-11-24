@@ -56,3 +56,7 @@ endif()
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE turtlebot_core)
 
+# test_moving.cpp
+add_executable(test_moving src/test_moving.cpp)
+target_link_libraries(test_moving PRIVATE turtlebot_core)
+

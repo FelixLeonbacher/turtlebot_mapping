@@ -17,13 +17,23 @@ namespace core {
 // ==========================================================
 //                      DATA STRUCTURES
 // ==========================================================
+
+// victor 
+struct Quaternion {
+    double w, x, y, z;
+};
+
+struct EulerAngles {
+    double roll, pitch, yaw;
+};
+
+
+// 
 struct Point2D {
     float x{0.0f};
     float y{0.0f};
     bool is_wall{false};
 };
-
-
 
 struct Pose2D {
     float x{0.0f};

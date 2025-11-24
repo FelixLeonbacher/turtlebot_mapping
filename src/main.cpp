@@ -23,7 +23,8 @@ int main()
 
     const std::string ip = "192.168.100.54";
     const int port_lidar  = 9997;
-    const int max_scans   = 10;  // read 50 scans, or set to -1 for infinite
+    const int port_odom   = 9998;
+    const int max_scans   = 100;  // read 50 scans, or set to -1 for infinite
 
     // ============================
     // INITIALIZE NETWORK
@@ -38,10 +39,11 @@ int main()
     }
 
     // ============================
-    // CREATE WORLD & FRONTIER SET
+    // CREATE WORLD & FRONTIER SET & CURRENT POSE
     // ============================
     MapSet world_map(0, Point2DHash(map_res), Point2DEq(map_res));
     std::vector<Frontier> all_frontiers;
+    core::Pose2D current_pose{0.0f, 0.0f, 0.0f};
 
     // ============================
     // MAIN STREAM LOOP
@@ -52,9 +54,11 @@ int main()
         std::cout << "Reading LiDAR scan " << (i+1) << "...\n";
 
         // 1) Receive tagged message
-        std::string msg;
+        std::string msg_lidar;
+        std::string msg_odom;
         try {
-            msg = connection::readTaggedMessage(ip, port_lidar);
+            msg_lidar = connection::readTaggedMessage(ip, port_lidar);
+            msg_odom  = connection::readTaggedMessage(ip, port_odom);
         }
         catch (const std::exception& e) {
             std::cerr << "[ERROR] Failed reading from LiDAR: " << e.what() << "\n";
@@ -64,23 +68,41 @@ int main()
         // 2) Parse JSON → LidarScan
         LidarScan scan;
         try {
-            scan = parseLidarScanFromMsg(msg);
+            scan = parseLidarScanFromMsg(msg_lidar);
         }
         catch (const std::exception& e) {
             std::cerr << "[ERROR] Failed to parse LiDAR scan: " << e.what() << "\n";
             continue;    // skip faulty scan
         }
 
+
         std::cout << "[INFO] Scan has " << scan.ranges.size() << " ranges\n";
 
+
+        
         // 3) Convert scan → ScanData + frontiers
         ScanData scan_data;
         std::vector<Frontier> scan_frontiers;
+
+        // update current pose from odom
+        if (!parseOdomToPose2D(msg_odom, current_pose)) {
+            std::cerr << "[ERROR] Failed to parse ODOM pose\n";
+            continue;    // skip faulty odom
+        }
+
+        scan.pose = current_pose;
 
         scan_to_data(scan, scan_data, scan_frontiers, jump_thresh);
 
         std::cout << "[INFO] Extracted " << scan_frontiers.size() 
                   << " frontiers from scan\n";
+
+        
+
+        std::cout << "[INFO] Current pose: x=" << current_pose.x
+                  << " y=" << current_pose.y
+                  << " theta=" << current_pose.theta << "\n";
+
 
         // 4) Insert scan data into world map
         mapping::data_to_world(scan_data, scan_frontiers, world_map, all_frontiers, map_res);
