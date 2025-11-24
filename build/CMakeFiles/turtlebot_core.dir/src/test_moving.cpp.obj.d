@@ -1,5 +1,5 @@
-CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj: \
- C:\Users\padav\Desktop\turtlebot_mapping\src\test_connection.cpp \
+CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj: \
+ C:\Users\padav\Desktop\turtlebot_mapping\src\test_moving.cpp \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/iostream \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/requires_hosted.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
@@ -147,12 +147,33 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj: \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream.tcc \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/istream \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/istream.tcc \
- C:\Users\padav\Desktop\turtlebot_mapping\src\connection/connection.hpp \
- C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/iomanip \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/locale \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets_nonio.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ctime \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/time_members.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/codecvt.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets_nonio.tcc \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_conv.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/quoted_string.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/sstream \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/sstream.tcc \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/chrono \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/chrono.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ratio \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdint \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
+ C:/programming/w64devkit/include/stdint.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/limits \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/parse_numbers.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/thread \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/std_thread.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unique_ptr.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/this_thread_sleep.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cmath \
  C:/programming/w64devkit/include/math.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/specfun.h \
- C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/limits \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/gamma.tcc \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/special_function_util.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/bessel_function.tcc \
@@ -165,6 +186,8 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj: \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_hermite.tcc \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_laguerre.tcc \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/riemann_zeta.tcc \
+ C:\Users\padav\Desktop\turtlebot_mapping\src\connection/connection.hpp \
+ C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp \
  C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/vector \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_uninitialized.h \
@@ -179,6 +202,5 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj: \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/enable_special_members.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/node_handle.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/erase_if.h \
- C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdint \
- C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
- C:/programming/w64devkit/include/stdint.h
+ C:\Users\padav\Desktop\turtlebot_mapping\src\core/parser.hpp \
+ C:\Users\padav\Desktop\turtlebot_mapping\src\pathing/lincontrol.hpp

@@ -165,7 +165,7 @@ CMakeFiles/main.dir/src/main.cpp.obj: \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_bvector.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/vector.tcc \
  C:\Users\padav\Desktop\turtlebot_mapping\src\connection/connection.hpp \
- C:\Users\padav\Desktop\turtlebot_mapping\src\core/geometry.hpp \
+ C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cmath \
  C:/programming/w64devkit/include/math.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/specfun.h \
@@ -182,6 +182,7 @@ CMakeFiles/main.dir/src/main.cpp.obj: \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_hermite.tcc \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_laguerre.tcc \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/riemann_zeta.tcc \
+ C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/unordered_set \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unordered_set.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hashtable.h \

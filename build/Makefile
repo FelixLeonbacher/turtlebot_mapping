@@ -141,6 +141,19 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+#=============================================================================
+# Target rules for targets named test_moving
+
+# Build rule for target.
+test_moving: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test_moving
+.PHONY : test_moving
+
+# fast build rule for target.
+test_moving/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/build
+.PHONY : test_moving/fast
+
 src/connection/connection.obj: src/connection/connection.cpp.obj
 .PHONY : src/connection/connection.obj
 
@@ -336,6 +349,33 @@ src/test_mapping_1.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_mapping_1.cpp.s
 .PHONY : src/test_mapping_1.cpp.s
 
+src/test_moving.obj: src/test_moving.cpp.obj
+.PHONY : src/test_moving.obj
+
+# target to build an object file
+src/test_moving.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/src/test_moving.cpp.obj
+.PHONY : src/test_moving.cpp.obj
+
+src/test_moving.i: src/test_moving.cpp.i
+.PHONY : src/test_moving.i
+
+# target to preprocess a source file
+src/test_moving.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/src/test_moving.cpp.i
+.PHONY : src/test_moving.cpp.i
+
+src/test_moving.s: src/test_moving.cpp.s
+.PHONY : src/test_moving.s
+
+# target to generate assembly for a file
+src/test_moving.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/src/test_moving.cpp.s
+.PHONY : src/test_moving.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -345,6 +385,7 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... main
+	@echo ... test_moving
 	@echo ... turtlebot_core
 	@echo ... src/connection/connection.obj
 	@echo ... src/connection/connection.i
@@ -370,6 +411,9 @@ help:
 	@echo ... src/test_mapping_1.obj
 	@echo ... src/test_mapping_1.i
 	@echo ... src/test_mapping_1.s
+	@echo ... src/test_moving.obj
+	@echo ... src/test_moving.i
+	@echo ... src/test_moving.s
 .PHONY : help
 
 

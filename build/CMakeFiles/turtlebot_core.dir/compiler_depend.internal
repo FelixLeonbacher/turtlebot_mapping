@@ -3,6 +3,8 @@
 
 CMakeFiles/turtlebot_core.dir/src/connection/connection.cpp.obj
  C:/Users/padav/Desktop/turtlebot_mapping/src/connection/connection.cpp
+ C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp
+ C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp
  C:/programming/w64devkit/include/_bsd_types.h
  C:/programming/w64devkit/include/_mingw.h
  C:/programming/w64devkit/include/_mingw_mac.h
@@ -21,6 +23,7 @@ CMakeFiles/turtlebot_core.dir/src/connection/connection.cpp.obj
  C:/programming/w64devkit/include/consoleapi2.h
  C:/programming/w64devkit/include/consoleapi3.h
  C:/programming/w64devkit/include/corecrt.h
+ C:/programming/w64devkit/include/corecrt_startup.h
  C:/programming/w64devkit/include/corecrt_stdio_config.h
  C:/programming/w64devkit/include/corecrt_wctype.h
  C:/programming/w64devkit/include/corecrt_wstdlib.h
@@ -49,6 +52,7 @@ CMakeFiles/turtlebot_core.dir/src/connection/connection.cpp.obj
  C:/programming/w64devkit/include/limits.h
  C:/programming/w64devkit/include/locale.h
  C:/programming/w64devkit/include/malloc.h
+ C:/programming/w64devkit/include/math.h
  C:/programming/w64devkit/include/mcx.h
  C:/programming/w64devkit/include/memoryapi.h
  C:/programming/w64devkit/include/minwinbase.h
@@ -57,6 +61,7 @@ CMakeFiles/turtlebot_core.dir/src/connection/connection.cpp.obj
  C:/programming/w64devkit/include/namedpipeapi.h
  C:/programming/w64devkit/include/namespaceapi.h
  C:/programming/w64devkit/include/poppack.h
+ C:/programming/w64devkit/include/process.h
  C:/programming/w64devkit/include/processenv.h
  C:/programming/w64devkit/include/processthreadsapi.h
  C:/programming/w64devkit/include/processtopologyapi.h
@@ -73,22 +78,31 @@ CMakeFiles/turtlebot_core.dir/src/connection/connection.cpp.obj
  C:/programming/w64devkit/include/pshpack2.h
  C:/programming/w64devkit/include/pshpack4.h
  C:/programming/w64devkit/include/pshpack8.h
+ C:/programming/w64devkit/include/pthread.h
+ C:/programming/w64devkit/include/pthread_compat.h
+ C:/programming/w64devkit/include/pthread_signal.h
+ C:/programming/w64devkit/include/pthread_time.h
+ C:/programming/w64devkit/include/pthread_unistd.h
  C:/programming/w64devkit/include/qos.h
  C:/programming/w64devkit/include/realtimeapiset.h
  C:/programming/w64devkit/include/reason.h
  C:/programming/w64devkit/include/sal.h
+ C:/programming/w64devkit/include/sched.h
  C:/programming/w64devkit/include/sdkddkver.h
  C:/programming/w64devkit/include/sdks/_mingw_ddk.h
  C:/programming/w64devkit/include/sec_api/stdio_s.h
  C:/programming/w64devkit/include/sec_api/stdlib_s.h
  C:/programming/w64devkit/include/sec_api/stralign_s.h
  C:/programming/w64devkit/include/sec_api/string_s.h
+ C:/programming/w64devkit/include/sec_api/sys/timeb_s.h
  C:/programming/w64devkit/include/sec_api/wchar_s.h
  C:/programming/w64devkit/include/securityappcontainer.h
  C:/programming/w64devkit/include/securitybaseapi.h
+ C:/programming/w64devkit/include/signal.h
  C:/programming/w64devkit/include/specstrings.h
  C:/programming/w64devkit/include/stdarg.h
  C:/programming/w64devkit/include/stddef.h
+ C:/programming/w64devkit/include/stdint.h
  C:/programming/w64devkit/include/stdio.h
  C:/programming/w64devkit/include/stdlib.h
  C:/programming/w64devkit/include/stralign.h
@@ -96,16 +110,20 @@ CMakeFiles/turtlebot_core.dir/src/connection/connection.cpp.obj
  C:/programming/w64devkit/include/stringapiset.h
  C:/programming/w64devkit/include/swprintf.inl
  C:/programming/w64devkit/include/synchapi.h
+ C:/programming/w64devkit/include/sys/timeb.h
+ C:/programming/w64devkit/include/sys/types.h
  C:/programming/w64devkit/include/sysinfoapi.h
  C:/programming/w64devkit/include/systemtopologyapi.h
  C:/programming/w64devkit/include/threadpoolapiset.h
  C:/programming/w64devkit/include/threadpoollegacyapiset.h
+ C:/programming/w64devkit/include/time.h
  C:/programming/w64devkit/include/timezoneapi.h
  C:/programming/w64devkit/include/tvout.h
  C:/programming/w64devkit/include/utilapiset.h
  C:/programming/w64devkit/include/vadefs.h
  C:/programming/w64devkit/include/virtdisk.h
  C:/programming/w64devkit/include/wchar.h
+ C:/programming/w64devkit/include/wctype.h
  C:/programming/w64devkit/include/winapifamily.h
  C:/programming/w64devkit/include/winbase.h
  C:/programming/w64devkit/include/wincon.h
@@ -188,6 +206,8 @@ CMakeFiles/turtlebot_core.dir/src/connection/connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bit
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/alloc_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/allocator.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_ios.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_ios.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_string.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_string.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/char_traits.h
@@ -196,19 +216,32 @@ CMakeFiles/turtlebot_core.dir/src/connection/connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cpp_type_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cxxabi_forced.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cxxabi_init_exception.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/enable_special_members.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/erase_if.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception_defines.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception_ptr.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/functexcept.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/functional_hash.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hash_bytes.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hashtable.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hashtable_policy.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/invoke.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ios_base.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/istream.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_classes.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_classes.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/localefwd.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/memory_resource.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/memoryfwd.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/move.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/nested_exception.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/new_allocator.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/node_handle.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream_insert.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/postypes.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/predefined_ops.h
@@ -216,50 +249,91 @@ CMakeFiles/turtlebot_core.dir/src/connection/connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/range_access.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/refwrap.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/requires_hosted.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/specfun.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/sstream.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/std_abs.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_algobase.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_bvector.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_construct.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_function.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_iterator.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_iterator_base_funcs.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_iterator_base_types.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_pair.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_uninitialized.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_vector.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/streambuf.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/streambuf_iterator.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/string_view.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stringfwd.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unordered_set.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uses_allocator.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uses_allocator_args.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/utility.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/vector.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/version.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cctype
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cerrno
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/clocale
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cmath
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/concepts
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstddef
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdint
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdio
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdlib
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cwchar
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cwctype
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/debug/assertions.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/debug/debug.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/exception
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/aligned_buffer.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/alloc_traits.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/atomicity.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/numeric_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/string_conversions.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/type_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/initializer_list
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ios
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/iosfwd
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/istream
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/limits
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/new
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ostream
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/pstl/pstl_config.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/sstream
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/stdexcept
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/stdlib.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/streambuf
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/string
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/string_view
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/system_error
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/bessel_function.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/beta_function.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/ell_integral.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/exp_integral.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/gamma.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/hypergeometric.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/legendre_function.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/modified_bessel_func.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_hermite.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_laguerre.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/riemann_zeta.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/special_function_util.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tuple
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/type_traits
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/typeinfo
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/unordered_set
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/vector
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/ctype_inline.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/error_constants.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/gthr.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/cetintrin.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/cldemoteintrin.h
@@ -306,6 +380,7 @@ CMakeFiles/turtlebot_core.dir/src/connection/connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/smmintrin.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/tbmintrin.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/tmmintrin.h
@@ -379,6 +454,7 @@ CMakeFiles/turtlebot_core.dir/src/core/parser.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bit
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/algorithmfwd.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/alloc_traits.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/allocated_ptr.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/allocator.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_ios.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_ios.tcc
@@ -386,10 +462,12 @@ CMakeFiles/turtlebot_core.dir/src/core/parser.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_string.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/char_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/charconv.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/codecvt.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/concept_check.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cpp_type_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cxxabi_forced.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cxxabi_init_exception.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/deque.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/enable_special_members.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/erase_if.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception.h
@@ -405,8 +483,11 @@ CMakeFiles/turtlebot_core.dir/src/core/parser.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/istream.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_classes.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_classes.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_conv.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets_nonio.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets_nonio.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/localefwd.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/memory_resource.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/memoryfwd.h
@@ -422,13 +503,30 @@ CMakeFiles/turtlebot_core.dir/src/core/parser.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ptr_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/range_access.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/refwrap.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_automaton.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_automaton.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_compiler.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_compiler.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_constants.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_error.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_executor.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_executor.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_scanner.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_scanner.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/requires_hosted.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/shared_ptr.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/shared_ptr_base.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/specfun.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/sstream.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/std_abs.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/std_function.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_algo.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_algobase.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_bvector.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_construct.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_deque.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_function.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_heap.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_iterator.h
@@ -438,6 +536,7 @@ CMakeFiles/turtlebot_core.dir/src/core/parser.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_multimap.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_pair.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_relops.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_stack.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_tempbuf.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_tree.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_uninitialized.h
@@ -448,12 +547,14 @@ CMakeFiles/turtlebot_core.dir/src/core/parser.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/string_view.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stringfwd.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uniform_int_dist.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unique_ptr.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unordered_set.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uses_allocator.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uses_allocator_args.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/utility.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/vector.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/version.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bitset
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cctype
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cerrno
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/clocale
@@ -464,14 +565,17 @@ CMakeFiles/turtlebot_core.dir/src/core/parser.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdio
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdlib
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstring
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ctime
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cwchar
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cwctype
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/debug/assertions.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/debug/debug.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/deque
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/exception
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/aligned_buffer.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/alloc_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/atomicity.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/concurrence.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/numeric_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/string_conversions.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/type_traits.h
@@ -482,12 +586,16 @@ CMakeFiles/turtlebot_core.dir/src/core/parser.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/istream
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/iterator
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/limits
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/locale
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/map
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/new
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ostream
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/pstl/execution_defs.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/pstl/glue_algorithm_defs.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/pstl/pstl_config.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/regex
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/sstream
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/stack
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/stdexcept
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/stdlib.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/streambuf
@@ -522,7 +630,9 @@ CMakeFiles/turtlebot_core.dir/src/core/parser.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/error_constants.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/gthr.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/time_members.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/limits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h
@@ -722,6 +832,8 @@ CMakeFiles/turtlebot_core.dir/src/export/export.cpp.obj
 
 CMakeFiles/turtlebot_core.dir/src/main.cpp.obj
  C:/Users/padav/Desktop/turtlebot_mapping/src/main.cpp
+ C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp
+ C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp
  C:/programming/w64devkit/include/_mingw.h
  C:/programming/w64devkit/include/_mingw_mac.h
  C:/programming/w64devkit/include/_mingw_off_t.h
@@ -914,7 +1026,6 @@ CMakeFiles/turtlebot_core.dir/src/main.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h
  C:/Users/padav/Desktop/turtlebot_mapping/src/connection/connection.hpp
- C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp
  C:/Users/padav/Desktop/turtlebot_mapping/src/core/parser.hpp
  C:/Users/padav/Desktop/turtlebot_mapping/src/export/export.hpp
  C:/Users/padav/Desktop/turtlebot_mapping/src/mapping/mapping.hpp
@@ -1131,6 +1242,8 @@ CMakeFiles/turtlebot_core.dir/src/pathing/lincontrol.cpp.obj
 
 CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
  C:/Users/padav/Desktop/turtlebot_mapping/src/test_connection.cpp
+ C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp
+ C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp
  C:/programming/w64devkit/include/_mingw.h
  C:/programming/w64devkit/include/_mingw_mac.h
  C:/programming/w64devkit/include/_mingw_off_t.h
@@ -1148,6 +1261,7 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
  C:/programming/w64devkit/include/limits.h
  C:/programming/w64devkit/include/locale.h
  C:/programming/w64devkit/include/malloc.h
+ C:/programming/w64devkit/include/math.h
  C:/programming/w64devkit/include/process.h
  C:/programming/w64devkit/include/pthread.h
  C:/programming/w64devkit/include/pthread_compat.h
@@ -1162,6 +1276,7 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
  C:/programming/w64devkit/include/sec_api/wchar_s.h
  C:/programming/w64devkit/include/signal.h
  C:/programming/w64devkit/include/stddef.h
+ C:/programming/w64devkit/include/stdint.h
  C:/programming/w64devkit/include/stdio.h
  C:/programming/w64devkit/include/stdlib.h
  C:/programming/w64devkit/include/swprintf.inl
@@ -1185,12 +1300,16 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cpp_type_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cxxabi_forced.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cxxabi_init_exception.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/enable_special_members.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/erase_if.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception_defines.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception_ptr.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/functexcept.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/functional_hash.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hash_bytes.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hashtable.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hashtable_policy.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/invoke.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ios_base.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/istream.tcc
@@ -1204,6 +1323,7 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/move.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/nested_exception.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/new_allocator.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/node_handle.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream_insert.h
@@ -1213,27 +1333,35 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/range_access.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/refwrap.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/requires_hosted.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/specfun.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/std_abs.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_algobase.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_bvector.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_construct.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_function.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_iterator.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_iterator_base_funcs.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_iterator_base_types.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_pair.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_uninitialized.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_vector.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/streambuf.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/streambuf_iterator.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/string_view.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stringfwd.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unordered_set.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uses_allocator.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uses_allocator_args.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/utility.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/vector.tcc
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/version.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cctype
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cerrno
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/clocale
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cmath
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/concepts
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstddef
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdint
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdio
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdlib
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cwchar
@@ -1241,6 +1369,7 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/debug/assertions.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/debug/debug.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/exception
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/aligned_buffer.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/alloc_traits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/atomicity.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/numeric_traits.h
@@ -1251,6 +1380,7 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/iosfwd
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/iostream
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/istream
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/limits
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/new
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ostream
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/pstl/pstl_config.h
@@ -1260,9 +1390,23 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/string
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/string_view
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/system_error
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/bessel_function.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/beta_function.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/ell_integral.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/exp_integral.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/gamma.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/hypergeometric.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/legendre_function.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/modified_bessel_func.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_hermite.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_laguerre.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/riemann_zeta.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/special_function_util.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tuple
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/type_traits
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/typeinfo
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/unordered_set
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/vector
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h
@@ -1277,6 +1421,7 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/limits.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h
  C:/Users/padav/Desktop/turtlebot_mapping/src/connection/connection.hpp
 
@@ -1477,4 +1622,211 @@ CMakeFiles/turtlebot_core.dir/src/test_mapping_1.cpp.obj
  C:/Users/padav/Desktop/turtlebot_mapping/src/core/parser.hpp
  C:/Users/padav/Desktop/turtlebot_mapping/src/export/export.hpp
  C:/Users/padav/Desktop/turtlebot_mapping/src/mapping/mapping.hpp
+
+CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj
+ C:/Users/padav/Desktop/turtlebot_mapping/src/test_moving.cpp
+ C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp
+ C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp
+ C:/programming/w64devkit/include/_mingw.h
+ C:/programming/w64devkit/include/_mingw_mac.h
+ C:/programming/w64devkit/include/_mingw_off_t.h
+ C:/programming/w64devkit/include/_mingw_secapi.h
+ C:/programming/w64devkit/include/_mingw_stat64.h
+ C:/programming/w64devkit/include/_timeval.h
+ C:/programming/w64devkit/include/corecrt.h
+ C:/programming/w64devkit/include/corecrt_startup.h
+ C:/programming/w64devkit/include/corecrt_stdio_config.h
+ C:/programming/w64devkit/include/corecrt_wctype.h
+ C:/programming/w64devkit/include/corecrt_wstdlib.h
+ C:/programming/w64devkit/include/crtdefs.h
+ C:/programming/w64devkit/include/ctype.h
+ C:/programming/w64devkit/include/errno.h
+ C:/programming/w64devkit/include/limits.h
+ C:/programming/w64devkit/include/locale.h
+ C:/programming/w64devkit/include/malloc.h
+ C:/programming/w64devkit/include/math.h
+ C:/programming/w64devkit/include/process.h
+ C:/programming/w64devkit/include/pthread.h
+ C:/programming/w64devkit/include/pthread_compat.h
+ C:/programming/w64devkit/include/pthread_signal.h
+ C:/programming/w64devkit/include/pthread_time.h
+ C:/programming/w64devkit/include/pthread_unistd.h
+ C:/programming/w64devkit/include/sched.h
+ C:/programming/w64devkit/include/sdks/_mingw_ddk.h
+ C:/programming/w64devkit/include/sec_api/stdio_s.h
+ C:/programming/w64devkit/include/sec_api/stdlib_s.h
+ C:/programming/w64devkit/include/sec_api/sys/timeb_s.h
+ C:/programming/w64devkit/include/sec_api/wchar_s.h
+ C:/programming/w64devkit/include/signal.h
+ C:/programming/w64devkit/include/stddef.h
+ C:/programming/w64devkit/include/stdint.h
+ C:/programming/w64devkit/include/stdio.h
+ C:/programming/w64devkit/include/stdlib.h
+ C:/programming/w64devkit/include/swprintf.inl
+ C:/programming/w64devkit/include/sys/timeb.h
+ C:/programming/w64devkit/include/sys/types.h
+ C:/programming/w64devkit/include/time.h
+ C:/programming/w64devkit/include/vadefs.h
+ C:/programming/w64devkit/include/wchar.h
+ C:/programming/w64devkit/include/wctype.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/backward/binders.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bit
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/alloc_traits.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/allocator.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_ios.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_ios.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_string.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/basic_string.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/char_traits.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/charconv.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/chrono.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/codecvt.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/concept_check.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cpp_type_traits.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cxxabi_forced.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cxxabi_init_exception.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/enable_special_members.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/erase_if.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception_defines.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception_ptr.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/functexcept.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/functional_hash.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hash_bytes.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hashtable.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hashtable_policy.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/invoke.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ios_base.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/istream.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_classes.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_classes.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_conv.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets_nonio.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets_nonio.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/localefwd.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/memory_resource.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/memoryfwd.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/move.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/nested_exception.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/new_allocator.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/node_handle.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream_insert.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/parse_numbers.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/postypes.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/predefined_ops.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ptr_traits.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/quoted_string.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/range_access.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/refwrap.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/requires_hosted.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/specfun.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/sstream.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/std_abs.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/std_thread.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_algobase.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_bvector.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_construct.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_function.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_iterator.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_iterator_base_funcs.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_iterator_base_types.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_pair.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_uninitialized.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_vector.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/streambuf.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/streambuf_iterator.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/string_view.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stringfwd.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/this_thread_sleep.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unique_ptr.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unordered_set.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uses_allocator.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uses_allocator_args.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/utility.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/vector.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/version.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cctype
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cerrno
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/chrono
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/clocale
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cmath
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/concepts
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstddef
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdint
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdio
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdlib
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ctime
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cwchar
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cwctype
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/debug/assertions.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/debug/debug.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/exception
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/aligned_buffer.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/alloc_traits.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/atomicity.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/numeric_traits.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/string_conversions.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/type_traits.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/initializer_list
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/iomanip
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ios
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/iosfwd
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/iostream
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/istream
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/limits
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/locale
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/new
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ostream
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/pstl/pstl_config.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ratio
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/sstream
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/stdexcept
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/stdlib.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/streambuf
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/string
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/string_view
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/system_error
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/thread
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/bessel_function.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/beta_function.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/ell_integral.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/exp_integral.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/gamma.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/hypergeometric.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/legendre_function.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/modified_bessel_func.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_hermite.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_laguerre.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/riemann_zeta.tcc
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/special_function_util.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tuple
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/type_traits
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/typeinfo
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/unordered_set
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/vector
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/ctype_inline.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/error_constants.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/gthr.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/time_members.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/limits.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h
+ C:/Users/padav/Desktop/turtlebot_mapping/src/connection/connection.hpp
+ C:/Users/padav/Desktop/turtlebot_mapping/src/core/parser.hpp
+ C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp
 

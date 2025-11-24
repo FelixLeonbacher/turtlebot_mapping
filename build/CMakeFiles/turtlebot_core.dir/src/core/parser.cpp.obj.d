@@ -199,4 +199,39 @@ CMakeFiles/turtlebot_core.dir/src/core/parser.cpp.obj: \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/enable_special_members.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdint \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
- C:/programming/w64devkit/include/stdint.h
+ C:/programming/w64devkit/include/stdint.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/regex \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bitset \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/locale \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets_nonio.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ctime \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/time_members.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/codecvt.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_facets_nonio.tcc \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/locale_conv.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/sstream \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/sstream.tcc \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/stack \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/deque \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_deque.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/deque.tcc \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stl_stack.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/shared_ptr.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/shared_ptr_base.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/allocated_ptr.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unique_ptr.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/concurrence.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/std_function.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_constants.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_error.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_automaton.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_automaton.tcc \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_scanner.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_scanner.tcc \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_compiler.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_compiler.tcc \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex.tcc \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_executor.h \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/regex_executor.tcc
