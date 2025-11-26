@@ -183,6 +183,11 @@ CMakeFiles/turtlebot_core.dir/src/main.cpp.obj: \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/poly_laguerre.tcc \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/riemann_zeta.tcc \
  C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdint \
+ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
+ C:/programming/w64devkit/include/stdint.h \
+ C:\Users\padav\Desktop\turtlebot_mapping\src\core/parser.hpp \
+ C:\Users\padav\Desktop\turtlebot_mapping\src\mapping/mapping.hpp \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/unordered_set \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unordered_set.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hashtable.h \
@@ -191,9 +196,4 @@ CMakeFiles/turtlebot_core.dir/src/main.cpp.obj: \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/enable_special_members.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/node_handle.h \
  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/erase_if.h \
- C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/cstdint \
- C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
- C:/programming/w64devkit/include/stdint.h \
- C:\Users\padav\Desktop\turtlebot_mapping\src\core/parser.hpp \
- C:\Users\padav\Desktop\turtlebot_mapping\src\mapping/mapping.hpp \
  C:\Users\padav\Desktop\turtlebot_mapping\src\export/export.hpp
