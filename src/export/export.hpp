@@ -19,4 +19,7 @@ void export_world_map_csv(const mapping::MapSet& world_map,
 void export_frontiers_csv(const std::vector<core::Frontier>& frontiers,
                           const std::string& filename);
 
+void export_pose_csv(const core::Pose2D& pose,
+                        const std::string& filename);
+                        
 } // namespace export_utils
