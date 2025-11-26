@@ -71,29 +71,29 @@ include CMakeFiles/test_connection.dir/flags.make
 CMakeFiles/test_connection.dir/codegen:
 .PHONY : CMakeFiles/test_connection.dir/codegen
 
-CMakeFiles/test_connection.dir/src/test_connection.cpp.obj: CMakeFiles/test_connection.dir/flags.make
-CMakeFiles/test_connection.dir/src/test_connection.cpp.obj: CMakeFiles/test_connection.dir/includes_CXX.rsp
-CMakeFiles/test_connection.dir/src/test_connection.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/test_connection.cpp
-CMakeFiles/test_connection.dir/src/test_connection.cpp.obj: CMakeFiles/test_connection.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_connection.dir/src/test_connection.cpp.obj"
-	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_connection.dir/src/test_connection.cpp.obj -MF CMakeFiles\test_connection.dir\src\test_connection.cpp.obj.d -o CMakeFiles\test_connection.dir\src\test_connection.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\test_connection.cpp
+CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj: CMakeFiles/test_connection.dir/flags.make
+CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj: CMakeFiles/test_connection.dir/includes_CXX.rsp
+CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_connection.cpp
+CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj: CMakeFiles/test_connection.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj -MF CMakeFiles\test_connection.dir\src\testing\test_connection.cpp.obj.d -o CMakeFiles\test_connection.dir\src\testing\test_connection.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_connection.cpp
 
-CMakeFiles/test_connection.dir/src/test_connection.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_connection.dir/src/test_connection.cpp.i"
-	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\padav\Desktop\turtlebot_mapping\src\test_connection.cpp > CMakeFiles\test_connection.dir\src\test_connection.cpp.i
+CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.i"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_connection.cpp > CMakeFiles\test_connection.dir\src\testing\test_connection.cpp.i
 
-CMakeFiles/test_connection.dir/src/test_connection.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_connection.dir/src/test_connection.cpp.s"
-	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\padav\Desktop\turtlebot_mapping\src\test_connection.cpp -o CMakeFiles\test_connection.dir\src\test_connection.cpp.s
+CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.s"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_connection.cpp -o CMakeFiles\test_connection.dir\src\testing\test_connection.cpp.s
 
 # Object files for target test_connection
 test_connection_OBJECTS = \
-"CMakeFiles/test_connection.dir/src/test_connection.cpp.obj"
+"CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj"
 
 # External object files for target test_connection
 test_connection_EXTERNAL_OBJECTS =
 
-test_connection.exe: CMakeFiles/test_connection.dir/src/test_connection.cpp.obj
+test_connection.exe: CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj
 test_connection.exe: CMakeFiles/test_connection.dir/build.make
 test_connection.exe: libturtlebot_core.a
 test_connection.exe: CMakeFiles/test_connection.dir/linkLibs.rsp

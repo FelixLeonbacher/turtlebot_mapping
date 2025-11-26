@@ -1214,7 +1214,8 @@ CMakeFiles/turtlebot_core.dir/src/pathing/lincontrol.cpp.obj: C:/Users/padav/Des
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h \
   C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp
 
-CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/test_connection.cpp \
+CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_connection.cpp \
+  C:/Users/padav/Desktop/turtlebot_mapping/src/connection/connection.hpp \
   C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp \
   C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp \
   C:/programming/w64devkit/include/_mingw.h \
@@ -1387,10 +1388,13 @@ CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj: C:/Users/padav/Deskto
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h \
-  C:/Users/padav/Desktop/turtlebot_mapping/src/connection/connection.hpp
+  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h
 
-CMakeFiles/turtlebot_core.dir/src/test_mapping_1.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/test_mapping_1.cpp \
+CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_mapping_1.cpp \
+  C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp \
+  C:/Users/padav/Desktop/turtlebot_mapping/src/core/parser.hpp \
+  C:/Users/padav/Desktop/turtlebot_mapping/src/export/export.hpp \
+  C:/Users/padav/Desktop/turtlebot_mapping/src/mapping/mapping.hpp \
   C:/programming/w64devkit/include/_mingw.h \
   C:/programming/w64devkit/include/_mingw_mac.h \
   C:/programming/w64devkit/include/_mingw_off_t.h \
@@ -1581,14 +1585,12 @@ CMakeFiles/turtlebot_core.dir/src/test_mapping_1.cpp.obj: C:/Users/padav/Desktop
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h \
+  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h
+
+CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_moving.cpp \
+  C:/Users/padav/Desktop/turtlebot_mapping/src/connection/connection.hpp \
   C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp \
   C:/Users/padav/Desktop/turtlebot_mapping/src/core/parser.hpp \
-  C:/Users/padav/Desktop/turtlebot_mapping/src/export/export.hpp \
-  C:/Users/padav/Desktop/turtlebot_mapping/src/mapping/mapping.hpp
-
-CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/test_moving.cpp \
-  C:/Users/padav/Desktop/turtlebot_mapping/src/core/geometry.hpp \
   C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp \
   C:/programming/w64devkit/include/_mingw.h \
   C:/programming/w64devkit/include/_mingw_mac.h \
@@ -1648,16 +1650,12 @@ CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj: C:/Users/padav/Desktop/tu
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cpp_type_traits.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cxxabi_forced.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/cxxabi_init_exception.h \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/enable_special_members.h \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/erase_if.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception_defines.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception_ptr.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/functexcept.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/functional_hash.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hash_bytes.h \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hashtable.h \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/hashtable_policy.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/invoke.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ios_base.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/istream.tcc \
@@ -1674,7 +1672,6 @@ CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj: C:/Users/padav/Desktop/tu
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/move.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/nested_exception.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/new_allocator.h \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/node_handle.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream.tcc \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ostream_insert.h \
@@ -1706,7 +1703,6 @@ CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj: C:/Users/padav/Desktop/tu
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/stringfwd.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/this_thread_sleep.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unique_ptr.h \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/unordered_set.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uses_allocator.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/uses_allocator_args.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/utility.h \
@@ -1728,7 +1724,6 @@ CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj: C:/Users/padav/Desktop/tu
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/debug/assertions.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/debug/debug.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/exception \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/aligned_buffer.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/alloc_traits.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/atomicity.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/numeric_traits.h \
@@ -1769,7 +1764,6 @@ CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj: C:/Users/padav/Desktop/tu
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tuple \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/type_traits \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/typeinfo \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/unordered_set \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/vector \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h \
@@ -1788,10 +1782,7 @@ CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj: C:/Users/padav/Desktop/tu
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h \
   C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h \
-  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h \
-  C:/Users/padav/Desktop/turtlebot_mapping/src/connection/connection.hpp \
-  C:/Users/padav/Desktop/turtlebot_mapping/src/core/parser.hpp \
-  C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.hpp
+  C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h
 
 
 C:/Users/padav/Desktop/turtlebot_mapping/src/export/export.cpp:
@@ -2244,6 +2235,8 @@ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/avx10_2-512bf
 
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/adxintrin.h:
 
+C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_connection.cpp:
+
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/amxavx512intrin.h:
 
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ext/aligned_buffer.h:
@@ -2430,8 +2423,6 @@ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/invo
 
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/ios_base.h:
 
-C:/Users/padav/Desktop/turtlebot_mapping/src/test_moving.cpp:
-
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/pstl/glue_algorithm_defs.h:
 
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/istream.tcc:
@@ -2542,8 +2533,6 @@ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w6
 
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/limits:
 
-C:/Users/padav/Desktop/turtlebot_mapping/src/test_mapping_1.cpp:
-
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/new:
 
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/ostream:
@@ -2587,8 +2576,6 @@ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/riema
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm3dnow.h:
 
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tr1/special_function_util.h:
-
-C:/Users/padav/Desktop/turtlebot_mapping/src/test_connection.cpp:
 
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/tuple:
 
@@ -2739,6 +2726,10 @@ C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/x86_64-w6
 C:/Users/padav/Desktop/turtlebot_mapping/src/export/export.hpp:
 
 C:/Users/padav/Desktop/turtlebot_mapping/src/mapping/mapping.cpp:
+
+C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_mapping_1.cpp:
+
+C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_moving.cpp:
 
 C:/programming/w64devkit/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/chrono.h:
 

@@ -64,12 +64,16 @@ CMAKE_BINARY_DIR = C:\Users\padav\Desktop\turtlebot_mapping\build
 # The main recursive "all" target.
 all: CMakeFiles/turtlebot_core.dir/all
 all: CMakeFiles/main.dir/all
+all: CMakeFiles/test_connection.dir/all
+all: CMakeFiles/test_mapping_1.dir/all
 all: CMakeFiles/test_moving.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/turtlebot_core.dir/codegen
 codegen: CMakeFiles/main.dir/codegen
+codegen: CMakeFiles/test_connection.dir/codegen
+codegen: CMakeFiles/test_mapping_1.dir/codegen
 codegen: CMakeFiles/test_moving.dir/codegen
 .PHONY : codegen
 
@@ -80,6 +84,8 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/turtlebot_core.dir/clean
 clean: CMakeFiles/main.dir/clean
+clean: CMakeFiles/test_connection.dir/clean
+clean: CMakeFiles/test_mapping_1.dir/clean
 clean: CMakeFiles/test_moving.dir/clean
 .PHONY : clean
 
@@ -90,7 +96,7 @@ clean: CMakeFiles/test_moving.dir/clean
 CMakeFiles/turtlebot_core.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14 "Built target turtlebot_core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=9,10,11,12,13,14,15,16,17,18 "Built target turtlebot_core"
 .PHONY : CMakeFiles/turtlebot_core.dir/all
 
 # Build rule for subdir invocation for target.
@@ -107,7 +113,7 @@ turtlebot_core: CMakeFiles/turtlebot_core.dir/rule
 # codegen rule for target.
 CMakeFiles/turtlebot_core.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14 "Finished codegen for target turtlebot_core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=9,10,11,12,13,14,15,16,17,18 "Finished codegen for target turtlebot_core"
 .PHONY : CMakeFiles/turtlebot_core.dir/codegen
 
 # clean rule for target.
@@ -148,13 +154,77 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/test_connection.dir
+
+# All Build rule for target.
+CMakeFiles/test_connection.dir/all: CMakeFiles/turtlebot_core.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_connection.dir\build.make CMakeFiles/test_connection.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_connection.dir\build.make CMakeFiles/test_connection.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=3,4 "Built target test_connection"
+.PHONY : CMakeFiles/test_connection.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_connection.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/test_connection.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles 0
+.PHONY : CMakeFiles/test_connection.dir/rule
+
+# Convenience name for target.
+test_connection: CMakeFiles/test_connection.dir/rule
+.PHONY : test_connection
+
+# codegen rule for target.
+CMakeFiles/test_connection.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_connection.dir\build.make CMakeFiles/test_connection.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=3,4 "Finished codegen for target test_connection"
+.PHONY : CMakeFiles/test_connection.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test_connection.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_connection.dir\build.make CMakeFiles/test_connection.dir/clean
+.PHONY : CMakeFiles/test_connection.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_mapping_1.dir
+
+# All Build rule for target.
+CMakeFiles/test_mapping_1.dir/all: CMakeFiles/turtlebot_core.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_1.dir\build.make CMakeFiles/test_mapping_1.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_1.dir\build.make CMakeFiles/test_mapping_1.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=5,6 "Built target test_mapping_1"
+.PHONY : CMakeFiles/test_mapping_1.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_mapping_1.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/test_mapping_1.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles 0
+.PHONY : CMakeFiles/test_mapping_1.dir/rule
+
+# Convenience name for target.
+test_mapping_1: CMakeFiles/test_mapping_1.dir/rule
+.PHONY : test_mapping_1
+
+# codegen rule for target.
+CMakeFiles/test_mapping_1.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_1.dir\build.make CMakeFiles/test_mapping_1.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=5,6 "Finished codegen for target test_mapping_1"
+.PHONY : CMakeFiles/test_mapping_1.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test_mapping_1.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_1.dir\build.make CMakeFiles/test_mapping_1.dir/clean
+.PHONY : CMakeFiles/test_mapping_1.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/test_moving.dir
 
 # All Build rule for target.
 CMakeFiles/test_moving.dir/all: CMakeFiles/turtlebot_core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=3,4 "Built target test_moving"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=7,8 "Built target test_moving"
 .PHONY : CMakeFiles/test_moving.dir/all
 
 # Build rule for subdir invocation for target.
@@ -171,7 +241,7 @@ test_moving: CMakeFiles/test_moving.dir/rule
 # codegen rule for target.
 CMakeFiles/test_moving.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=3,4 "Finished codegen for target test_moving"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=7,8 "Finished codegen for target test_moving"
 .PHONY : CMakeFiles/test_moving.dir/codegen
 
 # clean rule for target.

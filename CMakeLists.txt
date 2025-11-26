@@ -56,7 +56,22 @@ endif()
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE turtlebot_core)
 
-# test_moving.cpp
-add_executable(test_moving src/test_moving.cpp)
-target_link_libraries(test_moving PRIVATE turtlebot_core)
+
+
+# get all .cpp files in /testing
+file(GLOB TEST_FILES "src/testing/*.cpp")
+
+foreach(TEST_SRC ${TEST_FILES})
+    # extract filename without extension
+    get_filename_component(TEST_NAME ${TEST_SRC} NAME_WE)
+
+    # create executable for each .cpp file
+    add_executable(${TEST_NAME} ${TEST_SRC})
+
+    # link with main library 
+    target_link_libraries(${TEST_NAME} PRIVATE turtlebot_core)
+
+    # optional: include src/ for headers
+    target_include_directories(${TEST_NAME} PRIVATE src)
+endforeach()
 

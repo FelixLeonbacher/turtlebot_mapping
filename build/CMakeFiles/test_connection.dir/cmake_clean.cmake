@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test_connection.dir/src/test_connection.cpp.obj"
-  "CMakeFiles/test_connection.dir/src/test_connection.cpp.obj.d"
+  "CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj"
+  "CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj.d"
   "libtest_connection.dll.a"
   "test_connection.exe"
   "test_connection.exe.manifest"

@@ -1,0 +1,22 @@
+# --- Executables & binaries ---
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+
+
+# --- Python cache ---
+__pycache__/
+*.pyc
+
+# --- Logs ---
+*.log
+
+# --- Visual Studio Code ---
+.vscode/
+*.code-workspace
+

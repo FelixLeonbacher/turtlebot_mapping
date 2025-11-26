@@ -142,6 +142,32 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
+# Target rules for targets named test_connection
+
+# Build rule for target.
+test_connection: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test_connection
+.PHONY : test_connection
+
+# fast build rule for target.
+test_connection/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_connection.dir\build.make CMakeFiles/test_connection.dir/build
+.PHONY : test_connection/fast
+
+#=============================================================================
+# Target rules for targets named test_mapping_1
+
+# Build rule for target.
+test_mapping_1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test_mapping_1
+.PHONY : test_mapping_1
+
+# fast build rule for target.
+test_mapping_1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_1.dir\build.make CMakeFiles/test_mapping_1.dir/build
+.PHONY : test_mapping_1/fast
+
+#=============================================================================
 # Target rules for targets named test_moving
 
 # Build rule for target.
@@ -301,80 +327,86 @@ src/pathing/lincontrol.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/pathing/lincontrol.cpp.s
 .PHONY : src/pathing/lincontrol.cpp.s
 
-src/test_connection.obj: src/test_connection.cpp.obj
-.PHONY : src/test_connection.obj
+src/testing/test_connection.obj: src/testing/test_connection.cpp.obj
+.PHONY : src/testing/test_connection.obj
 
 # target to build an object file
-src/test_connection.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj
-.PHONY : src/test_connection.cpp.obj
+src/testing/test_connection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_connection.dir\build.make CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.obj
+.PHONY : src/testing/test_connection.cpp.obj
 
-src/test_connection.i: src/test_connection.cpp.i
-.PHONY : src/test_connection.i
+src/testing/test_connection.i: src/testing/test_connection.cpp.i
+.PHONY : src/testing/test_connection.i
 
 # target to preprocess a source file
-src/test_connection.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.i
-.PHONY : src/test_connection.cpp.i
+src/testing/test_connection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_connection.dir\build.make CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.i
+.PHONY : src/testing/test_connection.cpp.i
 
-src/test_connection.s: src/test_connection.cpp.s
-.PHONY : src/test_connection.s
+src/testing/test_connection.s: src/testing/test_connection.cpp.s
+.PHONY : src/testing/test_connection.s
 
 # target to generate assembly for a file
-src/test_connection.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.s
-.PHONY : src/test_connection.cpp.s
+src/testing/test_connection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_connection.dir\build.make CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.s
+.PHONY : src/testing/test_connection.cpp.s
 
-src/test_mapping_1.obj: src/test_mapping_1.cpp.obj
-.PHONY : src/test_mapping_1.obj
+src/testing/test_mapping_1.obj: src/testing/test_mapping_1.cpp.obj
+.PHONY : src/testing/test_mapping_1.obj
 
 # target to build an object file
-src/test_mapping_1.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_mapping_1.cpp.obj
-.PHONY : src/test_mapping_1.cpp.obj
+src/testing/test_mapping_1.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_1.dir\build.make CMakeFiles/test_mapping_1.dir/src/testing/test_mapping_1.cpp.obj
+.PHONY : src/testing/test_mapping_1.cpp.obj
 
-src/test_mapping_1.i: src/test_mapping_1.cpp.i
-.PHONY : src/test_mapping_1.i
+src/testing/test_mapping_1.i: src/testing/test_mapping_1.cpp.i
+.PHONY : src/testing/test_mapping_1.i
 
 # target to preprocess a source file
-src/test_mapping_1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_mapping_1.cpp.i
-.PHONY : src/test_mapping_1.cpp.i
+src/testing/test_mapping_1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_1.dir\build.make CMakeFiles/test_mapping_1.dir/src/testing/test_mapping_1.cpp.i
+.PHONY : src/testing/test_mapping_1.cpp.i
 
-src/test_mapping_1.s: src/test_mapping_1.cpp.s
-.PHONY : src/test_mapping_1.s
+src/testing/test_mapping_1.s: src/testing/test_mapping_1.cpp.s
+.PHONY : src/testing/test_mapping_1.s
 
 # target to generate assembly for a file
-src/test_mapping_1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_mapping_1.cpp.s
-.PHONY : src/test_mapping_1.cpp.s
+src/testing/test_mapping_1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_1.dir\build.make CMakeFiles/test_mapping_1.dir/src/testing/test_mapping_1.cpp.s
+.PHONY : src/testing/test_mapping_1.cpp.s
 
-src/test_moving.obj: src/test_moving.cpp.obj
-.PHONY : src/test_moving.obj
+src/testing/test_moving.obj: src/testing/test_moving.cpp.obj
+.PHONY : src/testing/test_moving.obj
 
 # target to build an object file
-src/test_moving.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/src/test_moving.cpp.obj
-.PHONY : src/test_moving.cpp.obj
+src/testing/test_moving.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.obj
+.PHONY : src/testing/test_moving.cpp.obj
 
-src/test_moving.i: src/test_moving.cpp.i
-.PHONY : src/test_moving.i
+src/testing/test_moving.i: src/testing/test_moving.cpp.i
+.PHONY : src/testing/test_moving.i
 
 # target to preprocess a source file
-src/test_moving.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/src/test_moving.cpp.i
-.PHONY : src/test_moving.cpp.i
+src/testing/test_moving.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.i
+.PHONY : src/testing/test_moving.cpp.i
 
-src/test_moving.s: src/test_moving.cpp.s
-.PHONY : src/test_moving.s
+src/testing/test_moving.s: src/testing/test_moving.cpp.s
+.PHONY : src/testing/test_moving.s
 
 # target to generate assembly for a file
-src/test_moving.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/src/test_moving.cpp.s
-.PHONY : src/test_moving.cpp.s
+src/testing/test_moving.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.s
+.PHONY : src/testing/test_moving.cpp.s
 
 # Help Target
 help:
@@ -385,6 +417,8 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... main
+	@echo ... test_connection
+	@echo ... test_mapping_1
 	@echo ... test_moving
 	@echo ... turtlebot_core
 	@echo ... src/connection/connection.obj
@@ -405,15 +439,15 @@ help:
 	@echo ... src/pathing/lincontrol.obj
 	@echo ... src/pathing/lincontrol.i
 	@echo ... src/pathing/lincontrol.s
-	@echo ... src/test_connection.obj
-	@echo ... src/test_connection.i
-	@echo ... src/test_connection.s
-	@echo ... src/test_mapping_1.obj
-	@echo ... src/test_mapping_1.i
-	@echo ... src/test_mapping_1.s
-	@echo ... src/test_moving.obj
-	@echo ... src/test_moving.i
-	@echo ... src/test_moving.s
+	@echo ... src/testing/test_connection.obj
+	@echo ... src/testing/test_connection.i
+	@echo ... src/testing/test_connection.s
+	@echo ... src/testing/test_mapping_1.obj
+	@echo ... src/testing/test_mapping_1.i
+	@echo ... src/testing/test_mapping_1.s
+	@echo ... src/testing/test_moving.obj
+	@echo ... src/testing/test_moving.i
+	@echo ... src/testing/test_moving.s
 .PHONY : help
 
 

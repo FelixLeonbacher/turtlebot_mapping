@@ -71,29 +71,29 @@ include CMakeFiles/test_moving.dir/flags.make
 CMakeFiles/test_moving.dir/codegen:
 .PHONY : CMakeFiles/test_moving.dir/codegen
 
-CMakeFiles/test_moving.dir/src/test_moving.cpp.obj: CMakeFiles/test_moving.dir/flags.make
-CMakeFiles/test_moving.dir/src/test_moving.cpp.obj: CMakeFiles/test_moving.dir/includes_CXX.rsp
-CMakeFiles/test_moving.dir/src/test_moving.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/test_moving.cpp
-CMakeFiles/test_moving.dir/src/test_moving.cpp.obj: CMakeFiles/test_moving.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_moving.dir/src/test_moving.cpp.obj"
-	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_moving.dir/src/test_moving.cpp.obj -MF CMakeFiles\test_moving.dir\src\test_moving.cpp.obj.d -o CMakeFiles\test_moving.dir\src\test_moving.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\test_moving.cpp
+CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.obj: CMakeFiles/test_moving.dir/flags.make
+CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.obj: CMakeFiles/test_moving.dir/includes_CXX.rsp
+CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_moving.cpp
+CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.obj: CMakeFiles/test_moving.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.obj"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.obj -MF CMakeFiles\test_moving.dir\src\testing\test_moving.cpp.obj.d -o CMakeFiles\test_moving.dir\src\testing\test_moving.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_moving.cpp
 
-CMakeFiles/test_moving.dir/src/test_moving.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_moving.dir/src/test_moving.cpp.i"
-	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\padav\Desktop\turtlebot_mapping\src\test_moving.cpp > CMakeFiles\test_moving.dir\src\test_moving.cpp.i
+CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.i"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_moving.cpp > CMakeFiles\test_moving.dir\src\testing\test_moving.cpp.i
 
-CMakeFiles/test_moving.dir/src/test_moving.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_moving.dir/src/test_moving.cpp.s"
-	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\padav\Desktop\turtlebot_mapping\src\test_moving.cpp -o CMakeFiles\test_moving.dir\src\test_moving.cpp.s
+CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.s"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_moving.cpp -o CMakeFiles\test_moving.dir\src\testing\test_moving.cpp.s
 
 # Object files for target test_moving
 test_moving_OBJECTS = \
-"CMakeFiles/test_moving.dir/src/test_moving.cpp.obj"
+"CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.obj"
 
 # External object files for target test_moving
 test_moving_EXTERNAL_OBJECTS =
 
-test_moving.exe: CMakeFiles/test_moving.dir/src/test_moving.cpp.obj
+test_moving.exe: CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.obj
 test_moving.exe: CMakeFiles/test_moving.dir/build.make
 test_moving.exe: libturtlebot_core.a
 test_moving.exe: CMakeFiles/test_moving.dir/linkLibs.rsp

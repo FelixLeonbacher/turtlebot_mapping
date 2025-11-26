@@ -14,9 +14,9 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/padav/Desktop/turtlebot_mapping/src/main.cpp" "CMakeFiles/turtlebot_core.dir/src/main.cpp.obj" "gcc" "CMakeFiles/turtlebot_core.dir/src/main.cpp.obj.d"
   "C:/Users/padav/Desktop/turtlebot_mapping/src/mapping/mapping.cpp" "CMakeFiles/turtlebot_core.dir/src/mapping/mapping.cpp.obj" "gcc" "CMakeFiles/turtlebot_core.dir/src/mapping/mapping.cpp.obj.d"
   "C:/Users/padav/Desktop/turtlebot_mapping/src/pathing/lincontrol.cpp" "CMakeFiles/turtlebot_core.dir/src/pathing/lincontrol.cpp.obj" "gcc" "CMakeFiles/turtlebot_core.dir/src/pathing/lincontrol.cpp.obj.d"
-  "C:/Users/padav/Desktop/turtlebot_mapping/src/test_connection.cpp" "CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj" "gcc" "CMakeFiles/turtlebot_core.dir/src/test_connection.cpp.obj.d"
-  "C:/Users/padav/Desktop/turtlebot_mapping/src/test_mapping_1.cpp" "CMakeFiles/turtlebot_core.dir/src/test_mapping_1.cpp.obj" "gcc" "CMakeFiles/turtlebot_core.dir/src/test_mapping_1.cpp.obj.d"
-  "C:/Users/padav/Desktop/turtlebot_mapping/src/test_moving.cpp" "CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj" "gcc" "CMakeFiles/turtlebot_core.dir/src/test_moving.cpp.obj.d"
+  "C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_connection.cpp" "CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.obj" "gcc" "CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.obj.d"
+  "C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_mapping_1.cpp" "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj" "gcc" "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj.d"
+  "C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_moving.cpp" "CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj" "gcc" "CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

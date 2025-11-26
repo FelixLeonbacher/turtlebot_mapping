@@ -53,5 +53,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/turtlebot_core.dir/DependInfo.cmake"
   "CMakeFiles/main.dir/DependInfo.cmake"
+  "CMakeFiles/test_connection.dir/DependInfo.cmake"
+  "CMakeFiles/test_mapping_1.dir/DependInfo.cmake"
   "CMakeFiles/test_moving.dir/DependInfo.cmake"
   )
