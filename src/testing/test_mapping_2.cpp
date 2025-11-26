@@ -3,11 +3,11 @@
 #include <vector>
 #include <stdexcept>
 
-#include "connection/connection.hpp"    // 
-#include "core/geometry.hpp"            // 
-#include "core/parser.hpp"              // 
-#include "mapping/mapping.hpp"          // 
-#include "export/export.hpp"            // 
+#include "connection/connection.hpp"    // TCP reader (readTaggedMessage)
+#include "core/geometry.hpp"            // MapSet, Pose2D, LidarScan, Frontier
+#include "core/parser.hpp"              // parseLidarScanFromMsg(), scan_to_data()
+#include "mapping/mapping.hpp"          // mapping::data_to_world()
+#include "export/export.hpp"            // export_world_map_csv()
 
 
 

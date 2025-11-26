@@ -12,7 +12,7 @@
 #include "pathing/lincontrol.hpp"
 #include "core/geometry.hpp"
 
-// safety for MSVC or MinGW
+// safety for compiler
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif

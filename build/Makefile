@@ -168,6 +168,19 @@ test_mapping_1/fast:
 .PHONY : test_mapping_1/fast
 
 #=============================================================================
+# Target rules for targets named test_mapping_2
+
+# Build rule for target.
+test_mapping_2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test_mapping_2
+.PHONY : test_mapping_2
+
+# fast build rule for target.
+test_mapping_2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_2.dir\build.make CMakeFiles/test_mapping_2.dir/build
+.PHONY : test_mapping_2/fast
+
+#=============================================================================
 # Target rules for targets named test_moving
 
 # Build rule for target.
@@ -179,6 +192,19 @@ test_moving: cmake_check_build_system
 test_moving/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/build
 .PHONY : test_moving/fast
+
+#=============================================================================
+# Target rules for targets named test_moving_2
+
+# Build rule for target.
+test_moving_2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test_moving_2
+.PHONY : test_moving_2
+
+# fast build rule for target.
+test_moving_2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving_2.dir\build.make CMakeFiles/test_moving_2.dir/build
+.PHONY : test_moving_2/fast
 
 src/connection/connection.obj: src/connection/connection.cpp.obj
 .PHONY : src/connection/connection.obj
@@ -381,6 +407,33 @@ src/testing/test_mapping_1.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_1.dir\build.make CMakeFiles/test_mapping_1.dir/src/testing/test_mapping_1.cpp.s
 .PHONY : src/testing/test_mapping_1.cpp.s
 
+src/testing/test_mapping_2.obj: src/testing/test_mapping_2.cpp.obj
+.PHONY : src/testing/test_mapping_2.obj
+
+# target to build an object file
+src/testing/test_mapping_2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_2.dir\build.make CMakeFiles/test_mapping_2.dir/src/testing/test_mapping_2.cpp.obj
+.PHONY : src/testing/test_mapping_2.cpp.obj
+
+src/testing/test_mapping_2.i: src/testing/test_mapping_2.cpp.i
+.PHONY : src/testing/test_mapping_2.i
+
+# target to preprocess a source file
+src/testing/test_mapping_2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_2.dir\build.make CMakeFiles/test_mapping_2.dir/src/testing/test_mapping_2.cpp.i
+.PHONY : src/testing/test_mapping_2.cpp.i
+
+src/testing/test_mapping_2.s: src/testing/test_mapping_2.cpp.s
+.PHONY : src/testing/test_mapping_2.s
+
+# target to generate assembly for a file
+src/testing/test_mapping_2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_mapping_2.dir\build.make CMakeFiles/test_mapping_2.dir/src/testing/test_mapping_2.cpp.s
+.PHONY : src/testing/test_mapping_2.cpp.s
+
 src/testing/test_moving.obj: src/testing/test_moving.cpp.obj
 .PHONY : src/testing/test_moving.obj
 
@@ -408,6 +461,33 @@ src/testing/test_moving.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving.dir\build.make CMakeFiles/test_moving.dir/src/testing/test_moving.cpp.s
 .PHONY : src/testing/test_moving.cpp.s
 
+src/testing/test_moving_2.obj: src/testing/test_moving_2.cpp.obj
+.PHONY : src/testing/test_moving_2.obj
+
+# target to build an object file
+src/testing/test_moving_2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving_2.dir\build.make CMakeFiles/test_moving_2.dir/src/testing/test_moving_2.cpp.obj
+.PHONY : src/testing/test_moving_2.cpp.obj
+
+src/testing/test_moving_2.i: src/testing/test_moving_2.cpp.i
+.PHONY : src/testing/test_moving_2.i
+
+# target to preprocess a source file
+src/testing/test_moving_2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving_2.dir\build.make CMakeFiles/test_moving_2.dir/src/testing/test_moving_2.cpp.i
+.PHONY : src/testing/test_moving_2.cpp.i
+
+src/testing/test_moving_2.s: src/testing/test_moving_2.cpp.s
+.PHONY : src/testing/test_moving_2.s
+
+# target to generate assembly for a file
+src/testing/test_moving_2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_moving_2.dir\build.make CMakeFiles/test_moving_2.dir/src/testing/test_moving_2.cpp.s
+.PHONY : src/testing/test_moving_2.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -419,7 +499,9 @@ help:
 	@echo ... main
 	@echo ... test_connection
 	@echo ... test_mapping_1
+	@echo ... test_mapping_2
 	@echo ... test_moving
+	@echo ... test_moving_2
 	@echo ... turtlebot_core
 	@echo ... src/connection/connection.obj
 	@echo ... src/connection/connection.i
@@ -445,9 +527,15 @@ help:
 	@echo ... src/testing/test_mapping_1.obj
 	@echo ... src/testing/test_mapping_1.i
 	@echo ... src/testing/test_mapping_1.s
+	@echo ... src/testing/test_mapping_2.obj
+	@echo ... src/testing/test_mapping_2.i
+	@echo ... src/testing/test_mapping_2.s
 	@echo ... src/testing/test_moving.obj
 	@echo ... src/testing/test_moving.i
 	@echo ... src/testing/test_moving.s
+	@echo ... src/testing/test_moving_2.obj
+	@echo ... src/testing/test_moving_2.i
+	@echo ... src/testing/test_moving_2.s
 .PHONY : help
 
 

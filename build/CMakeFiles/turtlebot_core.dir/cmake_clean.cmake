@@ -15,8 +15,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.obj.d"
   "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj"
   "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj.d"
+  "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj"
+  "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj.d"
   "CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj"
   "CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj.d"
+  "CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj"
+  "CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj.d"
   "libturtlebot_core.a"
   "libturtlebot_core.pdb"
 )
