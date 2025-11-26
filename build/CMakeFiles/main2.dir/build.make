@@ -71,29 +71,29 @@ include CMakeFiles/main2.dir/flags.make
 CMakeFiles/main2.dir/codegen:
 .PHONY : CMakeFiles/main2.dir/codegen
 
-CMakeFiles/main2.dir/src/main2.cpp.obj: CMakeFiles/main2.dir/flags.make
-CMakeFiles/main2.dir/src/main2.cpp.obj: CMakeFiles/main2.dir/includes_CXX.rsp
-CMakeFiles/main2.dir/src/main2.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/main2.cpp
-CMakeFiles/main2.dir/src/main2.cpp.obj: CMakeFiles/main2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main2.dir/src/main2.cpp.obj"
-	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main2.dir/src/main2.cpp.obj -MF CMakeFiles\main2.dir\src\main2.cpp.obj.d -o CMakeFiles\main2.dir\src\main2.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\main2.cpp
+CMakeFiles/main2.dir/src/testing/main2.cpp.obj: CMakeFiles/main2.dir/flags.make
+CMakeFiles/main2.dir/src/testing/main2.cpp.obj: CMakeFiles/main2.dir/includes_CXX.rsp
+CMakeFiles/main2.dir/src/testing/main2.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/main2.cpp
+CMakeFiles/main2.dir/src/testing/main2.cpp.obj: CMakeFiles/main2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main2.dir/src/testing/main2.cpp.obj"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main2.dir/src/testing/main2.cpp.obj -MF CMakeFiles\main2.dir\src\testing\main2.cpp.obj.d -o CMakeFiles\main2.dir\src\testing\main2.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\testing\main2.cpp
 
-CMakeFiles/main2.dir/src/main2.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main2.dir/src/main2.cpp.i"
-	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\padav\Desktop\turtlebot_mapping\src\main2.cpp > CMakeFiles\main2.dir\src\main2.cpp.i
+CMakeFiles/main2.dir/src/testing/main2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main2.dir/src/testing/main2.cpp.i"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\padav\Desktop\turtlebot_mapping\src\testing\main2.cpp > CMakeFiles\main2.dir\src\testing\main2.cpp.i
 
-CMakeFiles/main2.dir/src/main2.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main2.dir/src/main2.cpp.s"
-	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\padav\Desktop\turtlebot_mapping\src\main2.cpp -o CMakeFiles\main2.dir\src\main2.cpp.s
+CMakeFiles/main2.dir/src/testing/main2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main2.dir/src/testing/main2.cpp.s"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\padav\Desktop\turtlebot_mapping\src\testing\main2.cpp -o CMakeFiles\main2.dir\src\testing\main2.cpp.s
 
 # Object files for target main2
 main2_OBJECTS = \
-"CMakeFiles/main2.dir/src/main2.cpp.obj"
+"CMakeFiles/main2.dir/src/testing/main2.cpp.obj"
 
 # External object files for target main2
 main2_EXTERNAL_OBJECTS =
 
-main2.exe: CMakeFiles/main2.dir/src/main2.cpp.obj
+main2.exe: CMakeFiles/main2.dir/src/testing/main2.cpp.obj
 main2.exe: CMakeFiles/main2.dir/build.make
 main2.exe: libturtlebot_core.a
 main2.exe: CMakeFiles/main2.dir/linkLibs.rsp

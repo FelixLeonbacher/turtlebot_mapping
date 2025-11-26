@@ -10,7 +10,8 @@
     "port_cmd": 9999
   },
   "export": {
-    "export_path_world": "../export/world_map.csv",
-    "export_path_frontiers": "../export/frontiers_map.csv"
+    "export_path_world": "../export/world_map_live.csv",
+    "export_path_frontiers": "../export/frontiers_live.csv",
+    "export_path_pose": "../export/pose_live.csv"
   }
 }
