@@ -9,7 +9,7 @@
 #include "mapping/mapping.hpp"          // mapping::data_to_world()
 #include "export/export.hpp"            // export_world_map_csv()
 
-using namespace core;
+
 
 int main()
 {
@@ -42,7 +42,7 @@ int main()
     // CREATE WORLD & FRONTIER SET & CURRENT POSE
     // ============================
     mapping::MapSet world_map(0, mapping::Point2DHash(map_res), mapping::Point2DEq(map_res));
-    std::vector<Frontier> all_frontiers;
+    std::vector<core::Frontier> all_frontiers;
     core::Pose2D current_pose{0.0f, 0.0f, 0.0f};
 
     // ============================
@@ -66,7 +66,7 @@ int main()
         }
 
         // 2) Parse JSON → LidarScan
-        LidarScan scan;
+        core::LidarScan scan;
         try {
             scan = parseLidarScanFromMsg(msg_lidar);
         }
@@ -81,8 +81,8 @@ int main()
 
         
         // 3) Convert scan → ScanData + frontiers
-        ScanData scan_data;
-        std::vector<Frontier> scan_frontiers;
+        core::ScanData scan_data;
+        std::vector<core::Frontier> scan_frontiers;
 
         // update current pose from odom
         if (!parseOdomToPose2D(msg_odom, current_pose)) {

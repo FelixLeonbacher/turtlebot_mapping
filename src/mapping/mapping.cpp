@@ -1,24 +1,32 @@
-// mapping.cpp
+// src/mapping/mapping.cpp
 #include "../core/geometry.hpp"
 #include "mapping.hpp"
 #include <cmath>
 #include <vector>
-#
+#include <unordered_set>
 
 namespace mapping {
 
-    using core::Point2D;
-    using core::Frontier;
-    using core::ScanData;
-    
-    using MapSet = std::unordered_set<Point2D, Point2DHash, Point2DEq>;
-
-    static inline bool same_cell(const Point2D& p1, const Point2D& p2, float res) {
+    // Hilfsfunktion: Punkt in Rasterzelle vergleichen
+    static inline bool same_cell(const core::Point2D& p1, const core::Point2D& p2, float res) {
         long long ix1 = llround(p1.x / res);
         long long iy1 = llround(p1.y / res);
         long long ix2 = llround(p2.x / res);
         long long iy2 = llround(p2.y / res);
         return ix1 == ix2 && iy1 == iy2;
+    }
+
+    // ==========================================================
+    //                 MAP OPERATIONS 
+    // ==========================================================
+
+    inline void insert_rounded_unique(const core::Point2D& p_world,
+                                      std::unordered_set<core::Point2D,
+                                                         mapping::Point2DHash,
+                                                         mapping::Point2DEq>& map_set,
+                                      float resolution)
+    {
+        map_set.insert(core::round_point(p_world, resolution));
     }
 
     /**
@@ -28,11 +36,11 @@ namespace mapping {
      *  - löscht Frontiers, deren Endpunkte schon Wand sind
      *  - fügt neue Frontiers zur globalen frontier-Liste hinzu
      */
-    void data_to_world(const ScanData& scan_data,
-                    std::vector<Frontier>& scan_frontiers,
-                    MapSet& world_map,
-                    std::vector<Frontier>& all_frontiers,
-                    float map_res)
+    void data_to_world(const core::ScanData& scan_data,
+                       std::vector<core::Frontier>& scan_frontiers,
+                       MapSet& world_map,
+                       std::vector<core::Frontier>& all_frontiers,
+                       float map_res)
     {
         // === 1) Alle Punkte des Scans in Weltkarte übernehmen ===
         for (const auto& p : scan_data.scan_ordered)
@@ -52,7 +60,7 @@ namespace mapping {
                 if (is_endpoint)
                 {
                     // (a) Punkt in der Weltkarte zu einer Wand machen
-                    Point2D wall_point = p;
+                    core::Point2D wall_point = p;
                     wall_point.is_wall = true;
 
                     auto existing = world_map.find(p);
@@ -95,24 +103,21 @@ namespace mapping {
 
         // === 3) Übriggebliebene Frontiers zum globalen Frontier-Set hinzufügen ===
         all_frontiers.insert(all_frontiers.end(),
-                            scan_frontiers.begin(),
-                            scan_frontiers.end());
+                             scan_frontiers.begin(),
+                             scan_frontiers.end());
     }
-
-
-
 
     // ==========================================================
     //                 SCAN → DATA (ROUNDED)
     // ==========================================================
 
     void scan_to_data(const core::LidarScan& scan,
-                            ScanData& out_scan,
-                            std::vector<core::Frontier>& out_frontiers,
-                            float jump_thresh = 1.0f)
+                      core::ScanData& out_scan,
+                      std::vector<core::Frontier>& out_frontiers,
+                      float jump_thresh)
     {
         const size_t n = scan.ranges.size();
-        out_scan.scan_ordered.assign(n, core::Point2D{0.0f, 0.0f, false});  // <-- alle standardmäßig kein Wandpunkt
+        out_scan.scan_ordered.assign(n, core::Point2D{0.0f, 0.0f, false});  // alle standardmäßig kein Wandpunkt
         out_scan.valid.assign(n, 0);
         out_frontiers.clear();
         out_frontiers.reserve(n / 8);
@@ -139,7 +144,7 @@ namespace mapping {
             if (i > 0) {
                 // jump if both valid and |Δr| large OR validity changed
                 const bool jump = (prev_valid && valid && std::fabs(r - prev_r) > jump_thresh)
-                                || (prev_valid != valid);
+                                  || (prev_valid != valid);
 
                 if (jump) {
                     core::Point2D A, B;
@@ -196,19 +201,5 @@ namespace mapping {
             prev_world = world_i; // safe even if invalid; only used when prev_valid==true
         }
     }
-
-    // ==========================================================
-    //                 MAP OPERATIONS 
-    // ==========================================================
-
-    inline void insert_rounded_unique(const Point2D& p_world,
-                                    std::unordered_set<Point2D, Point2DHash, Point2DEq>& map_set,
-                                    float resolution)
-    {
-        map_set.insert(round_point(p_world, resolution));
-    }
-
-
-
 
 } // namespace mapping

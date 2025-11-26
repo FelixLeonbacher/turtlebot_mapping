@@ -1,11 +1,12 @@
 #include "export.hpp"
 #include <fstream>
 #include <iostream>
+#include "../mapping/mapping.hpp"
 
 namespace export_utils {
 
 // world_map: unordered_set<Point2D, ...>
-void export_world_map_csv(const core::MapSet& world_map,
+void export_world_map_csv(const mapping::MapSet& world_map,
                           const std::string& filename)
 {
     std::ofstream ofs(filename);

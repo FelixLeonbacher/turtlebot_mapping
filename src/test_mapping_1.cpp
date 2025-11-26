@@ -19,7 +19,7 @@ int main() {
     const float map_res     = CORE_ROUND_RES;  // Rundung in m (z.B. 1.0f oder 0.05f) derzeit aus geometry.hpp
 
     // --- 1) Globale Welt & Frontier-Liste ---
-    MapSet world_map(0, Point2DHash(map_res), Point2DEq(map_res));
+    mapping::MapSet world_map(0, mapping::Point2DHash(map_res), mapping::Point2DEq(map_res));
     std::vector<Frontier> all_frontiers;
 
     // =======================================================
@@ -35,7 +35,7 @@ int main() {
     ScanData data1;
     std::vector<Frontier> frontiers1;
 
-    scan_to_data(scan1, data1, frontiers1, jump_thresh);
+    mapping::scan_to_data(scan1, data1, frontiers1, jump_thresh);
 
     std::cout << "\n=== First scan: frontiers ===\n";
     for (const auto& f : frontiers1) {
@@ -88,7 +88,7 @@ int main() {
     ScanData data2;
     std::vector<Frontier> frontiers2;
 
-    scan_to_data(scan2, data2, frontiers2, jump_thresh);
+    mapping::scan_to_data(scan2, data2, frontiers2, jump_thresh);
 
     std::cout << "\n=== Second scan: frontiers ===\n";
     for (const auto& f : frontiers2) {

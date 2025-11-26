@@ -1,7 +1,10 @@
 #pragma once
 #include <string>
 #include <vector>
+
+
 #include "../core/geometry.hpp"
+#include "../mapping/mapping.hpp"
 
 #define EXPORT_PATH "../export/"
 
@@ -10,7 +13,7 @@
 
 namespace export_utils {
 
-void export_world_map_csv(const core::MapSet& world_map,
+void export_world_map_csv(const mapping::MapSet& world_map,
                           const std::string& filename);
 
 void export_frontiers_csv(const std::vector<core::Frontier>& frontiers,
