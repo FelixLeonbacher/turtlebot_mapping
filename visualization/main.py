@@ -14,12 +14,17 @@ FRONTIER_FILE = Path("export") / "frontiers_live.csv"
 # --- grid configuration ---
 GRID_W = 800
 GRID_H = 800
-WORLD_RANGE_M = 2.0
-CELLS_PER_METER = GRID_W / (2* WORLD_RANGE_M)
 
 UNKNOWN = 0     # grey
 FREE = 1        # white
 OCCUPIED = 2    # red
+
+WORLD_X_MIN = -2.0
+WORLD_X_MAX = 2.0
+WORLD_Y_MIN = -2.0
+WORLD_Y_MAX = 2.0
+CELLS_PER_METER = GRID_W / (WORLD_X_MAX - WORLD_X_MIN)
+
 
 
 # --- define colours in colormap ---
@@ -27,11 +32,36 @@ cmap = ListedColormap(["#808080", "#FFFFFF", "#FF0000"])
 norm = BoundaryNorm([-0.5, 0.5, 1.5, 2.5], cmap.N)
 
 
+def update_world_parameters(df_map):
+    global WORLD_X_MIN, WORLD_X_MAX, WORLD_Y_MIN, WORLD_Y_MAX, CELLS_PER_METER
+    padding = 0.1
+
+    xmin = df_map["x"].min()
+    xmax = df_map["x"].max()
+    ymin = df_map["y"].min()
+    ymax = df_map["y"].max()
+
+    dx = xmax - xmin
+    dy = ymax - ymin
+
+    WORLD_X_MIN = xmin - dx * padding
+    WORLD_X_MAX = xmax + dx * padding
+    WORLD_Y_MIN = ymin - dy * padding
+    WORLD_Y_MAX = ymax + dy * padding
+
+    world_width = WORLD_X_MAX - WORLD_X_MIN
+    world_height = WORLD_Y_MAX - WORLD_Y_MIN
+
+    scale_x = GRID_W / world_width
+    scale_y = GRID_H / world_height
+    CELLS_PER_METER = min(scale_x, scale_y)
+
+
 # --- world coordinates to grid ---
 
 def world_to_grid(x, y):
-    col = int(0.5 * GRID_W + int(round(x * CELLS_PER_METER)))
-    row = int(0.5 * GRID_H + int(round(y * CELLS_PER_METER)))
+    col = int((x - WORLD_X_MIN) * CELLS_PER_METER)
+    row = int((y - WORLD_Y_MIN) * CELLS_PER_METER)
     return row, col
 
 
@@ -44,21 +74,7 @@ last_frontier_mtime = 0
 # --- initial Grid complettly grey ---
 grid = np.full((GRID_H, GRID_W), UNKNOWN, dtype=np.uint8)
 
-im = ax.imshow(
-    grid,
-    cmap=cmap,
-    norm=norm,
-    origin="lower",
-    extent=[-WORLD_RANGE_M, WORLD_RANGE_M, -WORLD_RANGE_M, WORLD_RANGE_M],
-    interpolation="nearest"
-)
 
-ax.set_xlabel("x [m]")
-ax.set_ylabel("y [m]")
-ax.set_title("Map + Frontiers")
-ax.set_aspect("equal", adjustable="box")
-plt.tight_layout()
-plt.draw
 try:
     while plt.fignum_exists(fig.number):
         updated = False
@@ -69,6 +85,8 @@ try:
             if map_mtime != last_map_mtime:
                 last_map_mtime = map_mtime
                 df_map = pd.read_csv(MAP_FILE)
+                # clalculate new world extent
+                update_world_parameters(df_map)
                 updated = True
         except Exception as e:
             print("Error reading map CSV:", e)
@@ -105,8 +123,18 @@ try:
                     grid[r, c] = FREE
 
                 # --- update plot ---
-                im.set_data(grid)
+            
+            # --- plot grid ---
+            ax.clear
 
+            im = ax.imshow(
+                grid,
+                cmap=cmap,
+                norm=norm,
+                origin="lower",
+                extent=[WORLD_X_MIN, WORLD_X_MAX, WORLD_Y_MIN, WORLD_Y_MAX],
+                interpolation="nearest"
+            )
                 
             # ----- Plot frontiers -----
 
@@ -124,8 +152,15 @@ try:
                             s=10, 
                             color="green", 
                             marker="x")
-
-
+                    
+            # --- set formatation ---
+            
+            ax.set_xlabel("x [m]")
+            ax.set_ylabel("y [m]")
+            ax.set_title("Map + Frontiers")
+            ax.set_aspect("equal", adjustable="box")
+            
+            plt.tight_layout()
             plt.draw()
 
         plt.pause(0.1)   # update at 10 Hz
