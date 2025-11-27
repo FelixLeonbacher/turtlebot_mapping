@@ -1,10 +1,9 @@
-import time
 import os
 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap, BoundaryNorm
+from matplotlib.colors import ListedColormap
 from pathlib import Path
 
 # --- paths to csv data --- 
@@ -12,28 +11,20 @@ MAP_FILE = Path("export") / "world_map_live.csv"
 FRONTIER_FILE = Path("export") / "frontiers_live.csv"
 
 # --- grid configuration ---
-GRID_W = 800
-GRID_H = 800
+# number of cells per axis
+GRID_SIZE = 400   # 400 x 400 cells 
 
 UNKNOWN = 0     # grey
 FREE = 1        # white
 OCCUPIED = 2    # red
 
-WORLD_X_MIN = -2.0
-WORLD_X_MAX = 2.0
-WORLD_Y_MIN = -2.0
-WORLD_Y_MAX = 2.0
-CELLS_PER_METER = GRID_W / (WORLD_X_MAX - WORLD_X_MIN)
-
-
-
-# --- define colours in colormap ---
+# --- define colors in colormap ---
 cmap = ListedColormap(["#808080", "#FFFFFF", "#FF0000"])
-norm = BoundaryNorm([-0.5, 0.5, 1.5, 2.5], cmap.N)
 
 
+# --- update world bounds and cell scaling ---
 def update_world_parameters(df_map):
-    global WORLD_X_MIN, WORLD_X_MAX, WORLD_Y_MIN, WORLD_Y_MAX, CELLS_PER_METER
+    # 10% margin around the data
     padding = 0.1
 
     xmin = df_map["x"].min()
@@ -44,36 +35,36 @@ def update_world_parameters(df_map):
     dx = xmax - xmin
     dy = ymax - ymin
 
-    WORLD_X_MIN = xmin - dx * padding
-    WORLD_X_MAX = xmax + dx * padding
-    WORLD_Y_MIN = ymin - dy * padding
-    WORLD_Y_MAX = ymax + dy * padding
+    xmin -= dx * padding
+    xmax += dx * padding
+    ymin -= dy * padding
+    ymax += dy * padding
 
-    world_width = WORLD_X_MAX - WORLD_X_MIN
-    world_height = WORLD_Y_MAX - WORLD_Y_MIN
-
-    scale_x = GRID_W / world_width
-    scale_y = GRID_H / world_height
-    CELLS_PER_METER = min(scale_x, scale_y)
-
+    return xmin, xmax, ymin, ymax
 
 # --- world coordinates to grid ---
 
-def world_to_grid(x, y):
-    col = int((x - WORLD_X_MIN) * CELLS_PER_METER)
-    row = int((y - WORLD_Y_MIN) * CELLS_PER_METER)
+def world_to_grid(x, y, bounds, cells_per_meter):
+    # convert world coordinates (meters) to grid indices (row, col)
+
+    xmin, xmax, ymin, ymax = bounds
+
+    col = int((x - xmin) * cells_per_meter)
+    row = int((y - ymin) * cells_per_meter)
     return row, col
 
 
 plt.ion()                   # interactive mode
-fig, ax = plt.subplots(figsize=(6, 6))
+fig, ax = plt.subplots(figsize=(8, 8))
 
 last_map_mtime = 0
 last_frontier_mtime = 0
 
-# --- initial Grid complettly grey ---
-grid = np.full((GRID_H, GRID_W), UNKNOWN, dtype=np.uint8)
-
+# --- grid completly unknown (initialized as grey) ---
+grid = np.full((GRID_SIZE, GRID_SIZE), UNKNOWN, dtype=np.uint8)
+# default bounds
+bounds = (-2.0, 2.0, -2.0, 2.0) 
+cells_per_meter = GRID_SIZE / (bounds[1] - bounds[0])
 
 try:
     while plt.fignum_exists(fig.number):
@@ -86,12 +77,20 @@ try:
                 last_map_mtime = map_mtime
                 df_map = pd.read_csv(MAP_FILE)
                 # clalculate new world extent
-                update_world_parameters(df_map)
+                bounds = update_world_parameters(df_map)
+                world_width = bounds[1] - bounds[0]
+                world_height = bounds[3] - bounds[2]
+
+                scale_x = GRID_SIZE / world_width
+                scale_y = GRID_SIZE / world_height
+
+                cells_per_meter = min(scale_x, scale_y)
+
                 updated = True
         except Exception as e:
             print("Error reading map CSV:", e)
 
-        # --- Check frontier file ---
+        # --- check frontier file ---
         try:
             frontier_mtime = os.path.getmtime(FRONTIER_FILE)
             if frontier_mtime != last_frontier_mtime:
@@ -105,7 +104,7 @@ try:
         if updated:
             # set everything to UNKNOWN
             grid[:] = UNKNOWN
-            # ----- Plot map -----
+            # ----- plot map -----
             if 'df_map' in locals():
 
                 # --- filter walls and free spaces 
@@ -114,25 +113,26 @@ try:
 
                 # --- add walls to grid ---
                 for _, row in walls.iterrows():
-                    r, c = world_to_grid(row["x"], row["y"])
+                    r, c = world_to_grid(row["x"], row["y"], bounds, cells_per_meter)
                     grid[r, c] = OCCUPIED
                 
                 # --- add free cells to grid ---
                 for _, row in free.iterrows():
-                    r, c = world_to_grid(row["x"], row["y"])
+                    r, c = world_to_grid(row["x"], row["y"], bounds, cells_per_meter)
                     grid[r, c] = FREE
 
                 # --- update plot ---
             
-            # --- plot grid ---
-            ax.clear
+            # --- plot occupancy grid ---
+            ax.clear()
+
+            xmin, xmax, ymin, ymax = bounds
 
             im = ax.imshow(
                 grid,
                 cmap=cmap,
-                norm=norm,
                 origin="lower",
-                extent=[WORLD_X_MIN, WORLD_X_MAX, WORLD_Y_MIN, WORLD_Y_MAX],
+                extent=[xmin, xmax, ymin, ymax],
                 interpolation="nearest"
             )
                 
@@ -153,7 +153,7 @@ try:
                             color="green", 
                             marker="x")
                     
-            # --- set formatation ---
+            # --- apply plot formatting ---
             
             ax.set_xlabel("x [m]")
             ax.set_ylabel("y [m]")
