@@ -5,10 +5,26 @@
 #include <semaphore>
 
 
+const int lidar_max = 2048;  // maximale Speicherkapazität für LiDar Scan
+
+struct Pose {
+    double x;
+    double y;
+    double theta;
+};
 
 // --- define the SharedData ---
 struct SharedData {
-    
+    Pose goal_pose;
+    Pose current_pose;
+    float lidar_scan[lidar_max];  //ggf. anpassen
+    int lidar_count;
+
+    //flags
+    int goal_valid;
+    int pose_valid;  
+    int network_ok;
+    int scan_valid;
 };
 
 
