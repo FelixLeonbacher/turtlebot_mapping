@@ -81,7 +81,8 @@ void sensor_thread()
 
         // Write pose + LiDAR ranges into shared memory
         if (g_shm != nullptr) {
-            // semaphore einbetten TODO 
+            
+            std::lock_guard<std::mutex> lock(g_shm_mutex);  // protect with mutex
 
 
             //Copy current pose
@@ -106,6 +107,9 @@ void sensor_thread()
             g_shm->pose_valid = 1;
             g_shm->scan_valid = 1;
         }
+
+        // telling mapping thread new can available
+        g_scan_sem.release();
 
     }
 }

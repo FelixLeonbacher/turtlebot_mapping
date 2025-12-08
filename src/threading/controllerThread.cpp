@@ -5,6 +5,7 @@
 #include <thread>
 #include <chrono>
 #include <string>
+#include <semaphore>
 
 #include "sharedMemory.hpp"
 #include "connection/connection.hpp"
@@ -31,15 +32,7 @@ void controller_thread() {
         // ============================
         // Auf ein gültiges Ziel warten
         // ============================
-        if (g_shm->goal_valid == 0) {
-             std::this_thread::sleep_for(std::chrono::milliseconds(50));
-             continue;
-        }
-
-        if (g_shm->goal_valid == 0) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
-            continue;
-        }
+        g_goal_sem.acquire();
 
 
         // Startpose und Goalpose aus shared memory holen
@@ -47,7 +40,7 @@ void controller_thread() {
         core::Pose2D pose{};
 
         {
-            // TODO: Semaphore einfügen
+            std::lock_guard<std::mutex> lock(g_shm_mutex);
 
             goal.x = g_shm->goal_pose.x;
             goal.y = g_shm->goal_pose.y;
@@ -81,7 +74,7 @@ void controller_thread() {
             }
 
             {
-                // TODO: Semaphore schützen
+                std::lock_guard<std::mutex> lock(g_shm_mutex);
                 pose.x = g_shm->current_pose.x;
                 pose.y = g_shm->current_pose.y;
                 pose.theta = g_shm->current_pose.theta;
@@ -133,7 +126,12 @@ void controller_thread() {
 
         // Ziel als erreicht markieren
 
-        g_shm->goal_valid = 0;
+        {
+            std::lock_guard<std::mutex> lock(g_shm_mutex);
+            g_shm->goal_valid = 0;
+
+        }
+
 
 
 

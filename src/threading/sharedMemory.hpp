@@ -1,4 +1,6 @@
 #pragma once
+#include <mutex>
+#include <semaphore>
 
 const int lidar_max = 2048;  // maximale Speicherkapazität für LiDar Scan
 
@@ -28,7 +30,6 @@ struct SharedData {
     int scan_valid;
     int goal_reached;
 
-
     //stop flag
     int stop;
 };
@@ -38,7 +39,12 @@ struct SharedData {
 extern int shm_id;   // kernel ID of the shared memory segment
 extern SharedData* g_shm; // pointer to the structure in shared memory
 
+// global Mutex for all g_shm
+extern std::mutex g_shm_mutex;
 
+// Semaphore for new data signals
+extern std::binary_semaphore g_scan_sem; // new lidar scan available 
+extern std::binary_semaphore g_goal_sem; // new goal available
 
 // initialize shared memory
 void ipc_init();

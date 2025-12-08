@@ -48,6 +48,7 @@ void network_thread() {
 
         // --- set Flag in Shared Memory ---
         if (g_shm != nullptr) {
+            std::lock_guard<std::mutex> lock(g_shm_mutex);
             g_shm->network_ok = 1;
         }
 

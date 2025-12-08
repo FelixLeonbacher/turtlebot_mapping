@@ -15,6 +15,7 @@ int main()
     ipc_init();
 
     if (g_shm != nullptr) {
+        std::lock_guard<std::mutex> lock(g_shm_mutex);
         g_shm->network_ok = 0;
     }
 

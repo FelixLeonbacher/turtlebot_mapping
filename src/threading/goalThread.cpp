@@ -43,12 +43,18 @@ void goal_thread() {
         std::cout << "[Goal] New goal: x=" << gx << " y=" << gy << " theta=" << gtheta << "\n";
 
         //In shared memory schreiben
-        // TODO: mit semaphore schützen
-        g_shm->goal_pose.x = gx;
-        g_shm->goal_pose.y = gy;
-        g_shm->goal_pose.theta = gtheta;
+        {
+            std::lock_guard<std::mutex> lock(g_shm_mutex);
 
-        g_shm->goal_valid = 1;    // neues Ziel ist available
+            g_shm->goal_pose.x = gx;
+            g_shm->goal_pose.y = gy;
+            g_shm->goal_pose.theta = gtheta;
+
+            g_shm->goal_valid = 1;    // neues Ziel ist available
+        }
+
+        // telling controller thread new goal available
+        g_goal_sem.release();
     }
 
     std::cout << "[Goal] thread finished.\n";

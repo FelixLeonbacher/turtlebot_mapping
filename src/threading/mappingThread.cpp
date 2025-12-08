@@ -50,9 +50,13 @@ void mapping_thread()
         // Load data from shared memory
         // ============================
 
+        // wait for new scan
+        g_scan_sem.acquire();
+
         core::LidarScan scan;
         {
-            // TODO: mit Semaphore schützen
+            // protect with mutex
+            std::lock_guard<std::mutex> lock(g_shm_mutex);
 
             // Pose
             scan.pose.x = g_shm->current_pose.x;

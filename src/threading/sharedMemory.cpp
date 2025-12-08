@@ -2,6 +2,12 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <mutex>
+#include <semaphore>
+
+std::mutex g_shm_mutex;
+std::binary_semaphore g_scan_sem(0);
+std::binary_semaphore g_goal_sem(0);
 
 
 #ifdef USE_SYSTEMV_SHM
