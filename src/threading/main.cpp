@@ -31,6 +31,12 @@ int main()
 
     netThread.join();
 
+    
+    // ============================
+    // GOAL THREAD 
+    // ============================
+    std::thread goalThread(goal_thread);
+
     // ============================
     // SENSOR THREAD
     // ============================
@@ -45,15 +51,11 @@ int main()
     // ============================
     std::thread controllerThread(controller_thread);
 
-    // ============================
-    // GOAL THREAD 
-    // ============================
-    std::thread goalThread(goal_thread);
 
 
     sensorThread.join();
-    mappingThread.join();
     goalThread.join();
+    mappingThread.join();
     controllerThread.join();
     // ============================
     // NETWORK SHUTDOWN
@@ -62,7 +64,7 @@ int main()
     // ============================
     // SHARED MEMORY CLEAN UP
     // ============================
-    ipc_cleanup;
+    ipc_cleanup();
 
     return 0;
 }

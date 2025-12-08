@@ -23,8 +23,8 @@ void network_thread() {
     try {
         // Initialize networking
         connection::init();
-        std::cout << "[INFO] Winsock initialized.\n";
-        /**
+        std::cout << "[Network][INFO] Winsock initialized.\n";
+        
         // --- Read LiDAR message ---
         std::cout << "[INFO] Waiting for LiDAR message on " 
                   << ip << ":" << port_lidar << "...\n";
@@ -44,16 +44,20 @@ void network_thread() {
         std::cout << "\n===== ODOM MESSAGE =====\n";
         std::cout << odomMsg << "\n";
         std::cout << "=========================\n\n";
-        **/
+        
 
         // --- set Flag in Shared Memory ---
         if (g_shm != nullptr) {
             g_shm->network_ok = 1;
         }
+
+        std::cout << "[Network][INFO] Connection is working.\n";
+
+
     }
     
     catch (const std::exception& e) {
-        std::cerr << "\n[ERROR] " << e.what() << "\n";
+        std::cerr << "\n[Network][ERROR] " << e.what() << "\n";
 
         // --- set Flag in Shared Memory ---
         if (g_shm != nullptr) {

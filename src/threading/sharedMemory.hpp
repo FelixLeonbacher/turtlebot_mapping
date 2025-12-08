@@ -2,7 +2,7 @@
 
 const int lidar_max = 2048;  // maximale Speicherkapazität für LiDar Scan
 
-struct Pose {
+struct SharedPose {
     double x;
     double y;
     double theta;
@@ -10,8 +10,8 @@ struct Pose {
 
 // --- define the SharedData ---
 struct SharedData {
-    Pose goal_pose;
-    Pose current_pose;
+    SharedPose goal_pose;
+    SharedPose current_pose;
 
     // lidar scan
     float lidar_scan[lidar_max]; 

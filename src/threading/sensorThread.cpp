@@ -56,7 +56,7 @@ void sensor_thread()
             continue;
         }
 
-        std::cout << "[INFO] Scan has " << scan.ranges.size() << " ranges\n";
+        //std::cout << "[Sensor][INFO] Scan has " << scan.ranges.size() << " ranges\n";
 
 
         // Parse ODOM message into current pose

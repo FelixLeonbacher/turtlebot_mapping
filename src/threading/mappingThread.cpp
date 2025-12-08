@@ -77,9 +77,9 @@ void mapping_thread()
         }
 
         ++scan_idx;
-        std::cout << "\n===============================================\n";
-        std::cout << "[Mapping] Processing LiDAR scan " << scan_idx
-                  << " with " << scan.ranges.size() << " ranges\n";
+        //std::cout << "\n===============================================\n";
+        //std::cout << "[Mapping] Processing LiDAR scan " << scan_idx
+        //          << " with " << scan.ranges.size() << " ranges\n";
 
         
         // ============================
@@ -91,9 +91,9 @@ void mapping_thread()
 
         mapping::scan_to_data(scan, scan_data, scan_frontiers, jump_thresh);
 
-        std::cout << "[Mapping] Extracted " << scan_frontiers.size() << "frontiers from scan\n";
+        //std::cout << "[Mapping] Extracted " << scan_frontiers.size() << "frontiers from scan\n";
 
-        std::cout << "[Mapping] Current pose: x=" << scan.pose.x << " y=" << scan.pose.y << scan.pose.theta << "\n";
+        //std::cout << "[Mapping] Current pose: x=" << scan.pose.x << " y=" << scan.pose.y << scan.pose.theta << "\n";
 
         // ============================
         // data_to_world: Scan-Daten in Weltkarte
@@ -102,7 +102,7 @@ void mapping_thread()
 
         mapping::data_to_world(scan_data, scan_frontiers, world_map, all_frontiers, map_res);
 
-        std::cout << "[Mapping] World has now " << world_map.size() << " cells\n";
+        //std::cout << "[Mapping] World has now " << world_map.size() << " cells\n";
 
 
         // ============================
@@ -113,7 +113,7 @@ void mapping_thread()
         export_utils::export_frontiers_csv(all_frontiers, "../export/frontiers_live.csv");
         export_utils::export_pose_csv(scan.pose, "../export/pose_live.csv");
 
-        std::cout << "[Mapping] Exported updated world + frontiers\n";
+        //std::cout << "[Mapping] Exported updated world + frontiers\n";
 
     }
 
