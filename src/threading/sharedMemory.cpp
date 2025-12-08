@@ -1,6 +1,17 @@
 #include "sharedMemory.hpp"
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
+
+
+#ifdef USE_SYSTEMV_SHM
+
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <semaphore>
+
+
+
 
 
 int shm_id = -1;
@@ -22,7 +33,7 @@ void ipc_init()
     }
 
     // attach shared memory to my process
-    char* addr = (char*) shmat(shm_id, nullptr, 0);  // choose a suitable address
+    char* addr = (char*) shmat(shm_id, nullptr, 0);  
     if (addr == (char*) -1) {
         perror("shmat");
         std::exit(EXIT_FAILURE);
@@ -44,3 +55,20 @@ void ipc_cleanup()
         shm_id = -1;
     }
 }
+
+#else
+
+// === einfache Thread-Test-Variante (globales Objekt) ===
+static SharedData g_local_shm;
+SharedData* g_shm = &g_local_shm;
+
+void ipc_init() {
+    std::memset(&g_local_shm, 0, sizeof(g_local_shm));
+    std::printf("[SHM] Using local SharedData instance (no System-V).\n");
+}
+
+void ipc_cleanup() {
+    g_shm = &g_local_shm;
+}
+
+#endif

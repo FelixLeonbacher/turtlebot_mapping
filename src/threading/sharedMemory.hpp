@@ -1,10 +1,5 @@
 #pragma once
 
-#include <sys/ipc.h>
-#include <sys/shm.h>
-#include <semaphore>
-
-
 const int lidar_max = 2048;  // maximale Speicherkapazität für LiDar Scan
 
 struct Pose {
@@ -17,14 +12,25 @@ struct Pose {
 struct SharedData {
     Pose goal_pose;
     Pose current_pose;
-    float lidar_scan[lidar_max];  //ggf. anpassen
+
+    // lidar scan
+    float lidar_scan[lidar_max]; 
     int lidar_count;
+    float lidar_angle_min;
+    float lidar_angle_inc;
+    float lidar_range_min;
+    float lidar_range_max;
 
     //flags
     int goal_valid;
     int pose_valid;  
     int network_ok;
     int scan_valid;
+    int goal_reached;
+
+
+    //stop flag
+    int stop;
 };
 
 

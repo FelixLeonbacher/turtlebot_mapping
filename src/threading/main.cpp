@@ -3,7 +3,9 @@
 
 #include "sharedMemory.hpp"
 #include "threads.hpp"
+#include "config.hpp"
 
+AppConfig g_config;
 
 int main()
 {
@@ -37,15 +39,22 @@ int main()
     // ============================
     // MAPPING THREAD 
     // ============================
-
+    std::thread mappingThread(mapping_thread);
     // ============================
     // CONTROLLER THREAD 
     // ============================
+    std::thread controllerThread(controller_thread);
 
     // ============================
     // GOAL THREAD 
     // ============================
+    std::thread goalThread(goal_thread);
 
+
+    sensorThread.join();
+    mappingThread.join();
+    goalThread.join();
+    controllerThread.join();
     // ============================
     // NETWORK SHUTDOWN
     // ============================

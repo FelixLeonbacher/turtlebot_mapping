@@ -8,6 +8,9 @@
 #include "connection/connection.hpp"    // TCP reader (readTaggedMessage)
 #include "core/geometry.hpp"            // MapSet, Pose2D, LidarScan, Frontier
 #include "core/parser.hpp"              // parseLidarScanFromMsg(), scan_to_data()
+#include "config.hpp"
+
+extern AppConfig g_config;
 
 
 void sensor_thread()
@@ -92,6 +95,12 @@ void sensor_thread()
             }
 
             g_shm->lidar_count = static_cast<int>(count_scan);
+
+            g_shm->lidar_angle_min = scan.angle_min;
+            g_shm->lidar_angle_inc = scan.angle_inc;
+            g_shm->lidar_range_min = scan.range_min;
+            g_shm->lidar_range_max = scan.range_max;
+
 
             //Set flags to indicate thet new data is available
             g_shm->pose_valid = 1;

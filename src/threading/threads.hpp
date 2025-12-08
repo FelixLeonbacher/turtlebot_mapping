@@ -12,3 +12,9 @@ void sensor_thread();
 
 // Mapping_thread
 void mapping_thread();
+
+// Goal_thread
+void goal_thread();
+
+// controller_thread
+void controller_thread();
