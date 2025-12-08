@@ -155,6 +155,19 @@ test_connection/fast:
 .PHONY : test_connection/fast
 
 #=============================================================================
+# Target rules for targets named test_loadconfig
+
+# Build rule for target.
+test_loadconfig: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test_loadconfig
+.PHONY : test_loadconfig
+
+# fast build rule for target.
+test_loadconfig/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_loadconfig.dir\build.make CMakeFiles/test_loadconfig.dir/build
+.PHONY : test_loadconfig/fast
+
+#=============================================================================
 # Target rules for targets named test_mapping_1
 
 # Build rule for target.
@@ -380,6 +393,33 @@ src/testing/test_connection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_connection.dir\build.make CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.s
 .PHONY : src/testing/test_connection.cpp.s
 
+src/testing/test_loadconfig.obj: src/testing/test_loadconfig.cpp.obj
+.PHONY : src/testing/test_loadconfig.obj
+
+# target to build an object file
+src/testing/test_loadconfig.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_loadconfig.dir\build.make CMakeFiles/test_loadconfig.dir/src/testing/test_loadconfig.cpp.obj
+.PHONY : src/testing/test_loadconfig.cpp.obj
+
+src/testing/test_loadconfig.i: src/testing/test_loadconfig.cpp.i
+.PHONY : src/testing/test_loadconfig.i
+
+# target to preprocess a source file
+src/testing/test_loadconfig.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_loadconfig.dir\build.make CMakeFiles/test_loadconfig.dir/src/testing/test_loadconfig.cpp.i
+.PHONY : src/testing/test_loadconfig.cpp.i
+
+src/testing/test_loadconfig.s: src/testing/test_loadconfig.cpp.s
+.PHONY : src/testing/test_loadconfig.s
+
+# target to generate assembly for a file
+src/testing/test_loadconfig.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\turtlebot_core.dir\build.make CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_loadconfig.dir\build.make CMakeFiles/test_loadconfig.dir/src/testing/test_loadconfig.cpp.s
+.PHONY : src/testing/test_loadconfig.cpp.s
+
 src/testing/test_mapping_1.obj: src/testing/test_mapping_1.cpp.obj
 .PHONY : src/testing/test_mapping_1.obj
 
@@ -498,6 +538,7 @@ help:
 	@echo ... rebuild_cache
 	@echo ... main
 	@echo ... test_connection
+	@echo ... test_loadconfig
 	@echo ... test_mapping_1
 	@echo ... test_mapping_2
 	@echo ... test_moving
@@ -524,6 +565,9 @@ help:
 	@echo ... src/testing/test_connection.obj
 	@echo ... src/testing/test_connection.i
 	@echo ... src/testing/test_connection.s
+	@echo ... src/testing/test_loadconfig.obj
+	@echo ... src/testing/test_loadconfig.i
+	@echo ... src/testing/test_loadconfig.s
 	@echo ... src/testing/test_mapping_1.obj
 	@echo ... src/testing/test_mapping_1.i
 	@echo ... src/testing/test_mapping_1.s

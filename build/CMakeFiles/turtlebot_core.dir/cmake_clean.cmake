@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/turtlebot_core.dir/src/pathing/lincontrol.cpp.obj.d"
   "CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.obj"
   "CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.obj.d"
+  "CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj"
+  "CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj.d"
   "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj"
   "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj.d"
   "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj"

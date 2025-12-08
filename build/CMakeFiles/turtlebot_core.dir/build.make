@@ -176,11 +176,26 @@ CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.s"
 	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_connection.cpp -o CMakeFiles\turtlebot_core.dir\src\testing\test_connection.cpp.s
 
+CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj: CMakeFiles/turtlebot_core.dir/flags.make
+CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj: CMakeFiles/turtlebot_core.dir/includes_CXX.rsp
+CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_loadconfig.cpp
+CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj: CMakeFiles/turtlebot_core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj -MF CMakeFiles\turtlebot_core.dir\src\testing\test_loadconfig.cpp.obj.d -o CMakeFiles\turtlebot_core.dir\src\testing\test_loadconfig.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_loadconfig.cpp
+
+CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.i"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_loadconfig.cpp > CMakeFiles\turtlebot_core.dir\src\testing\test_loadconfig.cpp.i
+
+CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.s"
+	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_loadconfig.cpp -o CMakeFiles\turtlebot_core.dir\src\testing\test_loadconfig.cpp.s
+
 CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj: CMakeFiles/turtlebot_core.dir/flags.make
 CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj: CMakeFiles/turtlebot_core.dir/includes_CXX.rsp
 CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_mapping_1.cpp
 CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj: CMakeFiles/turtlebot_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj"
 	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj -MF CMakeFiles\turtlebot_core.dir\src\testing\test_mapping_1.cpp.obj.d -o CMakeFiles\turtlebot_core.dir\src\testing\test_mapping_1.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_mapping_1.cpp
 
 CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.i: cmake_force
@@ -195,7 +210,7 @@ CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj: CMakeFiles/tur
 CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj: CMakeFiles/turtlebot_core.dir/includes_CXX.rsp
 CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_mapping_2.cpp
 CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj: CMakeFiles/turtlebot_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj"
 	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj -MF CMakeFiles\turtlebot_core.dir\src\testing\test_mapping_2.cpp.obj.d -o CMakeFiles\turtlebot_core.dir\src\testing\test_mapping_2.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_mapping_2.cpp
 
 CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.i: cmake_force
@@ -210,7 +225,7 @@ CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj: CMakeFiles/turtle
 CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj: CMakeFiles/turtlebot_core.dir/includes_CXX.rsp
 CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_moving.cpp
 CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj: CMakeFiles/turtlebot_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj"
 	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj -MF CMakeFiles\turtlebot_core.dir\src\testing\test_moving.cpp.obj.d -o CMakeFiles\turtlebot_core.dir\src\testing\test_moving.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_moving.cpp
 
 CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.i: cmake_force
@@ -225,7 +240,7 @@ CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj: CMakeFiles/turt
 CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj: CMakeFiles/turtlebot_core.dir/includes_CXX.rsp
 CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj: C:/Users/padav/Desktop/turtlebot_mapping/src/testing/test_moving_2.cpp
 CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj: CMakeFiles/turtlebot_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj"
 	C:\programming\w64devkit\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj -MF CMakeFiles\turtlebot_core.dir\src\testing\test_moving_2.cpp.obj.d -o CMakeFiles\turtlebot_core.dir\src\testing\test_moving_2.cpp.obj -c C:\Users\padav\Desktop\turtlebot_mapping\src\testing\test_moving_2.cpp
 
 CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.i: cmake_force
@@ -245,6 +260,7 @@ turtlebot_core_OBJECTS = \
 "CMakeFiles/turtlebot_core.dir/src/mapping/mapping.cpp.obj" \
 "CMakeFiles/turtlebot_core.dir/src/pathing/lincontrol.cpp.obj" \
 "CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.obj" \
+"CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj" \
 "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj" \
 "CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj" \
 "CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj" \
@@ -260,13 +276,14 @@ libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/src/main.cpp.obj
 libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/src/mapping/mapping.cpp.obj
 libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/src/pathing/lincontrol.cpp.obj
 libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/src/testing/test_connection.cpp.obj
+libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/src/testing/test_loadconfig.cpp.obj
 libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_1.cpp.obj
 libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/src/testing/test_mapping_2.cpp.obj
 libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/src/testing/test_moving.cpp.obj
 libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/src/testing/test_moving_2.cpp.obj
 libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/build.make
 libturtlebot_core.a: CMakeFiles/turtlebot_core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libturtlebot_core.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\padav\Desktop\turtlebot_mapping\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX static library libturtlebot_core.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\turtlebot_core.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\turtlebot_core.dir\link.txt --verbose=$(VERBOSE)
 

@@ -108,9 +108,10 @@ int main()
 
         std::cout << "[INFO] World has now " << world_map.size() << " cells\n";
 
-        // 5) Export after each scan (optional)
+        // 5) Export after each scan )
         export_utils::export_world_map_csv(world_map, "../export/world_map_live.csv");
         export_utils::export_frontiers_csv(all_frontiers, "../export/frontiers_live.csv");
+        export_utils::export_pose_csv(current_pose, "../export/pose_live.csv");
 
         std::cout << "[INFO] Exported updated world + frontiers\n";
     }

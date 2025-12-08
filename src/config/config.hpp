@@ -18,6 +18,7 @@ struct ConnectionConfig {
 struct ExportConfig {
     std::string export_path_world;
     std::string export_path_frontiers;
+    std::string export_path_pose;
 };
 
 struct Config {
