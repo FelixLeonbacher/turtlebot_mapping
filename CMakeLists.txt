@@ -40,6 +40,8 @@ target_include_directories(turtlebot_core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/src/export
     ${CMAKE_CURRENT_SOURCE_DIR}/src/mapping
     ${CMAKE_CURRENT_SOURCE_DIR}/src/pathing
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/threading
+
 )
 
 # Winsock for Windows/w64devkit
@@ -55,6 +57,12 @@ endif()
 # main.cpp
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE turtlebot_core)
+
+# threading/main.cpp
+add_executable(threading_main src/threading/main.cpp)
+target_link_libraries(threading_main PRIVATE turtlebot_core)
+target_include_directories(threading_main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 
 
 
