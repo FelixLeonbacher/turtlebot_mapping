@@ -10,14 +10,15 @@
 #include "core/parser.hpp"              // parseLidarScanFromMsg(), scan_to_data()
 #include "config.hpp"
 
-extern AppConfig g_config;
+#include "config.hpp"
+extern Config g_config;
 
 
 void sensor_thread()
 {
-    const std::string ip        = "192.168.100.54";
-    const int         port_scan = 9997;  // LiDAR
-    const int         port_odom = 9998;  // Odom
+    const std::string ip        = g_config.connection.ip;
+    const int         port_scan = g_config.connection.port_scan;  // LiDAR
+    const int         port_odom = g_config.connection.port_odom;  // Odom
 
     const int lidar_max = 2048;  // maximale Speicherkapazität für LiDar Scan
 

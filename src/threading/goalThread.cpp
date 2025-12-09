@@ -6,6 +6,7 @@
 
 #include "sharedMemory.hpp"
 
+
 void goal_thread() {
     std::cout << "\n=================================================\n";
     std::cout << "Enter goal as:  x  y  theta(rad)\n";

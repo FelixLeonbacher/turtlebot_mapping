@@ -12,14 +12,17 @@
 #include "core/geometry.hpp"
 #include "pathing/lincontrol.hpp"
 
+#include "config.hpp"
+extern Config g_config;
+
 
 void controller_thread() {
     std::cout << std::fixed << std::setprecision(3);
-    std::cout << "[Controller] Thread strated.\n";
+    std::cout << "[Controller] Thread started.\n";
 
     //IP + Port für Command-Interface
-    const std::string ip       = "192.168.100.54";
-    const int port_cmd = 9999;
+    const std::string ip       = g_config.connection.ip;
+    const int port_cmd = g_config.connection.port_cmd;
 
     const double dt_s = 0.1;
     const int dt_ms = static_cast<int>(dt_s * 1000);

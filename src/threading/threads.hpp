@@ -2,6 +2,8 @@
 
 #include <string>
 #include "sharedMemory.hpp"
+#include "config.hpp"
+
 
 // Network_thread
 void network_thread();

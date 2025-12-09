@@ -6,6 +6,9 @@
 #include "threads.hpp"
 #include "sharedMemory.hpp"
 
+#include "config.hpp"
+extern Config g_config;
+
 
 void network_shutdown() {
     connection::shutdown();
@@ -15,9 +18,9 @@ void network_shutdown() {
 void network_thread() {
 
 
-    const std::string ip        = "192.168.100.54";
-    const int port_lidar        = 9997;
-    const int port_odom         = 9998;
+    const std::string ip        = g_config.connection.ip;
+    const int port_lidar        = g_config.connection.port_scan;
+    const int port_odom         = g_config.connection.port_odom;
 
 
     try {

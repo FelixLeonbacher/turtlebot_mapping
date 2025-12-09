@@ -5,7 +5,7 @@
 #include "threads.hpp"
 #include "config.hpp"
 
-AppConfig g_config;
+Config g_config;
 
 int main()
 {

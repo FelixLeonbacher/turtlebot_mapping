@@ -13,6 +13,8 @@
 #include "mapping/mapping.hpp"          // mapping::data_to_world()
 #include "export/export.hpp"            // export_world_map_csv()
 
+#include "config.hpp"
+extern Config g_config;
 
 
 void mapping_thread()
@@ -22,7 +24,7 @@ void mapping_thread()
     // ============================
     // GLOBAL PARAMETERS
     // ============================
-    const float jump_thresh = 0.1f;      // frontier detection threshold
+    const float jump_thresh = g_config.mapping.jump_threshold;      // frontier detection threshold
     const float map_res     = CORE_ROUND_RES;  // grid resolution from geometry.hpp
     const int max_scans   = -1;  // read xx scans, or set to -1 for infinite
 
@@ -113,9 +115,9 @@ void mapping_thread()
         // Export as csv
         // ============================
 
-        export_utils::export_world_map_csv(world_map, "../export/world_map_live.csv");
-        export_utils::export_frontiers_csv(all_frontiers, "../export/frontiers_live.csv");
-        export_utils::export_pose_csv(scan.pose, "../export/pose_live.csv");
+        export_utils::export_world_map_csv(world_map, g_config.export_cfg.export_path_world);
+        export_utils::export_frontiers_csv(all_frontiers, g_config.export_cfg.export_path_frontiers);
+        export_utils::export_pose_csv(scan.pose, g_config.export_cfg.export_path_pose);
 
         //std::cout << "[Mapping] Exported updated world + frontiers\n";
 
