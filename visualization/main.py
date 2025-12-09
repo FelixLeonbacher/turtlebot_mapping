@@ -175,7 +175,7 @@ try:
                         df_pose["x"],
                         df_pose["y"],
                         linestyle="-",
-                        linewidth=1,
+                        linewidth=0.7,
                         color="blue",
                         label="Robot path"
                     )
@@ -191,28 +191,25 @@ try:
                             theta_col = cand
                             break
 
-                    if theta_col is not None:
-                        theta = df_pose[theta_col].iloc[-1]
-                        # arrow
-                        ax.quiver(
-                            x,
-                            y,
-                            np.cos(theta),
-                            np.sin(theta),
-                            angles="xy",
-                            scale=0.3,
-                            color="blue"
-                        )
-                    else:
-                        ax.scatter(
-                            x,
-                            y,
-                            s=40,
-                            marker="o",
-                            edgecolors="black",
-                            facecolors="cyan",
-                            label="Robot pose" 
-                        )
+                 
+                    theta = df_pose[theta_col].iloc[-1]
+                    # arrow
+                    arrow_len = 0.25
+                    dx = np.cos(theta) * arrow_len
+                    dy = np.sin(theta) * arrow_len
+                    ax.quiver(
+                        x,
+                        y,
+                        dx,
+                        dy,
+                        angles = "xy",
+                        scale_units = "xy",
+                        scale = 1.0,
+                        width = 0.01,
+                        color = "purple",
+                        label = "Robot pose"
+                    )
+        
 
 
 
@@ -223,7 +220,6 @@ try:
             ax.set_ylabel("y [m]")
             ax.set_title("Map + Frontiers + Pose")
             ax.set_aspect("equal", adjustable="box")
-            ax.legend(loc="upper right")
             
             plt.tight_layout()
             plt.draw()
