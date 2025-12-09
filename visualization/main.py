@@ -7,8 +7,9 @@ from matplotlib.colors import ListedColormap
 from pathlib import Path
 
 # --- paths to csv data --- 
-MAP_FILE = Path("export") / "world_map_live.csv"
-FRONTIER_FILE = Path("export") / "frontiers_live.csv"
+MAP_FILE = "export/world_map_live.csv"
+FRONTIER_FILE = "export/frontiers_live.csv"
+POSE_FILE = "export/pose_live.csv"
 
 # --- grid configuration ---
 # number of cells per axis
@@ -54,11 +55,15 @@ def world_to_grid(x, y, bounds, cells_per_meter):
     return row, col
 
 
+
 plt.ion()                   # interactive mode
 fig, ax = plt.subplots(figsize=(8, 8))
 
 last_map_mtime = 0
 last_frontier_mtime = 0
+last_pose_mtime = 0
+
+df_pose = None
 
 # --- grid completly unknown (initialized as grey) ---
 grid = np.full((GRID_SIZE, GRID_SIZE), UNKNOWN, dtype=np.uint8)
@@ -100,6 +105,16 @@ try:
         except Exception as e:
             print("Error reading frontier CSV:", e)
 
+        # --- check pose file
+        try:
+            pose_mtime = os.path.getmtime(POSE_FILE)
+            if pose_mtime != last_pose_mtime:
+                last_pose_mtime = pose_mtime
+                df_pose = pd.read_csv(POSE_FILE)
+                updated = True
+        except Exception as e:
+            print("Error reading pose CSV:", e)
+
         # --- If either file updated -> redraw ---
         if updated:
             # set everything to UNKNOWN
@@ -138,7 +153,6 @@ try:
                 
             # ----- Plot frontiers -----
 
-
             if 'df_front' in locals() and len(df_front) > 0:
                 for _, row in df_front.iterrows():
                     # segment
@@ -153,12 +167,63 @@ try:
                             color="green", 
                             marker="x")
                     
+            # --- Plot robot path & pose ---
+            if df_pose is not None and len(df_pose) > 0:
+                # path: plot all old poses as line
+                if {"x", "y"}.issubset(df_pose.columns):
+                    ax.plot(
+                        df_pose["x"],
+                        df_pose["y"],
+                        linestyle="-",
+                        linewidth=1,
+                        color="blue",
+                        label="Robot path"
+                    )
+
+                    # last pose
+                    x = df_pose["x"].iloc[-1]
+                    y = df_pose["y"].iloc[-1]
+
+                    # --- orientation theta ---
+                    theta_col = None
+                    for cand in ["theta", "yaw", "heading"]:
+                        if cand in df_pose.columns:
+                            theta_col = cand
+                            break
+
+                    if theta_col is not None:
+                        theta = df_pose[theta_col].iloc[-1]
+                        # arrow
+                        ax.quiver(
+                            x,
+                            y,
+                            np.cos(theta),
+                            np.sin(theta),
+                            angles="xy",
+                            scale=0.3,
+                            color="blue"
+                        )
+                    else:
+                        ax.scatter(
+                            x,
+                            y,
+                            s=40,
+                            marker="o",
+                            edgecolors="black",
+                            facecolors="cyan",
+                            label="Robot pose" 
+                        )
+
+
+
+
             # --- apply plot formatting ---
             
             ax.set_xlabel("x [m]")
             ax.set_ylabel("y [m]")
-            ax.set_title("Map + Frontiers")
+            ax.set_title("Map + Frontiers + Pose")
             ax.set_aspect("equal", adjustable="box")
+            ax.legend(loc="upper right")
             
             plt.tight_layout()
             plt.draw()
