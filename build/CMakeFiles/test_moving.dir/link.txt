@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\test_moving.dir/objects.a
-C:\programming\w64devkit\bin\ar.exe qc CMakeFiles\test_moving.dir/objects.a @CMakeFiles\test_moving.dir\objects1.rsp
-C:\programming\w64devkit\bin\c++.exe -Wl,--whole-archive CMakeFiles\test_moving.dir/objects.a -Wl,--no-whole-archive -o test_moving.exe -Wl,--out-implib,libtest_moving.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\test_moving.dir\linkLibs.rsp
