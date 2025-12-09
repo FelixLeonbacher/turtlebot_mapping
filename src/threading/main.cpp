@@ -9,6 +9,16 @@ Config g_config;
 
 int main()
 {
+
+    // ============================
+    // CONFIG laden
+    // ============================
+    if (!loadConfig("../src/config.json", g_config)) {
+        std::cerr << "[MAIN][ERROR] Failed to load config. Exiting.\n";
+        return 1;
+    }
+
+    
     // ============================
     // SHARED MEMORY initialise
     // ============================

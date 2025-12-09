@@ -21,7 +21,7 @@ void network_thread() {
     const std::string ip        = g_config.connection.ip;
     const int port_lidar        = g_config.connection.port_scan;
     const int port_odom         = g_config.connection.port_odom;
-
+    std::cout << "IP Adress" << ip << std::endl;
 
     try {
         // Initialize networking

@@ -1,4 +1,3 @@
-// config.cpp
 #include "config.hpp"
 
 #include <iostream>
