@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 project(turtlebot_mapping LANGUAGES CXX)
 
+# Use C++20
+set(CMAKE_CXX_STANDARD 20)
+
 # Use C++17
-set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -40,6 +43,8 @@ target_include_directories(turtlebot_core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/src/export
     ${CMAKE_CURRENT_SOURCE_DIR}/src/mapping
     ${CMAKE_CURRENT_SOURCE_DIR}/src/pathing
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/threading
+
 )
 
 # Winsock for Windows/w64devkit
@@ -55,6 +60,12 @@ endif()
 # main.cpp
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE turtlebot_core)
+
+# threading/main.cpp
+add_executable(threading_main src/threading/main.cpp)
+target_link_libraries(threading_main PRIVATE turtlebot_core)
+target_include_directories(threading_main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 
 
 
