@@ -17,6 +17,7 @@ extern Config g_config;
 
 
 void controller_thread() {
+    // Anzahl Nachkommastellen für cout wird gesetzt
     std::cout << std::fixed << std::setprecision(3);
     std::cout << "[Controller] Thread started.\n";
 

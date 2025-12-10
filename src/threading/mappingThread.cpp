@@ -31,10 +31,11 @@ void mapping_thread()
 
 
     // ============================
-    // CREATE WORLD & FRONTIER SET & CURRENT POSE
+    // CREATE WORLD & FRONTIER SET 
     // ============================
     mapping::MapSet world_map(0, mapping::Point2DHash(map_res), mapping::Point2DEq(map_res));
     std::vector<core::Frontier> all_frontiers;
+
 
     std::cout << "[Mapping] Thread started. \n";
 
@@ -65,13 +66,13 @@ void mapping_thread()
             scan.pose.y = g_shm->current_pose.y;
             scan.pose.theta = g_shm->current_pose.theta;
 
-            // Meta-Infos
+            // LiDAR-Werte
             scan.angle_min = g_shm->lidar_angle_min;
             scan.angle_inc = g_shm->lidar_angle_inc;
             scan.range_min = g_shm->lidar_range_min;
             scan.range_max = g_shm->lidar_range_max;
 
-            // LiDAR-Werte
+            
             int count = g_shm->lidar_count;
             scan.ranges.resize(static_cast<std::size_t>(count));
             for (int i = 0; i < count; ++i) {

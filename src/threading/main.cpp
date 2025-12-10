@@ -18,7 +18,7 @@ int main()
         return 1;
     }
 
-    
+
     // ============================
     // SHARED MEMORY initialise
     // ============================
@@ -33,7 +33,6 @@ int main()
     // START NETWORKCHECKER THREAD
     // ============================
 
-    std::cout << "[MAIN] Starting network checker thread...\n" << std::endl;
 
     std::thread netThread(network_thread);
 
