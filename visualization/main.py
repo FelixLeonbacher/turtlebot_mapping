@@ -13,7 +13,7 @@ POSE_FILE = "export/pose_live.csv"
 
 # --- grid configuration ---
 # number of cells per axis
-GRID_SIZE = 400   # 400 x 400 cells 
+GRID_SIZE = 300   # 400 x 400 cells 
 
 UNKNOWN = 0     # grey
 FREE = 1        # white
@@ -209,9 +209,6 @@ try:
                         color = "purple",
                         label = "Robot pose"
                     )
-        
-
-
 
 
             # --- apply plot formatting ---
