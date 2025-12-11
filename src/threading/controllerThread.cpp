@@ -33,10 +33,23 @@ void controller_thread() {
     LinearController controller;
 
     while (true) {
+
+        // stop_flag checken
+        if (is_stop_requested()) {
+            std::cout << "[Controller] Stop requested, exiting.\n";
+            break;
+        }
         // ============================
         // Auf ein gültiges Ziel warten
         // ============================
         g_goal_sem.acquire();
+
+
+        // stop_flag checken
+        if (is_stop_requested()) {
+            std::cout << "[Controller] Stop requested, exiting.\n";
+            break;
+        }
 
 
         // Startpose und Goalpose aus shared memory holen
@@ -70,6 +83,12 @@ void controller_thread() {
         int step = 0;
 
         while(!controller.isGoalReached() && step < max_steps) {
+
+            // stop flag checken
+            if (is_stop_requested()) {
+                std::cout << "\n[Controller] Stop requested during control loop, aborting.\n";
+                break;
+            }
 
             // aktuelle pose aus shared memory holen
             if (g_shm->pose_valid == 0) {
@@ -116,7 +135,9 @@ void controller_thread() {
         // ============================
         // Stop-Kommando schicken
         // ============================
-        if (controller.isGoalReached()) {
+        if (is_stop_requested()) {
+            std::cout << "[Controller] Global stop, sending final stop.\n";
+        } else if (controller.isGoalReached()) {
             std::cout << "[Controller] Goal reached! Sending stop.\n";
         } else {
             std::cout << "[Controller] Max steps reached. Sending stop.\n";
@@ -134,6 +155,10 @@ void controller_thread() {
             std::lock_guard<std::mutex> lock(g_shm_mutex);
             g_shm->goal_valid = 0;
 
+        }
+
+        if (is_stop_requested()) {
+            break;  
         }
 
 

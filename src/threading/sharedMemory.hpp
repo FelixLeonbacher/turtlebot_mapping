@@ -52,4 +52,8 @@ void ipc_init(bool creator);
 // clean up shared memory
 void ipc_cleanup();
 
+// stop request functions
+void request_global_stop();
+bool is_stop_requested();
+
 

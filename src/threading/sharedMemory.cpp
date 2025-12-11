@@ -11,6 +11,25 @@ std::binary_semaphore g_scan_sem(0);
 std::binary_semaphore g_goal_sem(0);
 
 
+void request_global_stop()
+{
+    {
+        std::lock_guard<std::mutex> lock(g_shm_mutex);
+        g_shm->stop= 1;   // 1 = Stopp
+    }
+
+    // Threads aufwecken, die evtl. gerade auf Semaphoren schlafen
+    g_goal_sem.release();   
+    g_scan_sem.release();  
+
+}
+
+bool is_stop_requested()
+{
+    std::lock_guard<std::mutex> lock(g_shm_mutex);
+    return g_shm->stop != 0;
+}
+
 // Gemeinsamen Speicherbereich unter Windows anlegen (Shared memory)
 // Zeiger (g_shm) darauf merken, um auf Daten zugreifen zu können
 // Räumt zum Schluss wieder auf
@@ -65,6 +84,9 @@ void ipc_init(bool creator)
 
         // cast pointer to shared memory
         g_shm = static_cast<SharedData*>(addr);
+
+        // alles auf null setzen
+        std::memset(g_shm, 0, sizeof(SharedData));
     
     } else {
 

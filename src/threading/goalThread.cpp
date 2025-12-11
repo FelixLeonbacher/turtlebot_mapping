@@ -7,6 +7,7 @@
 #include "sharedMemory.hpp"
 
 
+
 void goal_thread() {
     std::cout << "\n=================================================\n";
     std::cout << "Enter goal as:  x  y  theta(rad)\n";
@@ -19,11 +20,13 @@ void goal_thread() {
 
         if (!std::getline(std::cin, line)) {
             std::cout << "\n[Goal] Input closed. Exiting goal thread.\n";
+            request_global_stop();
             break;
         }
 
         if (line == "q" || line == "Q") {
             std::cout << "[Goal] Quit requested. Exiting goal thread.\n";
+            request_global_stop();
             break;
         }
 

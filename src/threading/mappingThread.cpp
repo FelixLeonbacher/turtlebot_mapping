@@ -49,12 +49,24 @@ void mapping_thread()
 
     while(max_scans < 0 || scan_idx < max_scans){
 
+        // stop_flag checken
+        if (is_stop_requested()) {
+            std::cout << "[Mapping] Stop requested, exiting.\n";
+            break;
+        }
+
         // ============================
         // Load data from shared memory
         // ============================
 
         // wait for new scan
         g_scan_sem.acquire();
+
+        // stop_flag checken
+        if (is_stop_requested()) {
+            std::cout << "[Mapping] Stop requested, exiting.\n";
+            break;
+        }
 
         core::LidarScan scan;
         {
@@ -71,7 +83,6 @@ void mapping_thread()
             scan.angle_inc = g_shm->lidar_angle_inc;
             scan.range_min = g_shm->lidar_range_min;
             scan.range_max = g_shm->lidar_range_max;
-
             
             int count = g_shm->lidar_count;
             scan.ranges.resize(static_cast<std::size_t>(count));
