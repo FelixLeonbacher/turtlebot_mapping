@@ -62,6 +62,12 @@ void mapping_thread()
         // wait for new scan
         g_scan_sem.acquire();
 
+        // stop_flag checken
+        if (is_stop_requested()) {
+            std::cout << "[Mapping] Stop requested, exiting.\n";
+            break;
+        }
+
         core::LidarScan scan;
         {
             // protect with mutex
