@@ -22,7 +22,7 @@ int main()
     // ============================
     // SHARED MEMORY initialise
     // ============================
-    ipc_init();
+    ipc_init(true);
 
     if (g_shm != nullptr) {
         std::lock_guard<std::mutex> lock(g_shm_mutex);

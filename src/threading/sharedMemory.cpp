@@ -4,10 +4,127 @@
 #include <cstring>
 #include <mutex>
 #include <semaphore>
+#include <iostream>
 
 std::mutex g_shm_mutex;
 std::binary_semaphore g_scan_sem(0);
 std::binary_semaphore g_goal_sem(0);
+
+
+// Gemeinsamen Speicherbereich unter Windows anlegen (Shared memory)
+// Zeiger (g_shm) darauf merken, um auf Daten zugreifen zu können
+// Räumt zum Schluss wieder auf
+
+#ifdef _WIN32
+#include <windows.h>
+
+static HANDLE g_hMapFile = nullptr;     // Referenz für mein Shared-memory Objekt
+SharedData* g_shm = nullptr;
+
+// Namen für shared memory festlegen
+const char* shm_name = "turtlebot_shared_mem";
+
+
+// --- initialize shared memory ---
+void ipc_init(bool creator)
+{
+    if (creator) {
+        // Shared Memory erzeugen mit File Mapping 
+        g_hMapFile = CreateFileMappingA(
+            INVALID_HANDLE_VALUE,          // keine echte Datei auf Festplatte -> Daten liegen nur im RAM
+            nullptr,                       // Default Security
+            PAGE_READWRITE,                // Lesen + Schreiben erlaubt
+            0,                             // Größe vom shared memory Block bestimmen
+            sizeof(SharedData),            // 
+            shm_name                       // Mapping Name
+        );
+
+        if(!g_hMapFile) {
+            std::cerr << "CreateFileMappingA failed, error code = " << GetLastError() << '\n';
+            std::exit(EXIT_FAILURE);
+            
+        }
+
+        
+        // attach shared memory to my process
+        // return pointer auf den Speicher in meinem Prozess
+        void* addr = MapViewOfFile(
+            g_hMapFile,
+            FILE_MAP_ALL_ACCESS,
+            0,
+            0,
+            sizeof(SharedData)
+        );
+
+        if (!addr) {
+            std::cerr << "MapViewOfFile failed, error code = " << GetLastError() << '\n';
+            CloseHandle(g_hMapFile);
+            g_hMapFile = nullptr;
+            std::exit(EXIT_FAILURE);
+        }
+
+        // cast pointer to shared memory
+        g_shm = static_cast<SharedData*>(addr);
+    
+    } else {
+
+        // wenn Mapping bereits existiert nut noch öffnen
+        g_hMapFile = OpenFileMappingA(
+            FILE_MAP_ALL_ACCESS,
+            FALSE,
+            shm_name
+        );
+
+        if (!g_hMapFile) {
+            std::cerr << "OpenFileMappingA failed, error = " << GetLastError() << '\n';
+            std::exit(EXIT_FAILURE);
+        }
+
+        // attach shared memory to my process
+        // return pointer auf den Speicher in meinem Prozess
+        void* addr = MapViewOfFile(
+            g_hMapFile,
+            FILE_MAP_ALL_ACCESS,
+            0,
+            0,
+            sizeof(SharedData)
+        );
+
+        if (!addr) {
+            std::cerr << "MapViewOfFile failed, error code = " << GetLastError() << '\n';
+            CloseHandle(g_hMapFile);
+            g_hMapFile = nullptr;
+            std::exit(EXIT_FAILURE);
+        }
+
+        // cast pointer to shared memory
+        g_shm = static_cast<SharedData*>(addr);
+
+
+
+    }
+
+    
+
+
+}
+
+void ipc_cleanup() {
+    // detach shared memory segment from address space
+    if (g_shm) {
+        UnmapViewOfFile(g_shm);
+        g_shm = nullptr;
+    }
+    // Handle wieder schließen
+    if (g_hMapFile) {
+        CloseHandle(g_hMapFile);
+        g_hMapFile = nullptr;
+    }
+}
+
+
+
+#endif
 
 
 #ifdef USE_SYSTEMV_SHM
@@ -62,7 +179,7 @@ void ipc_cleanup()
     }
 }
 
-#else
+/**#else
 
 // === einfache Thread-Test-Variante (globales Objekt) ===
 static SharedData g_local_shm;
@@ -75,6 +192,6 @@ void ipc_init() {
 
 void ipc_cleanup() {
     g_shm = &g_local_shm;
-}
+}**/
 
 #endif
