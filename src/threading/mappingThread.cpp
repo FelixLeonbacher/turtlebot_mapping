@@ -49,6 +49,12 @@ void mapping_thread()
 
     while(max_scans < 0 || scan_idx < max_scans){
 
+        // stop_flag checken
+        if (is_stop_requested()) {
+            std::cout << "[Mapping] Stop requested, exiting.\n";
+            break;
+        }
+
         // ============================
         // Load data from shared memory
         // ============================

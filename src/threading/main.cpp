@@ -67,6 +67,9 @@ int main()
     goalThread.join();
     mappingThread.join();
     controllerThread.join();
+
+    std::cout << "All threads finished. Exiting program.\n";
+
     // ============================
     // NETWORK SHUTDOWN
     // ============================

@@ -32,6 +32,12 @@ void sensor_thread()
     // ============================
     while(true) {
 
+        // stop_flag checken
+        if (is_stop_requested()) {
+            std::cout << "[Sensor] Stop requested, exiting.\n";
+            break;
+        }
+
         // read odom and lidar message from the network
         std::string msg_lidar;
         std::string msg_odom;
@@ -43,6 +49,7 @@ void sensor_thread()
 
         catch (const std::exception& e) {
             std::cerr << "[Sensor][ERROR] Failed to read from network: " << e.what() << "\n" << std::endl;
+            request_global_stop();
             break;
         }
 
