@@ -47,7 +47,7 @@ extern std::binary_semaphore g_scan_sem; // new lidar scan available
 extern std::binary_semaphore g_goal_sem; // new goal available
 
 // initialize shared memory
-void ipc_init();
+void ipc_init(bool creator);
 
 // clean up shared memory
 void ipc_cleanup();
