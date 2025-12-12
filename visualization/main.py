@@ -1,170 +1,274 @@
 import os
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 from pathlib import Path
 
-# --- paths to csv data --- 
-MAP_FILE = Path("export") / "world_map_live.csv"
-FRONTIER_FILE = Path("export") / "frontiers_live.csv"
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+from matplotlib.patches import Patch
+from matplotlib.lines import Line2D
 
-# --- grid configuration ---
-# number of cells per axis
-GRID_SIZE = 400   # 400 x 400 cells 
+# ============================================================
+# Configuration / Constants
+# ============================================================
 
-UNKNOWN = 0     # grey
-FREE = 1        # white
-OCCUPIED = 2    # red
+EXPORT_DIR = Path("export")
 
-# --- define colors in colormap ---
-cmap = ListedColormap(["#808080", "#FFFFFF", "#FF0000"])
+MAP_FILE = EXPORT_DIR / "world_map_live.csv"
+FRONTIER_FILE = EXPORT_DIR / "frontiers_live.csv"
+POSE_FILE = EXPORT_DIR / "pose_live.csv"
 
+GRID_SIZE = 300  # 300 x 300 cells
 
-# --- update world bounds and cell scaling ---
-def update_world_parameters(df_map):
-    # 10% margin around the data
-    padding = 0.1
+# Cell states
+UNKNOWN = 0
+FREE = 1
+OCCUPIED = 2
 
-    xmin = df_map["x"].min()
-    xmax = df_map["x"].max()
-    ymin = df_map["y"].min()
-    ymax = df_map["y"].max()
+# Plot / update parameters
+PADDING = 0.10       # 10% margin around the map bounds
+ARROW_LEN = 0.25     # robot pose arrow length in meters
+UPDATE_DT = 0.10     # seconds (0.10s -> 10 Hz)
 
-    dx = xmax - xmin
-    dy = ymax - ymin
-
-    xmin -= dx * padding
-    xmax += dx * padding
-    ymin -= dy * padding
-    ymax += dy * padding
-
-    return xmin, xmax, ymin, ymax
-
-# --- world coordinates to grid ---
-
-def world_to_grid(x, y, bounds, cells_per_meter):
-    # convert world coordinates (meters) to grid indices (row, col)
-
-    xmin, xmax, ymin, ymax = bounds
-
-    col = int((x - xmin) * cells_per_meter)
-    row = int((y - ymin) * cells_per_meter)
-    return row, col
+# Colormap (UNKNOWN, FREE, OCCUPIED)
+cmap = ListedColormap(["#808080", "#FF0000", "#FF0000"])
 
 
-plt.ion()                   # interactive mode
-fig, ax = plt.subplots(figsize=(8, 8))
+# ============================================================
+# Helper functions
+# ============================================================
 
-last_map_mtime = 0
-last_frontier_mtime = 0
+def update_world_bounds(df_map: pd.DataFrame, padding: float = PADDING):
+    """
+    Compute world bounds from map points + padding.
+    Returns: (x_min, x_max, y_min, y_max)
+    """
+    x_min = float(df_map["x"].min())
+    x_max = float(df_map["x"].max())
+    y_min = float(df_map["y"].min())
+    y_max = float(df_map["y"].max())
 
-# --- grid completly unknown (initialized as grey) ---
-grid = np.full((GRID_SIZE, GRID_SIZE), UNKNOWN, dtype=np.uint8)
-# default bounds
-bounds = (-2.0, 2.0, -2.0, 2.0) 
-cells_per_meter = GRID_SIZE / (bounds[1] - bounds[0])
+    x_range = max(x_max - x_min, 1e-6)  # guard against 0 range
+    y_range = max(y_max - y_min, 1e-6)
 
-try:
-    while plt.fignum_exists(fig.number):
-        updated = False
+    x_min -= x_range * padding
+    x_max += x_range * padding
+    y_min -= y_range * padding
+    y_max += y_range * padding
 
-        # --- Check world map file ---
-        try:
-            map_mtime = os.path.getmtime(MAP_FILE)
-            if map_mtime != last_map_mtime:
-                last_map_mtime = map_mtime
-                df_map = pd.read_csv(MAP_FILE)
-                # clalculate new world extent
-                bounds = update_world_parameters(df_map)
-                world_width = bounds[1] - bounds[0]
-                world_height = bounds[3] - bounds[2]
+    return x_min, x_max, y_min, y_max
 
-                scale_x = GRID_SIZE / world_width
-                scale_y = GRID_SIZE / world_height
 
-                cells_per_meter = min(scale_x, scale_y)
+def points_to_grid_indices(
+    x: np.ndarray,
+    y: np.ndarray,
+    bounds: tuple[float, float, float, float],
+    cells_per_meter: float,
+    grid_size: int = GRID_SIZE,):
+    """
+    Vectorized mapping: world points (x, y) -> grid indices (rows, cols).
+    Points outside the grid are filtered to avoid IndexError.
+    """
+    x_min, x_max, y_min, y_max = bounds
 
+    cols = np.floor((x - x_min) * cells_per_meter).astype(int)
+    rows = np.floor((y - y_min) * cells_per_meter).astype(int)
+
+    valid = (rows >= 0) & (rows < grid_size) & (cols >= 0) & (cols < grid_size)
+    return rows[valid], cols[valid]
+
+
+def read_csv_if_updated(path: Path, last_mtime: float):
+    """
+    Read a CSV only if it changed (mtime).
+    Returns: (df or None, new_mtime, updated_flag)
+    """
+    try:
+        mtime = path.stat().st_mtime
+    except FileNotFoundError:
+        return None, last_mtime, False
+
+    if mtime == last_mtime:
+        return None, last_mtime, False
+
+    try:
+        df = pd.read_csv(path)
+        return df, mtime, True
+    except Exception as exc:
+        print(f"Error reading {path}: {exc}")
+        return None, last_mtime, False
+
+
+def build_legend_handles():
+    """Create legend handles so the legend stays consistent."""
+    return [
+        Patch(facecolor="#808080", label="Unknown"),
+        #Patch(facecolor="#FFFFFF", edgecolor="black", label="Free"),
+        Patch(facecolor="#FF0000", label="Occupied"),
+        Line2D([0], [0], color="green", lw=1, label="Frontiers"),
+        Line2D([0], [0], color="blue", lw=1, label="Robot path"),
+        Line2D([0], [0], color="purple", lw=2, label="Robot pose"),
+    ]
+
+
+# ============================================================
+# Main
+# ============================================================
+
+def main() -> None:
+    plt.ion()  # interactive mode
+    fig, ax = plt.subplots(figsize=(8, 8))
+
+    # mtimes for live reload
+    last_map_mtime = 0.0
+    last_frontier_mtime = 0.0
+    last_pose_mtime = 0.0
+
+    df_map = None
+    df_front = None
+    df_pose = None
+
+    # Start with a fully UNKNOWN grid
+    grid = np.full((GRID_SIZE, GRID_SIZE), UNKNOWN, dtype=np.uint8)
+
+    # Default bounds
+    bounds = (-2.0, 2.0, -2.0, 2.0)
+    cells_per_meter = GRID_SIZE / (bounds[1] - bounds[0])
+
+    legend_handles = build_legend_handles()
+
+    try:
+        while plt.fignum_exists(fig.number):
+            updated = False
+
+            # ----------------------------
+            # Map CSV
+            # ----------------------------
+            new_map, last_map_mtime, map_updated = read_csv_if_updated(MAP_FILE, last_map_mtime)
+            if map_updated and new_map is not None:
+                df_map = new_map
+
+                # Recompute bounds from map data
+                bounds = update_world_bounds(df_map)
+
+                x_min, x_max, y_min, y_max = bounds
+                world_w = x_max - x_min
+                world_h = y_max - y_min
+
+                # Choose cells_per_meter so everything fits into GRID_SIZE
+                cells_per_meter = min(GRID_SIZE / world_w, GRID_SIZE / world_h)
                 updated = True
-        except Exception as e:
-            print("Error reading map CSV:", e)
 
-        # --- check frontier file ---
-        try:
-            frontier_mtime = os.path.getmtime(FRONTIER_FILE)
-            if frontier_mtime != last_frontier_mtime:
-                last_frontier_mtime = frontier_mtime
-                df_front = pd.read_csv(FRONTIER_FILE)
+            # ----------------------------
+            # Frontier CSV
+            # ----------------------------
+            new_front, last_frontier_mtime, front_updated = read_csv_if_updated(FRONTIER_FILE, last_frontier_mtime)
+            if front_updated and new_front is not None:
+                df_front = new_front
                 updated = True
-        except Exception as e:
-            print("Error reading frontier CSV:", e)
 
-        # --- If either file updated -> redraw ---
-        if updated:
-            # set everything to UNKNOWN
-            grid[:] = UNKNOWN
-            # ----- plot map -----
-            if 'df_map' in locals():
+            # ----------------------------
+            # Pose CSV
+            # ----------------------------
+            new_pose, last_pose_mtime, pose_updated = read_csv_if_updated(POSE_FILE, last_pose_mtime)
+            if pose_updated and new_pose is not None:
+                df_pose = new_pose
+                updated = True
 
-                # --- filter walls and free spaces 
-                walls = df_map[df_map["is_wall"] == 1]
-                free  = df_map[df_map["is_wall"] == 0]
+            # ----------------------------
+            # Redraw if anything changed
+            # ----------------------------
+            if updated:
+                # Reset the grid
+                grid[:] = UNKNOWN
 
-                # --- add walls to grid ---
-                for _, row in walls.iterrows():
-                    r, c = world_to_grid(row["x"], row["y"], bounds, cells_per_meter)
-                    grid[r, c] = OCCUPIED
-                
-                # --- add free cells to grid ---
-                for _, row in free.iterrows():
-                    r, c = world_to_grid(row["x"], row["y"], bounds, cells_per_meter)
-                    grid[r, c] = FREE
+                # ----- Write map data into the grid -----
+                if df_map is not None and {"x", "y", "is_wall"}.issubset(df_map.columns):
+                    walls = df_map[df_map["is_wall"] == 1]
+                    free = df_map[df_map["is_wall"] == 0]
 
-                # --- update plot ---
-            
-            # --- plot occupancy grid ---
-            ax.clear()
+                    if len(walls) > 0:
+                        wall_r, wall_c = points_to_grid_indices(
+                            walls["x"].to_numpy(),
+                            walls["y"].to_numpy(),
+                            bounds,
+                            cells_per_meter,
+                        )
+                        grid[wall_r, wall_c] = OCCUPIED
 
-            xmin, xmax, ymin, ymax = bounds
+                    if len(free) > 0:
+                        free_r, free_c = points_to_grid_indices(
+                            free["x"].to_numpy(),
+                            free["y"].to_numpy(),
+                            bounds,
+                            cells_per_meter,
+                        )
+                        
+                # ----- Plot -----
+                ax.clear()
+                x_min, x_max, y_min, y_max = bounds
 
-            im = ax.imshow(
-                grid,
-                cmap=cmap,
-                origin="lower",
-                extent=[xmin, xmax, ymin, ymax],
-                interpolation="nearest"
-            )
-                
-            # ----- Plot frontiers -----
+                ax.imshow(
+                    grid,
+                    cmap=cmap,
+                    origin="lower",
+                    extent=[x_min, x_max, y_min, y_max],
+                    interpolation="nearest",
+                )
+
+                # ----- Draw frontiers -----
+                if df_front is not None and len(df_front) > 0 and {"ax", "ay", "bx", "by", "mx", "my"}.issubset(df_front.columns):
+                    for _, rec in df_front.iterrows():
+                        ax.plot([rec.ax, rec.bx], [rec.ay, rec.by], color="green", linewidth=1)
+                        ax.scatter(rec.mx, rec.my, s=10, color="green", marker="x")
+
+                # ----- Draw robot path + pose -----
+                if df_pose is not None and len(df_pose) > 0 and {"x", "y", "theta"}.issubset(df_pose.columns):
+                    ax.plot(
+                        df_pose["x"],
+                        df_pose["y"],
+                        linestyle="-",
+                        linewidth=0.7,
+                        color="blue",
+                    )
+
+                    x_last = float(df_pose["x"].iloc[-1])
+                    y_last = float(df_pose["y"].iloc[-1])
+                    theta = float(df_pose["theta"].iloc[-1])
+
+                    dx = np.cos(theta) * ARROW_LEN
+                    dy = np.sin(theta) * ARROW_LEN
+
+                    ax.quiver(
+                        x_last,
+                        y_last,
+                        dx,
+                        dy,
+                        angles="xy",
+                        scale_units="xy",
+                        scale=1.0,
+                        width=0.008,
+                        color="purple",
+                    )
+
+                # ----- Legend -----
+                ax.legend(handles=legend_handles, loc="upper right", framealpha=0.9)
+
+                # ----- Formatting -----
+                ax.set_xlabel("x [m]")
+                ax.set_ylabel("y [m]")
+                ax.set_title("Map + Frontiers + Pose")
+                ax.set_aspect("equal", adjustable="box")
+
+                plt.tight_layout()
+                plt.draw()
+
+            plt.pause(UPDATE_DT)
+
+    finally:
+        plt.ioff()
+        plt.close("all")
 
 
-            if 'df_front' in locals() and len(df_front) > 0:
-                for _, row in df_front.iterrows():
-                    # segment
-                    ax.plot([row.ax, row.bx], 
-                            [row.ay, row.by],
-                            color="green", 
-                            linewidth=1)
-                    # midpoint
-                    ax.scatter(row.mx, 
-                            row.my, 
-                            s=10, 
-                            color="green", 
-                            marker="x")
-                    
-            # --- apply plot formatting ---
-            
-            ax.set_xlabel("x [m]")
-            ax.set_ylabel("y [m]")
-            ax.set_title("Map + Frontiers")
-            ax.set_aspect("equal", adjustable="box")
-            
-            plt.tight_layout()
-            plt.draw()
-
-        plt.pause(0.1)   # update at 10 Hz
-
-finally:
-    plt.ioff()
-    plt.close('all')
+if __name__ == "__main__":
+    main()
