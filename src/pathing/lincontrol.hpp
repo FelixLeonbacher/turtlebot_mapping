@@ -1,3 +1,11 @@
+/**
+ * @file lincontrol.hpp
+ * @brief Linear controller implementation for robot
+ * @author Rainhard Wipp
+ * @version 1.0
+ */
+
+
 #ifndef LINCONTROL_H
 #define LINCONTROL_H
 

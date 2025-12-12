@@ -1,4 +1,10 @@
-// src/mapping/mapping.cpp
+/**
+ * @file mapping.cpp
+ * @brief How the map is created and updated
+ * @author Felix Leonbacher
+ * @version 1.0
+ */
+
 #include "../core/geometry.hpp"
 #include "mapping.hpp"
 #include <cmath>
@@ -199,6 +205,24 @@ namespace mapping {
             prev_r     = r;
             prev_a     = a;
             prev_world = world_i; // safe even if invalid; only used when prev_valid==true
+        }
+    }
+
+
+    // bugfix: es gibt noch nen Problem mit der Frontier - Löschung (deshalb dieser temp. Fix)
+    void polish_frontiers(std::vector<core::Frontier>& frontiers,
+                        float min_width)
+    {
+        for (auto it = frontiers.begin(); it != frontiers.end(); /* kein ++ */)
+        {
+            if (it->width < min_width)
+            {
+                it = frontiers.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
         }
     }
 

@@ -1,3 +1,11 @@
+/**
+ * @file lincontrol.cpp
+ * @brief Linear controller implementation for robot
+ * @author Rainhard Wipp
+ * @version 1.0
+ */
+
+
 #include "lincontrol.hpp"
 
 // build problems cause compiler does not recognize M_PI from <cmath>

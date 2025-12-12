@@ -1,3 +1,8 @@
+/**
+ * @author Merle Rehpeen
+ * @version 1.0
+ */
+
 #pragma once
 #include <mutex>
 #include <semaphore>

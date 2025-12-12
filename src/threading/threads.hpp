@@ -1,5 +1,12 @@
 #pragma once
 
+/**
+ * @file threads.hpp
+ * @brief thread function declarations
+ * @author Merle Rehpeen
+ * @version 1.0
+ */
+
 #include <string>
 #include "sharedMemory.hpp"
 #include "config.hpp"

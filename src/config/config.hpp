@@ -1,3 +1,9 @@
+/**
+ * @file config.hpp
+ * @brief configuration structures for the application
+ * @author Felix Leonbacher
+ * @version 1.0
+ */
 #pragma once
 
 #include <string>

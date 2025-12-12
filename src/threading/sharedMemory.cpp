@@ -1,3 +1,8 @@
+/**
+ * @author Merle Rehpeen
+ * @version 1.0
+ */
+
 #include "sharedMemory.hpp"
 #include <cstdio>
 #include <cstdlib>

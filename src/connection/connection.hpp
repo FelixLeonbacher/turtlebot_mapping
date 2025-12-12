@@ -1,8 +1,5 @@
-#pragma once
-#include <string>
-#include "../pathing/lincontrol.hpp"
-
 /**
+ * @author Philipp Riegler
  * @brief Simple TCP connection helper for Windows.
  * Provides initialization and message reading with START/END tags.
  *
@@ -11,6 +8,11 @@
  *   std::string msg = connection::readTaggedMessage("192.168.100.54", 9997);
  *   connection::shutdown();
  */
+
+#pragma once
+#include <string>
+#include "../pathing/lincontrol.hpp"
+
 namespace connection
 {
     /// @brief Initialize Winsock (call once in main)

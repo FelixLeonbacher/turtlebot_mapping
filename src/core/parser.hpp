@@ -1,3 +1,10 @@
+/**
+ * @file parser.hpp
+ * @brief message parsers for LidarScan and Odometry
+ * @author Victor Swekis, Philipp Riegler
+ * @version 1.0
+ */
+
 #pragma once
 
 #include <string>

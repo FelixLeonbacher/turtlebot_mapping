@@ -1,3 +1,8 @@
+/**
+ * @author Merle Rehpeen
+ * @version 1.0
+ */
+
 #include <iostream>
 #include <string>
 #include <exception>

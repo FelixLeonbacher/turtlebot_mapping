@@ -1,3 +1,8 @@
+/**
+ * @author Merle Rehpeen
+ * @version 1.0
+ */
+
 #include "threads.hpp"
 
 #include <iostream>

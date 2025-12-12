@@ -1,4 +1,10 @@
-// src/mapping/mapping.hpp
+/**
+ * @file mapping.hpp
+ * @brief How the map is created and updated
+ * @author Felix Leonbacher
+ * @version 1.0
+ */
+
 #pragma once
 
 #include "../core/geometry.hpp"

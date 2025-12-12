@@ -1,126 +1,82 @@
 #include <iostream>
-#include <iomanip>
-#include <vector>
-#include <stdexcept>
+#include <thread>
 
-#include "connection/connection.hpp"    // 
-#include "core/geometry.hpp"            // 
-#include "core/parser.hpp"              // 
-#include "mapping/mapping.hpp"          // 
-#include "export/export.hpp"            // 
+#include "sharedMemory.hpp"
+#include "threads.hpp"
+#include "config.hpp"
 
-
+Config g_config;
 
 int main()
 {
-    std::cout << std::fixed << std::setprecision(3);
 
     // ============================
-    // GLOBAL PARAMETERS
+    // CONFIG laden
     // ============================
-    const float jump_thresh = 0.1f;      // frontier detection threshold
-    const float map_res     = CORE_ROUND_RES;  // grid resolution from geometry.hpp
-
-    const std::string ip = "192.168.100.54";
-    const int port_lidar  = 9997;
-    const int port_odom   = 9998;
-    const int max_scans   = -1;  // read xx scans, or set to -1 for infinite
-
-    // ============================
-    // INITIALIZE NETWORK
-    // ============================
-    try {
-        connection::init();
-        std::cout << "[INFO] Winsock initialized\n";
-    }
-    catch (const std::exception& e) {
-        std::cerr << "[ERROR] Winsock init failed: " << e.what() << "\n";
+    if (!loadConfig("../src/config.json", g_config)) {
+        std::cerr << "[MAIN][ERROR] Failed to load config. Exiting.\n";
         return 1;
     }
 
     // ============================
-    // CREATE WORLD & FRONTIER SET & CURRENT POSE
+    // SHARED MEMORY initialise
     // ============================
-    mapping::MapSet world_map(0, mapping::Point2DHash(map_res), mapping::Point2DEq(map_res));
-    std::vector<core::Frontier> all_frontiers;
-    core::Pose2D current_pose{0.0f, 0.0f, 0.0f};
+    ipc_init(true);
 
-    // ============================
-    // MAIN STREAM LOOP
-    // ============================
-    for (int i = 0; i < max_scans || max_scans < 0; i++) {
-
-        std::cout << "\n===============================================\n";
-        std::cout << "Reading LiDAR scan " << (i+1) << "...\n";
-
-        // 1) Receive tagged message
-        std::string msg_lidar;
-        std::string msg_odom;
-        try {
-            msg_lidar = connection::readTaggedMessage(ip, port_lidar);
-            msg_odom  = connection::readTaggedMessage(ip, port_odom);
-        }
-        catch (const std::exception& e) {
-            std::cerr << "[ERROR] Failed reading from LiDAR: " << e.what() << "\n";
-            break;
-        }
-
-        // 2) Parse JSON → LidarScan
-        core::LidarScan scan;
-        try {
-            scan = parseLidarScanFromMsg(msg_lidar);
-        }
-        catch (const std::exception& e) {
-            std::cerr << "[ERROR] Failed to parse LiDAR scan: " << e.what() << "\n";
-            continue;    // skip faulty scan
-        }
-
-
-        std::cout << "[INFO] Scan has " << scan.ranges.size() << " ranges\n";
-
-
-        
-        // 3) Convert scan → ScanData + frontiers
-        core::ScanData scan_data;
-        std::vector<core::Frontier> scan_frontiers;
-
-        // update current pose from odom
-        if (!parseOdomToPose2D(msg_odom, current_pose)) {
-            std::cerr << "[ERROR] Failed to parse ODOM pose\n";
-            continue;    // skip faulty odom
-        }
-
-        scan.pose = current_pose;
-        mapping::scan_to_data(scan, scan_data, scan_frontiers, jump_thresh);
-
-        std::cout << "[INFO] Extracted " << scan_frontiers.size() 
-                  << " frontiers from scan\n";
-
-        
-
-        std::cout << "[INFO] Current pose: x=" << current_pose.x
-                  << " y=" << current_pose.y
-                  << " theta=" << current_pose.theta << "\n";
-
-
-        // 4) Insert scan data into world map
-        mapping::data_to_world(scan_data, scan_frontiers, world_map, all_frontiers, map_res);
-
-        std::cout << "[INFO] World has now " << world_map.size() << " cells\n";
-
-        // 5) Export after each scan )
-        export_utils::export_world_map_csv(world_map, "../export/world_map_live.csv");
-        export_utils::export_frontiers_csv(all_frontiers, "../export/frontiers_live.csv");
-        export_utils::export_pose_csv(current_pose, "../export/pose_live.csv");
-
-        std::cout << "[INFO] Exported updated world + frontiers\n";
+    if (g_shm != nullptr) {
+        std::lock_guard<std::mutex> lock(g_shm_mutex);
+        g_shm->network_ok = 0;
     }
 
     // ============================
-    // SHUTDOWN
+    // START NETWORKCHECKER THREAD
     // ============================
-    connection::shutdown();
-    std::cout << "[INFO] Winsock cleaned up, program done.\n";
+
+
+    std::thread netThread(network_thread);
+
+    // wait, until networkchecker is ready
+    std::cout << "[MAIN] Waiting for network thread to finish...\n" << std::endl;
+
+    netThread.join();
+
+    
+    // ============================
+    // GOAL THREAD 
+    // ============================
+    std::thread goalThread(goal_thread);
+
+    // ============================
+    // SENSOR THREAD
+    // ============================
+    std::thread sensorThread(sensor_thread);
+
+    // ============================
+    // MAPPING THREAD 
+    // ============================
+    std::thread mappingThread(mapping_thread);
+    // ============================
+    // CONTROLLER THREAD 
+    // ============================
+    std::thread controllerThread(controller_thread);
+
+
+
+    sensorThread.join();
+    goalThread.join();
+    mappingThread.join();
+    controllerThread.join();
+
+    std::cout << "All threads finished. Exiting program.\n";
+
+    // ============================
+    // NETWORK SHUTDOWN
+    // ============================
+    network_shutdown();
+    // ============================
+    // SHARED MEMORY CLEAN UP
+    // ============================
+    ipc_cleanup();
 
     return 0;
 }

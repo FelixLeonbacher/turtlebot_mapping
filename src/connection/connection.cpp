@@ -1,3 +1,14 @@
+/**
+ * @author Philipp Riegler
+ * @brief Simple TCP connection helper for Windows.
+ * Provides initialization and message reading with START/END tags.
+ *
+ * Usage:
+ *   connection::init();
+ *   std::string msg = connection::readTaggedMessage("192.168.100.54", 9997);
+ *   connection::shutdown();
+ */
+
 #include "connection.hpp"
 
 #define WIN32_LEAN_AND_MEAN

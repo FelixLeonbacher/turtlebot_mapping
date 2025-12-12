@@ -1,3 +1,10 @@
+/**
+ * @file parser.cpp
+ * @brief message parsers for LidarScan and Odometry
+ * @author Victor Swekis, Philipp Riegler
+ * @version 1.0
+ */
+
 #include <string>
 #include <vector>
 #include <stdexcept>
@@ -12,7 +19,7 @@
 
 
 
-// 
+// Philipp 
 core::LidarScan parseLidarScanFromMsg(const std::string& dump)
 {
     // ---START--- und ___END___ rausfiltern

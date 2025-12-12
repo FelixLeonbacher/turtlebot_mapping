@@ -1,3 +1,11 @@
+/**
+ * @file export.cpp
+ * @brief simple CSV export functions
+ * @author Felix Leonbacher
+ * @version 1.0
+ */
+
+
 #include "export.hpp"
 #include <fstream>
 #include <iostream>

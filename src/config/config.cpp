@@ -1,3 +1,10 @@
+/**
+ * @file config.cpp
+ * @brief configuration structures for the application
+ * @author Felix Leonbacher
+ * @version 1.0
+ */
+
 #include "config.hpp"
 
 #include <iostream>

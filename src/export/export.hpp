@@ -1,3 +1,10 @@
+/**
+ * @file export.hpp
+ * @brief simple CSV export functions
+ * @author Felix Leonbacher
+ * @version 1.0
+ */
+
 #pragma once
 #include <string>
 #include <vector>

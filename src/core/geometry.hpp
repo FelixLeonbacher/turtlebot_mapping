@@ -1,3 +1,10 @@
+/**
+ * @file geometry.hpp
+ * @brief basic geometry types and helpers
+ * @author Felix Leonbacher, Victor Swekis
+ * @version 1.0
+ */
+
 #pragma once
 #include <cmath>
 #include <vector>
@@ -17,7 +24,7 @@ namespace core {
 //                      DATA STRUCTURES
 // ==========================================================
 
-// victor 
+// Victor 
 struct Quaternion {
     double w, x, y, z;
 };
@@ -27,7 +34,7 @@ struct EulerAngles {
 };
 
 
-// 
+// Felix & Rainhard
 struct Point2D {
     float x{0.0f};
     float y{0.0f};
@@ -65,6 +72,8 @@ struct ScanData {
 // ==========================================================
 //                      BASIC HELPERS
 // ==========================================================
+
+// Felix
 inline Point2D polar_to_cartesian(float r, float a) {
     return {r * std::cos(a), r * std::sin(a), false};
 }
