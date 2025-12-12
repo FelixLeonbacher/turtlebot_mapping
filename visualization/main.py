@@ -38,25 +38,38 @@ cmap = ListedColormap(["#808080", "#FF0000", "#FF0000"])
 # Helper functions
 # ============================================================
 
-def update_world_bounds(df_map: pd.DataFrame, padding: float = PADDING):
+def update_world_bounds(df_map, grid_size: int = GRID_SIZE, padding: float = PADDING,):
     """
-    Compute world bounds from map points + padding.
-    Returns: (x_min, x_max, y_min, y_max)
+    Compute padded world bounds from df_map, then expand to square bounds so that
+    grid cells map 1:1 to the imshow extent 
+
+    Returns:
+        bounds: (x_min, x_max, y_min, y_max)  # square
+        cells_per_meter: float
     """
     x_min = float(df_map["x"].min())
     x_max = float(df_map["x"].max())
     y_min = float(df_map["y"].min())
     y_max = float(df_map["y"].max())
 
-    x_range = max(x_max - x_min, 1e-6)  # guard against 0 range
+    # Padding
+    x_range = max(x_max - x_min, 1e-6)
     y_range = max(y_max - y_min, 1e-6)
-
     x_min -= x_range * padding
     x_max += x_range * padding
     y_min -= y_range * padding
     y_max += y_range * padding
 
-    return x_min, x_max, y_min, y_max
+    # Make square (center + max span)
+    cx = 0.5 * (x_min + x_max)
+    cy = 0.5 * (y_min + y_max)
+    span = max(x_max - x_min, y_max - y_min)  # square span
+    half = 0.5 * span
+
+    bounds = (cx - half, cx + half, cy - half, cy + half)
+    cells_per_meter = grid_size / span
+    return bounds, cells_per_meter
+
 
 
 def points_to_grid_indices(
@@ -111,6 +124,7 @@ def build_legend_handles():
     ]
 
 
+
 # ============================================================
 # Main
 # ============================================================
@@ -149,14 +163,7 @@ def main() -> None:
                 df_map = new_map
 
                 # Recompute bounds from map data
-                bounds = update_world_bounds(df_map)
-
-                x_min, x_max, y_min, y_max = bounds
-                world_w = x_max - x_min
-                world_h = y_max - y_min
-
-                # Choose cells_per_meter so everything fits into GRID_SIZE
-                cells_per_meter = min(GRID_SIZE / world_w, GRID_SIZE / world_h)
+                bounds, cells_per_meter = update_world_bounds(df_map)
                 updated = True
 
             # ----------------------------
