@@ -61,10 +61,7 @@ endif()
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE turtlebot_core)
 
-# threading/main.cpp
-add_executable(threading_main src/threading/main.cpp)
-target_link_libraries(threading_main PRIVATE turtlebot_core)
-target_include_directories(threading_main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 
 
 

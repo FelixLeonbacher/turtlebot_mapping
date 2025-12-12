@@ -105,7 +105,7 @@ void mapping_thread()
         mapping::polish_frontiers(scan_frontiers, g_config.mapping.min_frontier_width);
 
         // Integrate new scan into global world map representation
-        if (goal_reached_flag) {
+        if (goal_reached_flag && scan_data.scan_ordered.size() == 360) {
             mapping::data_to_world(scan_data, scan_frontiers, world_map, all_frontiers, map_res);
         }
         // Export world map, frontiers and current pose to CSV

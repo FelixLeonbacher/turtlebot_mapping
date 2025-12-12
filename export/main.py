@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import time
 import os
 
-MAP_FILE = "export\world_map_live.csv"
-FRONTIER_FILE = "export\frontiers_live.csv"
+MAP_FILE = r"export\world_map_live.csv"
+FRONTIER_FILE = r"export\frontiers_live.csv"
 
 plt.ion()                   # interactive mode
 fig, ax = plt.subplots(figsize=(6, 6))
