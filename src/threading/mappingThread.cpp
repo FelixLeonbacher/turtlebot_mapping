@@ -90,6 +90,10 @@ void mapping_thread()
 
         mapping::scan_to_data(scan, scan_data, scan_frontiers, jump_thresh);
 
+
+        // Polish detected frontiers (remove too small ones)
+        mapping::polish_frontiers(scan_frontiers, g_config.mapping.min_frontier_width);
+
         // Integrate new scan into global world map representation
         mapping::data_to_world(scan_data, scan_frontiers, world_map, all_frontiers, map_res);
 

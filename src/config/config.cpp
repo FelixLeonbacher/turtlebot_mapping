@@ -52,6 +52,12 @@ bool loadConfig(const std::string& filename, Config& cfg)
         } else {
             std::cerr << "Warning: mapping.map_resolution missing or not number\n";
         }
+
+        if (mapping["min_frontier_width"].is<double>()) {
+            cfg.mapping.min_frontier_width = mapping["min_frontier_width"].get<double>();
+        } else {
+            std::cerr << "Warning: mapping.min_frontier_width missing or not number\n";
+        }
     } else {
         std::cerr << "Warning: 'mapping' object missing in config\n";
     }

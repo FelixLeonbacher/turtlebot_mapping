@@ -8,6 +8,9 @@ struct MappingConfig {
     double jump_threshold = 0.1;
     // Resolution of the world map grid [m / cell]
     double map_resolution = 0.05;
+
+    // Minimum width of frontiers to keep [m]
+    double min_frontier_width = 0.3;
 };
 
 /// @brief Configuration fpr TCP/IP connection parameters

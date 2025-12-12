@@ -47,4 +47,8 @@ namespace mapping {
                       std::vector<core::Frontier>& out_frontiers,
                       float jump_thresh = 1.0f);
 
+
+    void polish_frontiers(std::vector<core::Frontier>& frontiers,
+                        float min_width);
+
 } // namespace mapping
