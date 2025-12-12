@@ -29,28 +29,19 @@ void network_thread() {
         connection::init();
         std::cout << "[Network][INFO] Winsock initialized.\n";
         
-        // --- Read LiDAR message ---
+        // Read LiDAR message 
         std::cout << "[INFO] Waiting for LiDAR message on " 
                   << ip << ":" << port_lidar << "...\n";
 
         std::string lidarMsg = connection::readTaggedMessage(ip, port_lidar);
 
-        std::cout << "\n===== LIDAR MESSAGE =====\n";
-        std::cout << lidarMsg << "\n";
-        std::cout << "==========================\n\n";
-
-        // --- Read Odom message ---
+        // Read Odom message 
         std::cout << "[INFO] Waiting for ODOM message on " 
                   << ip << ":" << port_odom << "...\n";
 
         std::string odomMsg = connection::readTaggedMessage(ip, port_odom);
 
-        std::cout << "\n===== ODOM MESSAGE =====\n";
-        std::cout << odomMsg << "\n";
-        std::cout << "=========================\n\n";
-        
-
-        // --- set Flag in Shared Memory ---
+        // set Flag in Shared Memory 
         if (g_shm != nullptr) {
             std::lock_guard<std::mutex> lock(g_shm_mutex);
             g_shm->network_ok = 1;
@@ -64,7 +55,7 @@ void network_thread() {
     catch (const std::exception& e) {
         std::cerr << "\n[Network][ERROR] " << e.what() << "\n";
 
-        // --- set Flag in Shared Memory ---
+        // set Flag in Shared Memory 
         if (g_shm != nullptr) {
             std::lock_guard<std::mutex> lock(g_shm_mutex);
             g_shm->network_ok = -1;

@@ -6,7 +6,11 @@
 
 #include "sharedMemory.hpp"
 
-
+/// @brief Goal input thread.
+///
+/// Reads target poses (x, y, theta) from stdin and writes them to shared memory.
+/// Each new goal increments g_shm->goal_seq and releases g_goal_sem so that
+/// the controller thread can start working on it. Typing 'q' triggers a global stop.
 void goal_thread() {
     std::cout << "\n=================================================\n";
     std::cout << "Enter goal as:  x  y  theta(rad)\n";
@@ -35,7 +39,7 @@ void goal_thread() {
             break;
         }
 
-        // x y theta aus Eingabe parsen
+        // Parse x, y, theta from input line
         float gx = 0.0f;
         float gy = 0.0f;
         float gtheta = 0.0f;
@@ -51,7 +55,7 @@ void goal_thread() {
 
         std::cout << "[Goal] New goal: x=" << gx << " y=" << gy << " theta=" << gtheta << "\n";
 
-        //In shared memory schreiben
+        // Write goal to shared memory and bump goal sequence counter
         {
             std::lock_guard<std::mutex> lock(g_shm_mutex);
 
@@ -59,12 +63,12 @@ void goal_thread() {
             g_shm->goal_pose.y = gy;
             g_shm->goal_pose.theta = gtheta;
 
-            g_shm->goal_valid = 1;    // neues Ziel ist available
+            g_shm->goal_valid = 1;    // new goal avaialble
 
-            g_shm->goal_seq += 1;  // Ziel-Version erhöht
+            g_shm->goal_seq += 1;  // bump goal squence counter
         }
 
-        // telling controller thread new goal available
+        // Notify controller thread that a new goal is available
         g_goal_sem.release();
     }
 

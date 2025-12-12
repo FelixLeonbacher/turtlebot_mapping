@@ -2,65 +2,81 @@
 #include <mutex>
 #include <semaphore>
 
-const int lidar_max = 2048;  // maximale Speicherkapazität für LiDar Scan
+// Maximum number of LiDAR ranges stored in shared memory
+const int lidar_max = 2048;  
 
+/// @brief  Simple pose representation shared between threads
 struct SharedPose {
     double x;
     double y;
     double theta;
 };
 
-// --- define the SharedData ---
+/// @brief POD struct stored entirely in shared memory
+///
+/// Contains current robot state, LiDAR scan data and various flags used for synchronization between threads
 struct SharedData {
-    SharedPose goal_pose;
-    SharedPose current_pose;
+    SharedPose goal_pose;           //< Latest goal pose requested by the user
+    SharedPose current_pose;        //< Latest pose from odometry
 
-    // lidar scan
-    float lidar_scan[lidar_max]; 
-    int lidar_count;
+    // LiDAR scan data
+    float lidar_scan[lidar_max];    //< Fixed-size buffer for LiDAR ranges
+    int lidar_count;                //< Number of valid entries in lidar_scan
     float lidar_angle_min;
     float lidar_angle_inc;
     float lidar_range_min;
     float lidar_range_max;
 
-    //flags
-    int goal_valid;
-    int pose_valid;  
-    int network_ok;
-    int scan_valid;
-    int goal_reached;
+    // Satus flags
+    int goal_valid;                 //< 1 if new goal is available for the controller
+    int pose_valid;                 //< 1 if current_pose is valid
+    int network_ok;                 //< >0 if network init worked, <0 on error
+    int scan_valid;                 //< 1 if a new LiDAR scan is available
+    int goal_reached;               //< 1 if a goal is reached
 
-    //stop flag
+    // Global stop flag for shutting down all threads.
     int stop;
 
-    // squenze counter
+    // Monotonically increasing goal sequence number to detect new goal
     int goal_seq;
 
 
 };
 
+/// Pointer to the SharedData block in shared memory
+extern SharedData* g_shm; 
 
-// declare ID and pointer
-extern int shm_id;   // kernel ID of the shared memory segment
-extern SharedData* g_shm; // pointer to the structure in shared memory
-
-// global Mutex for all g_shm
+/// Global mutex protecting all accesses to g_shm
 extern std::mutex g_shm_mutex;
 
-// Semaphore for new data signals
-extern std::binary_semaphore g_scan_sem; // new lidar scan available 
-extern std::binary_semaphore g_goal_sem; // new goal available
+/// Semaphore signalled when a new LiDAR scan is available
+extern std::binary_semaphore g_scan_sem; 
 
-// initialize shared memory
+/// Semaphore signalles when a new LiDAR scan is available
+extern std::binary_semaphore g_goal_sem; 
+
+
+/// @brief Initialize shared memory (create or open).
+///
+/// @param creator If true, a new shared memory segment is created and zeroed.
+///                If false, an existing mapping is opened.
 void ipc_init(bool creator);
 
-// clean up shared memory
+/// @brief Detach and clean up shared memory resources
 void ipc_cleanup();
 
-// stop request functions
+/// @brief Request a global stop for all worker threads.
+///
+/// Sets g_shm->stop to 1 and releases semaphores so that sleeping
+/// threads can wake up, check the flag and exit.
 void request_global_stop();
+
+/// @brief  Check whether a global stop was requested
 bool is_stop_requested();
 
-// pose_flag checken
+
+/// @brief Check whether a valid pose is available in shared memory.
+///
+/// @return true if g_shm is non-null and pose_valid != 0.
 bool has_valid_pose();
 
