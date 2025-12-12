@@ -55,6 +55,7 @@ void controller_thread() {
         // Startpose und Goalpose aus shared memory holen
         core::Pose2D goal{};
         core::Pose2D pose{};
+        int c_goal_seq = 0;
 
         {
             std::lock_guard<std::mutex> lock(g_shm_mutex);
@@ -67,11 +68,13 @@ void controller_thread() {
             pose.y = g_shm->current_pose.y;
             pose.theta = g_shm->current_pose.theta;
 
+            c_goal_seq = g_shm->goal_seq;
+
         }
 
         std::cout << "[INFO] New goal: "
         << "x=" << goal.x << "  y=" << goal.y
-        << "  theta=" << goal.theta << "\n";
+        << "  theta=" << goal.theta <<  " (seq=" << c_goal_seq << ")\n";
 
         // ============================
         // Controller Setup
@@ -88,6 +91,14 @@ void controller_thread() {
             if (is_stop_requested()) {
                 std::cout << "\n[Controller] Stop requested during control loop, aborting.\n";
                 break;
+            }
+
+            {
+                std::lock_guard<std::mutex> lock(g_shm_mutex);
+                if (g_shm->goal_seq != c_goal_seq) {
+                    std::cout << "\n[Controller] New goal detected (seq changed from " << c_goal_seq << " to " << g_shm->goal_seq << "). Aborting current goal.\n";
+                    break;
+                }
             }
 
             // aktuelle pose aus shared memory holen
@@ -153,7 +164,9 @@ void controller_thread() {
 
         {
             std::lock_guard<std::mutex> lock(g_shm_mutex);
-            g_shm->goal_valid = 0;
+            if (g_shm->goal_seq == c_goal_seq) {
+                g_shm->goal_valid = 0;
+            }
 
         }
 

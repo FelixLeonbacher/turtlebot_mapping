@@ -32,6 +32,11 @@ struct SharedData {
 
     //stop flag
     int stop;
+
+    // squenze counter
+    int goal_seq;
+
+
 };
 
 

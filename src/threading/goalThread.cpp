@@ -19,7 +19,7 @@ void goal_thread() {
             std::cout << "[Goal] Global stop requested. Exiting goal thread.\n";
             break;
         }
-        
+
         std::cout << "\n[Goal] New goal (x y theta) or 'q': ";
         std::string line;
 
@@ -60,6 +60,8 @@ void goal_thread() {
             g_shm->goal_pose.theta = gtheta;
 
             g_shm->goal_valid = 1;    // neues Ziel ist available
+
+            g_shm->goal_seq += 1;  // Ziel-Version erhöht
         }
 
         // telling controller thread new goal available
