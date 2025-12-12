@@ -55,6 +55,8 @@ void mapping_thread()
         }
 
         core::LidarScan scan;
+        bool goal_reached_flag = false;
+
         {
             // protect with mutex
             std::lock_guard<std::mutex> lock(g_shm_mutex);
@@ -80,6 +82,9 @@ void mapping_thread()
             // Mark scan as consumed
             g_shm->scan_valid = 0;
 
+            goal_reached_flag = (g_shm->goal_reached != 0);
+
+
         }
 
         ++scan_idx;
@@ -95,8 +100,9 @@ void mapping_thread()
         mapping::polish_frontiers(scan_frontiers, g_config.mapping.min_frontier_width);
 
         // Integrate new scan into global world map representation
-        mapping::data_to_world(scan_data, scan_frontiers, world_map, all_frontiers, map_res);
-
+        if (goal_reached_flag) {
+            mapping::data_to_world(scan_data, scan_frontiers, world_map, all_frontiers, map_res);
+        }
         // Export world map, frontiers and current pose to CSV
         export_utils::export_world_map_csv(world_map, g_config.export_cfg.export_path_world);
         export_utils::export_frontiers_csv(all_frontiers, g_config.export_cfg.export_path_frontiers);

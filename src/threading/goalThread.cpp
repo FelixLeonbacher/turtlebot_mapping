@@ -66,6 +66,8 @@ void goal_thread() {
             g_shm->goal_valid = 1;    // new goal avaialble
 
             g_shm->goal_seq += 1;  // bump goal squence counter
+
+            g_shm->goal_reached = 0;
         }
 
         // Notify controller thread that a new goal is available

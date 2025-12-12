@@ -174,6 +174,10 @@ void controller_thread() {
                 g_shm->goal_valid = 0;
             }
 
+            if (controller.isGoalReached() == true) {
+            g_shm->goal_reached = 1;
+        }
+
         }
 
         if (is_stop_requested()) {
