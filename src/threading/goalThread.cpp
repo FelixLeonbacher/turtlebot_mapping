@@ -14,6 +14,12 @@ void goal_thread() {
     std::cout << "Or type 'q' to quit.\n> ";
 
     while (true) {
+
+        if (is_stop_requested()) {
+            std::cout << "[Goal] Global stop requested. Exiting goal thread.\n";
+            break;
+        }
+        
         std::cout << "\n[Goal] New goal (x y theta) or 'q': ";
         std::string line;
 

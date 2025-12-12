@@ -21,7 +21,8 @@ void network_thread() {
     const std::string ip        = g_config.connection.ip;
     const int port_lidar        = g_config.connection.port_scan;
     const int port_odom         = g_config.connection.port_odom;
-    std::cout << "IP Adress" << ip << std::endl;
+
+    std::cout << "[MAIN] Starting network checker thread...\n" << std::endl;
 
     try {
         // Initialize networking
@@ -65,7 +66,11 @@ void network_thread() {
 
         // --- set Flag in Shared Memory ---
         if (g_shm != nullptr) {
+            std::lock_guard<std::mutex> lock(g_shm_mutex);
             g_shm->network_ok = -1;
         }
+
+        request_global_stop();
+
     }    
 }
