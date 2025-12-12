@@ -56,4 +56,6 @@ void ipc_cleanup();
 void request_global_stop();
 bool is_stop_requested();
 
+// pose_flag checken
+bool has_valid_pose();
 

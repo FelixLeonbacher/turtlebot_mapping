@@ -91,7 +91,7 @@ void controller_thread() {
             }
 
             // aktuelle pose aus shared memory holen
-            if (g_shm->pose_valid == 0) {
+            if (!has_valid_pose()) {
                 std::this_thread::sleep_for(loop_delay);
                 continue;
             }

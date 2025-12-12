@@ -10,24 +10,6 @@ std::mutex g_shm_mutex;
 std::binary_semaphore g_scan_sem(0);
 std::binary_semaphore g_goal_sem(0);
 
-void request_global_stop()
-{
-    {
-        std::lock_guard<std::mutex> lock(g_shm_mutex);
-        g_shm->stop= 1;   // 1 = Stopp
-    }
-
-    // Threads aufwecken, die evtl. gerade auf Semaphoren schlafen
-    g_goal_sem.release();   
-    g_scan_sem.release();  
-
-}
-
-bool is_stop_requested()
-{
-    std::lock_guard<std::mutex> lock(g_shm_mutex);
-    return g_shm->stop != 0;
-}
 
 
 // Gemeinsamen Speicherbereich unter Windows anlegen (Shared memory)
@@ -142,6 +124,33 @@ void ipc_cleanup() {
         CloseHandle(g_hMapFile);
         g_hMapFile = nullptr;
     }
+}
+
+
+// --- Hilfsfunktionen ---
+void request_global_stop()
+{
+    {
+        std::lock_guard<std::mutex> lock(g_shm_mutex);
+        g_shm->stop= 1;   // 1 = Stopp
+    }
+
+    // Threads aufwecken, die evtl. gerade auf Semaphoren schlafen
+    g_goal_sem.release();   
+    g_scan_sem.release();  
+
+}
+
+bool is_stop_requested()
+{
+    std::lock_guard<std::mutex> lock(g_shm_mutex);
+    return g_shm->stop != 0;
+}
+
+bool has_valid_pose()
+{
+    std::lock_guard<std::mutex> lock(g_shm_mutex);
+    return (g_shm && g_shm->pose_valid != 0);
 }
 
 
