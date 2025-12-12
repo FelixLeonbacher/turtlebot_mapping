@@ -13,5 +13,10 @@
     "export_path_world": "../export/world_map_live.csv",
     "export_path_frontiers": "../export/frontiers_live.csv",
     "export_path_pose": "../export/pose_live.csv"
+  },
+  "controller": {
+    "k_roh": 1.0,
+    "k_alpha": 4.0,
+    "k_beta": 0.5
   }
 }

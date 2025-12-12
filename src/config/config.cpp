@@ -117,5 +117,35 @@ bool loadConfig(const std::string& filename, Config& cfg)
         std::cerr << "Warning: 'export' object missing in config\n";
     }
 
+
+    // ============================
+    // controller
+    // ============================
+
+    if (root["controller"].is<picojson::object>()) {
+        picojson::object& ctrl = root["controller"].get<picojson::object>();
+
+        if (ctrl["k_roh"].is<double>()) {
+            cfg.controller.k_roh = ctrl["k_roh"].get<double>();
+        } else {
+            std::cerr << "Warning: controller.k_roh missing or not number\n";
+        }
+
+        if (ctrl["k_alpha"].is<double>()) {
+            cfg.controller.k_alpha = ctrl["k_alpha"].get<double>();
+        } else {
+            std::cerr << "Warning: controller.k_alpha missing or not number\n";
+        }
+
+        if (ctrl["k_beta"].is<double>()) {
+            cfg.controller.k_beta = ctrl["k_beta"].get<double>();
+        } else {
+            std::cerr << "Warning: controller.k_beta missing or not number\n";
+        }
+        
+    } else {
+        std::cerr << "Warning: 'controller' object missing in config\n";
+    }
+
     return true;
 }

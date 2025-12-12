@@ -37,6 +37,12 @@ void controller_thread() {
 
     LinearController controller;
 
+    controller.setControlParameters(
+        g_config.controller.k_roh,
+        g_config.controller.k_alpha,
+        g_config.controller.k_beta
+    );
+
     while (true) {
 
         // check stop flag 
