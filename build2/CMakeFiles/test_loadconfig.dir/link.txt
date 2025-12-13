@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/test_loadconfig.dir/src/testing/test_loadconfig.cpp.o -o test_loadconfig  libturtlebot_core.a 

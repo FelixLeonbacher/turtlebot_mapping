@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/test_connection.dir/src/testing/test_connection.cpp.o -o test_connection  libturtlebot_core.a 

@@ -115,7 +115,7 @@ def read_csv_if_updated(path: Path, last_mtime: float):
 def build_legend_handles():
     """Create legend handles so the legend stays consistent."""
     return [
-        Patch(facecolor="#808080", label="Unknown"),
+        #Patch(facecolor="#808080", label="Unknown"),
         #Patch(facecolor="#FFFFFF", edgecolor="black", label="Free"),
         Patch(facecolor="#FF0000", label="Occupied"),
         Line2D([0], [0], color="green", lw=1, label="Frontiers"),

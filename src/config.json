@@ -15,8 +15,8 @@
     "export_path_pose": "../export/pose_live.csv"
   },
   "controller": {
-    "k_roh": 1,
-    "k_alpha": 1.5,
-    "k_beta": 1
+    "k_roh": 0.5,
+    "k_alpha": 3,
+    "k_beta": -0.5
   }
 }

@@ -1,7 +1,7 @@
 /**
  * @file geometry.hpp
  * @brief basic geometry types and helpers
- * @author Felix Leonbacher, Victor Swekis
+ * @author Felix Leonbacher, Victor Swekis, Rainhard Wipp
  * @version 1.0
  */
 

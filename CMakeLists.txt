@@ -62,10 +62,6 @@ add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE turtlebot_core)
 
 
-
-
-
-
 # get all .cpp files in /testing
 file(GLOB TEST_FILES "src/testing/*.cpp")
 

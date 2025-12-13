@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/test_moving_2.dir/src/testing/test_moving_2.cpp.o -o test_moving_2  libturtlebot_core.a 
