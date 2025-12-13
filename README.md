@@ -94,7 +94,7 @@ The mapping thread continuously exports:
 
 | File | Content |
 |----|--------|
-| `world_map_live.csv` | Occupied / free map points |
+| `world_map_live.csv` | map points |
 | `frontiers_live.csv` | Frontier line segments |
 | `pose_live.csv` | Robot pose history |
 
@@ -104,10 +104,10 @@ The mapping thread continuously exports:
 
 mkdir build  
 cd build  
-cmake ..  (maybe you need to specify)
+cmake .. (maybe you need to specify)     
 cmake --build .  
 
-
+pyhton in visualization, just run it while data is in the all export.csv
 ---
 
 ## Authors
