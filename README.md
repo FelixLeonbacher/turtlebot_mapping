@@ -103,8 +103,9 @@ The mapping thread continuously exports:
 
 mkdir build  
 cd build  
-cmake ..  
+cmake ..  (maybe you need to specify)
 cmake --build .  
+
 
 ---
 
