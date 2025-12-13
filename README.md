@@ -6,6 +6,7 @@ The system performs **LiDAR-based mapping with frontier detection**, **goal-driv
 ---
 
 ## Overview
+FOR EACH USE PLEASE REMOVE THE CONTENT OF THE EXPORT.CSVs 
 
 This project implements a complete perception–control pipeline:
 
